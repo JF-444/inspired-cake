@@ -136,9 +136,22 @@ nav .btn{padding:10px 18px;font-size:.92rem}
 .chip:hover{border-color:var(--choco)}
 .chip[aria-pressed="true"]{background:var(--choco);border-color:var(--choco);color:var(--blush)}
 .masonry{columns:3 280px;column-gap:18px}
-.tile{break-inside:avoid;margin:0 0 18px;display:block;width:100%;padding:0;border:0;background:var(--petal);border-radius:18px;overflow:hidden;position:relative;cursor:zoom-in;text-align:left;color:#fff;font:inherit}
+.tile{break-inside:avoid;margin:0 0 18px;display:block;width:100%;padding:0;border:0;background:var(--petal);border-radius:18px;overflow:hidden;position:relative;cursor:zoom-in;text-align:left;color:#fff;font:inherit;transform:translateZ(0)}
+.tile .cap{pointer-events:none}
 .tile img{width:100%;height:auto;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
-.tile:hover img{transform:scale(1.06)}
+@media (hover:hover){.tile:hover img{transform:scale(1.06)}}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;aspect-ratio:4/5;max-width:100%}
+.slides::-webkit-scrollbar{display:none}
+.slides img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start;scroll-snap-stop:always}
+.count{position:absolute;top:12px;right:12px;background:rgba(46,24,19,.6);color:#fff;font:600 .75rem var(--body);padding:4px 10px;border-radius:999px;font-variant-numeric:tabular-nums;backdrop-filter:blur(6px);pointer-events:none}
+.dots{position:absolute;left:0;right:0;bottom:78px;display:flex;justify-content:center;gap:6px;pointer-events:none}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.5);transition:background .2s,transform .2s}
+.dots i.on{background:#fff;transform:scale(1.25)}
+.arr{position:absolute;top:calc(50% - 40px);width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,250,248,.9);color:var(--choco);font-size:1.1rem;cursor:pointer;display:grid;place-items:center;opacity:0;transition:opacity .2s;box-shadow:0 6px 16px -8px rgba(0,0,0,.5)}
+.arr.prev{left:10px}.arr.next{right:10px}
+@media (hover:hover){.tile:hover .arr{opacity:1}}
+.arr:focus-visible{opacity:1}
+.arr[disabled]{visibility:hidden}
 .tile .cap{position:absolute;inset:auto 0 0 0;padding:44px 18px 16px;background:linear-gradient(transparent,rgba(46,24,19,.78));display:grid;gap:2px;transform:translateY(12px);opacity:.92;transition:transform .35s,opacity .35s}
 .tile:hover .cap{transform:none;opacity:1}
 .tile .cap b{font-family:var(--display);font-weight:500;font-size:1.25rem;line-height:1.2}
@@ -284,8 +297,12 @@ footer.site small{display:block;margin-top:6px}
 .lb{position:fixed;inset:0;z-index:50;background:rgba(46,24,19,.88);display:grid;place-items:center;padding:calc(20px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .lb-in{display:grid;grid-template-columns:auto 300px;gap:0;background:var(--cream);border-radius:22px;overflow:hidden;max-height:90vh;max-width:min(980px,100%)}
 @media (max-width:760px){.lb-in{grid-template-columns:1fr;overflow:auto}}
-.lb img{max-height:90vh;width:auto;max-width:100%;object-fit:contain;background:var(--petal)}
-@media (max-width:760px){.lb img{max-height:60vh;width:100%;object-fit:cover}}
+.lb-media{position:relative;width:min(560px,60vw);background:var(--petal);min-width:0}
+.lb-media .slides{aspect-ratio:auto;height:min(86vh,700px)}
+.lb-media .slides img{object-fit:contain}
+.lb-media .dots{bottom:14px}
+.lb-media .arr{opacity:1;top:calc(50% - 20px)}
+@media (max-width:760px){.lb-media{width:100%}.lb-media .slides{height:58vh}.lb-media .slides img{object-fit:cover}}
 .lb-side{padding:28px;display:grid;gap:14px;align-content:center}
 .lb-side h3{font-size:1.8rem}
 .lb-side p{margin:0;color:var(--cocoa)}
@@ -531,7 +548,7 @@ footer.site small{display:block;margin-top:6px}
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
   <button class="lb-close" id="lb-close" type="button" aria-label="Fermer">✕</button>
   <div class="lb-in">
-    <img id="lb-img" alt="">
+    <div class="lb-media"><div class="slides" id="lb-slides"></div><button type="button" class="arr prev" id="lb-sp" aria-label="Photo précédente">‹</button><button type="button" class="arr next" id="lb-sn" aria-label="Photo suivante">›</button><div class="dots" id="lb-dots" aria-hidden="true"></div></div>
     <div class="lb-side">
       <span class="eyebrow" id="lb-cat"></span>
       <h3 id="lb-title"></h3>
@@ -544,27 +561,23 @@ footer.site small{display:block;margin-top:6px}
 
 <script>
 const WORKS=[
- {img:"anniv-60-ans",t:"Les 60 ans aux saveurs tropicales",c:"Anniversaires",d:"Layer cake mangue – passion, décor doré et palmes.",f:"Mangue – passion"},
- {img:"pistache-framboise",t:"Pistache – framboise",c:"Layer cakes",d:"Framboises fraîches, pistaches concassées et rosaces de crème.",f:"Pistache – framboise"},
- {img:"rose-papillons",t:"Rose rouge et papillons dorés",c:"Anniversaires",d:"Une couronne de crème, une rose rouge et des papillons dorés.",f:""},
- {img:"chocolat-fruits-rouges",t:"Cœur chocolat – fruits rouges",c:"Layer cakes",d:"Décor vintage en crème chocolat, rubans et perles dorées.",f:"Fraise / fruits rouges"},
- {img:"box-decouverte",t:"La Boîte découverte",c:"Cupcakes",d:"Nouveau : 3 parfums au choix pour 18 €. L'idéal pour tout goûter.",f:"",box:"decouverte"},
- {img:"degrade-chocolat",t:"Dégradé chocolat – vanille",c:"Layer cakes",d:"Un dégradé du blanc au chocolat, éventail doré et perles.",f:"Chocolat intense"},
- {img:"caramel-beurre-sale",t:"Douceur caramel",c:"Layer cakes",d:"Du moelleux, du caramel et une pointe de fleur de sel.",f:"Caramel beurre salé"},
- {img:"nuage-bleu",t:"Un nuage dans un ciel bleu",c:"Anniversaires",d:"Pour les 2 ans d'un petit garçon, tout en douceur.",f:""},
- {img:"couronne-framboise",t:"Couronne de framboises",c:"Anniversaires",d:"Rosaces vert tendre et cœur de framboises fraîches.",f:""},
- {img:"mangue-passion",t:"Dégradé mangue – passion",c:"Layer cakes",d:"La douceur de la mangue et le peps du fruit de la passion.",f:"Mangue – passion"},
- {img:"vert-dore",t:"Vert d'eau et feuilles d'or",c:"Anniversaires",d:"Crème marbrée vert d'eau, feuilles de ginkgo et perles dorées.",f:""},
- {img:"fruits-rouges-coupe",t:"Le cœur fruits rouges",c:"Layer cakes",d:"Génoise moelleuse et couches généreuses de fruits rouges.",f:"Fraise / fruits rouges"},
- {img:"douceur-rose",t:"Douceur rose et perles",c:"Anniversaires",d:"Bordures roses, vermicelles et perles nacrées.",f:""},
- {img:"cupcakes-mangue",t:"Cupcakes mangue",c:"Cupcakes",d:"Topping mascarpone chantilly à la mangue.",f:"Mangue"},
- {img:"caramel-coupe",t:"L'intérieur qui compte",c:"Layer cakes",d:"Génoise moelleuse, crème légère et caramel beurre salé.",f:"Caramel beurre salé"},
- {img:"vert-printemps",t:"Vert printemps",c:"Layer cakes",d:"Crème vert tendre et pétales jaunes peints à la main.",f:""},
- {img:"bueno-hd",t:"Layer cake Bueno",c:"Layer cakes",d:"Rosaces chocolat-noisette et Happy Birthday doré.",f:"Kinder"},
- {img:"bueno-balcon",t:"Bueno, côté gourmand",c:"Anniversaires",d:"Drip chocolat et rosaces pour un anniversaire gourmand.",f:"Kinder"},
- {img:"box-trio",t:"Box gourmande",c:"Cupcakes",d:"Mangue, vanille et fruits rouges dans une même boîte.",f:""},
- {img:"box-inspired-hd",t:"Prêts à offrir",c:"Cupcakes",d:"Chaque boîte est scellée au logo Inspired Cake.",f:""},
- {img:"cupcake-pastel",t:"Le cupcake pastel",c:"Cupcakes",d:"Rosace marbrée aux couleurs tendres.",f:"Vanille"}
+ {imgs:["anniv-60-ans","anniv-60-ans-2"],t:"Les 60 ans aux saveurs tropicales",c:"Anniversaires",d:"Layer cake mangue – passion, décor doré et palmes.",f:"Mangue – passion"},
+ {imgs:["pistache-framboise"],t:"Pistache – framboise",c:"Layer cakes",d:"Framboises fraîches, pistaches concassées et rosaces de crème.",f:"Pistache – framboise"},
+ {imgs:["rose-papillons"],t:"Rose rouge et papillons dorés",c:"Anniversaires",d:"Une couronne de crème, une rose rouge et des papillons dorés.",f:""},
+ {imgs:["chocolat-fruits-rouges","coeur-boite"],t:"Cœur chocolat – fruits rouges",c:"Layer cakes",d:"Décor vintage en crème chocolat, rubans et perles dorées.",f:"Fraise / fruits rouges"},
+ {imgs:["box-decouverte","box-trio","box-inspired-hd"],t:"La Boîte découverte",c:"Cupcakes",d:"Nouveau : 3 parfums au choix pour 18 €. L'idéal pour tout goûter.",f:"",box:"decouverte"},
+ {imgs:["degrade-chocolat","degrade-chocolat-2"],t:"Dégradé chocolat – vanille",c:"Layer cakes",d:"Un dégradé du blanc au chocolat, éventail doré et perles.",f:"Chocolat intense"},
+ {imgs:["caramel-beurre-sale","caramel-main","caramel-coupe"],t:"Douceur caramel",c:"Layer cakes",d:"Du moelleux, du caramel et une pointe de fleur de sel. Génoise et crème légère à l'intérieur.",f:"Caramel beurre salé"},
+ {imgs:["nuage-bleu"],t:"Un nuage dans un ciel bleu",c:"Anniversaires",d:"Pour les 2 ans d'un petit garçon, tout en douceur.",f:""},
+ {imgs:["couronne-framboise"],t:"Couronne de framboises",c:"Anniversaires",d:"Rosaces vert tendre et cœur de framboises fraîches.",f:""},
+ {imgs:["mangue-passion","mangue-table","mangue-boite"],t:"Dégradé mangue – passion",c:"Layer cakes",d:"La douceur de la mangue et le peps du fruit de la passion.",f:"Mangue – passion"},
+ {imgs:["vert-dore"],t:"Vert d'eau et feuilles d'or",c:"Anniversaires",d:"Crème marbrée vert d'eau, feuilles de ginkgo et perles dorées.",f:""},
+ {imgs:["fruits-rouges-coupe"],t:"Le cœur fruits rouges",c:"Layer cakes",d:"Génoise moelleuse et couches généreuses de fruits rouges.",f:"Fraise / fruits rouges"},
+ {imgs:["douceur-rose"],t:"Douceur rose et perles",c:"Anniversaires",d:"Bordures roses, vermicelles et perles nacrées.",f:""},
+ {imgs:["cupcakes-mangue","box-cupcakes-hd"],t:"Cupcakes mangue",c:"Cupcakes",d:"Topping mascarpone chantilly à la mangue, prêts à offrir.",f:"Mangue"},
+ {imgs:["vert-printemps"],t:"Vert printemps",c:"Layer cakes",d:"Crème vert tendre et pétales jaunes peints à la main.",f:""},
+ {imgs:["bueno-balcon","bueno-hd"],t:"Layer cake Bueno",c:"Layer cakes",d:"Drip chocolat, rosaces chocolat-noisette et Happy Birthday doré.",f:"Kinder"},
+ {imgs:["cupcake-pastel"],t:"Le cupcake pastel",c:"Cupcakes",d:"Rosace marbrée aux couleurs tendres.",f:"Vanille"}
 ];
 const REVIEWS=[
  {t:"Merci beaucoup pour le gâteau d'anniversaire. C'était vraiment délicieux, et tout le monde a adoré. Je repasserai absolument la commande. Mangue passion, c'est vraiment une tuerie !",o:"Anniversaire · mangue – passion"},
@@ -597,15 +610,50 @@ $('ribbon').innerHTML=[...flavs,...flavs].map(f=>`<span>${f}</span>`).join('');
 const ALL="Toutes les créations";let cat=ALL;const cats=[ALL,"Layer cakes","Cupcakes","Anniversaires"];
 const count=c=>c===ALL?WORKS.length:WORKS.filter(w=>w.c===c).length;
 function chips(){$('chips').innerHTML=cats.map(c=>`<button type="button" class="chip" aria-pressed="${c===cat}" data-c="${c}">${c}</button>`).join('')}
-$('masonry').innerHTML=WORKS.map((w,i)=>`<button type="button" class="tile reveal" data-i="${i}" data-c="${w.c}" aria-label="Voir : ${w.t}"><img src="img/${w.img}.webp" alt="${w.t}" loading="lazy"><span class="cap"><small>${w.c}</small><b>${w.t}</b></span></button>`).join('');
+const many=w=>w.imgs.length>1;
+const slidesHTML=(w,lazy)=>w.imgs.map((n,k)=>`<img src="img/${n}.webp" alt="${w.t}${many(w)?` (photo ${k+1})`:''}" ${lazy?'loading="lazy"':''} draggable="false">`).join('');
+const dotsHTML=w=>many(w)?w.imgs.map((_,k)=>`<i${k?'':' class="on"'}></i>`).join(''):'';
+$('masonry').innerHTML=WORKS.map((w,i)=>`<div class="tile reveal" role="button" tabindex="0" data-i="${i}" data-c="${w.c}" aria-label="Voir : ${w.t}${many(w)?`, ${w.imgs.length} photos`:''}">
+  ${many(w)?`<div class="slides">${slidesHTML(w,true)}</div><span class="count">1/${w.imgs.length}</span><div class="dots" aria-hidden="true">${dotsHTML(w)}</div><button type="button" class="arr prev" aria-label="Photo précédente" disabled>‹</button><button type="button" class="arr next" aria-label="Photo suivante">›</button>`:`<img src="img/${w.imgs[0]}.webp" alt="${w.t}" loading="lazy">`}
+  <span class="cap"><small>${w.c}${many(w)?` · ${w.imgs.length} photos`:''}</small><b>${w.t}</b></span></div>`).join('');
+// Carrousel : synchronise compteur, points et flèches
+function bindSlides(box){const sl=box.querySelector('.slides');if(!sl)return;const n=sl.children.length;
+  const upd=()=>{const k=Math.round(sl.scrollLeft/sl.clientWidth);box.querySelectorAll(':scope > .dots i, :scope .dots i').forEach((d,j)=>d.classList.toggle('on',j===k));
+    const c=box.querySelector('.count');if(c)c.textContent=`${k+1}/${n}`;const pv=box.querySelector('.arr.prev'),nx=box.querySelector('.arr.next');if(pv)pv.disabled=k<=0;if(nx)nx.disabled=k>=n-1};
+  sl.addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});
+  box.querySelectorAll('.arr').forEach(a=>a.addEventListener('click',e=>{e.stopPropagation();sl.scrollBy({left:(a.classList.contains('next')?1:-1)*sl.clientWidth,behavior:'smooth'})}));
+  upd();return sl}
+document.querySelectorAll('.tile').forEach(bindSlides);
+// Défilement automatique toutes les 3 s (pause au toucher / survol, seulement si visible)
+(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const tiles=[...document.querySelectorAll('.tile')].filter(t=>t.querySelector('.slides'));const seen=new Set();
+  if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?seen.add(e.target):seen.delete(e.target)),{threshold:.6});tiles.forEach(t=>io.observe(t))}else tiles.forEach(t=>seen.add(t));
+  tiles.forEach((t,i)=>{t._pause=0;t._phase=i%3;const stop=()=>{t._pause=Date.now()+7000};
+    t.addEventListener('pointerdown',stop);t.addEventListener('touchstart',stop,{passive:true});t.addEventListener('mouseenter',()=>{t._hover=true});t.addEventListener('mouseleave',()=>{t._hover=false})});
+  let tick=0;setInterval(()=>{tick++;if(document.hidden||!lb.hidden)return;
+    tiles.forEach(t=>{if(!seen.has(t)||t._hover||Date.now()<t._pause||t.classList.contains('hide'))return;if((tick+t._phase)%3)return;
+      const sl=t.querySelector('.slides'),n=sl.children.length,k=Math.round(sl.scrollLeft/sl.clientWidth);
+      sl.scrollTo({left:((k+1)%n)*sl.clientWidth,behavior:'smooth'})})},1000)})();
 $('chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.c;chips();document.querySelectorAll('.tile').forEach(t=>t.classList.toggle('hide',cat!==ALL&&t.dataset.c!==cat));
   const fb=$('filterbar');if(fb.classList.contains('stuck')){const y=$('masonry').getBoundingClientRect().top+scrollY-fb.offsetHeight-nav.offsetHeight-8;scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}});
 chips();
 
 // Visionneuse
 let cur=0;const lb=$('lb');
-function show(i){cur=(i+WORKS.length)%WORKS.length;const w=WORKS[cur];$('lb-img').src=`img/${w.img}.webp`;$('lb-img').alt=w.t;$('lb-title').textContent=w.t;$('lb-cat').textContent=w.c;$('lb-desc').textContent=w.d}
-$('masonry').addEventListener('click',e=>{const t=e.target.closest('.tile');if(!t)return;show(+t.dataset.i);lb.hidden=false;$('lb-close').focus()});
+let lbBound=false;
+function show(i,start=0){cur=(i+WORKS.length)%WORKS.length;const w=WORKS[cur];
+  $('lb-slides').innerHTML=slidesHTML(w,false);$('lb-dots').innerHTML=dotsHTML(w);
+  $('lb-sp').hidden=$('lb-sn').hidden=!many(w);
+  $('lb-title').textContent=w.t;$('lb-cat').textContent=w.c+(many(w)?` · ${w.imgs.length} photos`:'');$('lb-desc').textContent=w.d;
+  const media=document.querySelector('.lb-media');if(!lbBound){bindSlidesLb(media);lbBound=true}
+  requestAnimationFrame(()=>{const sl=$('lb-slides');sl.scrollLeft=start*sl.clientWidth;sl.dispatchEvent(new Event('scroll'))})}
+function bindSlidesLb(box){const sl=box.querySelector('.slides');
+  const upd=()=>{const n=sl.children.length,k=Math.round(sl.scrollLeft/Math.max(sl.clientWidth,1));box.querySelectorAll('.dots i').forEach((d,j)=>d.classList.toggle('on',j===k));$('lb-sp').disabled=k<=0;$('lb-sn').disabled=k>=n-1};
+  sl.addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});
+  $('lb-sp').onclick=()=>sl.scrollBy({left:-sl.clientWidth,behavior:'smooth'});$('lb-sn').onclick=()=>sl.scrollBy({left:sl.clientWidth,behavior:'smooth'})}
+function openTile(t){const sl=t.querySelector('.slides');const k=sl?Math.round(sl.scrollLeft/sl.clientWidth):0;lb.hidden=false;show(+t.dataset.i,k);$('lb-close').focus()}
+$('masonry').addEventListener('click',e=>{if(e.target.closest('.arr'))return;const t=e.target.closest('.tile');if(t)openTile(t)});
+$('masonry').addEventListener('keydown',e=>{const t=e.target.closest('.tile');if(t&&e.target===t&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openTile(t)}});
 const closeLb=()=>{lb.hidden=true};
 $('lb-close').onclick=closeLb;lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
 $('lb-prev').onclick=()=>show(cur-1);$('lb-next').onclick=()=>show(cur+1);
