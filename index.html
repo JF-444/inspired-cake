@@ -199,7 +199,8 @@ nav .btn{padding:10px 18px;font-size:.92rem}
 .quote footer small{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600}
 .quote .qs{color:var(--gold);letter-spacing:2px;font-size:.95rem}
 .quote.new{outline:2px solid var(--rasp);outline-offset:-2px}
-.quote .del{justify-self:start;border:1px solid var(--rasp);color:var(--rasp);background:none;border-radius:999px;padding:4px 12px;font:500 .8rem var(--body);cursor:pointer}
+.quote .del{justify-self:stretch;border:0;color:#fff;background:var(--rasp);border-radius:12px;padding:10px 12px;font:600 .9rem var(--body);cursor:pointer}
+body.admin-on{padding-bottom:230px}
 .rail.static{animation:none;width:auto;overflow-x:auto;padding-bottom:12px}
 .score{display:flex;align-items:center;gap:14px}
 .score b{font-family:var(--display);font-size:3.4rem;font-weight:500;line-height:1;font-variant-numeric:tabular-nums}
@@ -604,7 +605,7 @@ const API="/api/reviews";let LIVE=[];let adminKey="";
 const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const starStr=n=>"★".repeat(n)+"☆".repeat(5-n);
 function quoteHTML(r,dup){const live=!!r.id;
-  return `<figure class="quote${r.fresh?' new':''}" ${dup?'aria-hidden="true"':''} style="margin:0"><span class="qs" aria-label="${r.rating||5} sur 5">${starStr(r.rating||5)}</span><p>${esc(r.t)}</p><footer>${r.name?`<b>${esc(r.name)}</b>`:''}<small>${esc(r.o||'')}</small>${live&&adminKey&&!dup?`<button type="button" class="del" data-id="${esc(r.id)}">Supprimer</button>`:''}</footer></figure>`}
+  return `<figure class="quote${r.fresh?' new':''}" ${dup?'aria-hidden="true"':''} style="margin:0">${live&&adminKey&&!dup?`<button type="button" class="del" data-id="${esc(r.id)}">🗑 Supprimer cet avis</button>`:''}<span class="qs" aria-label="${r.rating||5} sur 5">${starStr(r.rating||5)}</span><p>${esc(r.t)}</p><footer>${r.name?`<b>${esc(r.name)}</b>`:''}<small>${esc(r.o||'')}</small></footer></figure>`}
 function renderReviews(){
   const all=[...LIVE.map(r=>({id:r.id,t:r.text,name:r.name,o:r.occasion,rating:r.rating,fresh:r.fresh})),...REVIEWS.map(r=>({...r,rating:5}))];
   const rail=$('rail');rail.classList.toggle('static',!!adminKey);
@@ -613,7 +614,8 @@ function renderReviews(){
   const avg=all.reduce((a,r)=>a+(r.rating||5),0)/all.length;
   $('avg').textContent=avg.toFixed(1).replace('.',',');$('avg-stars').textContent=starStr(Math.round(avg));
   $('avg-count').textContent=`${all.length} avis`;$('avg-stars').parentElement.parentElement.setAttribute('aria-label',`Note moyenne ${avg.toFixed(1)} sur 5, ${all.length} avis`)}
-async function loadReviews(){try{const r=await fetch(API,{headers:{accept:"application/json"}});if(!r.ok)throw 0;const d=await r.json();if(Array.isArray(d.reviews))LIVE=d.reviews}catch(e){}renderReviews()}
+let LOAD_OK=false;
+async function loadReviews(){try{const r=await fetch(API,{headers:{accept:"application/json"}});if(!r.ok)throw 0;const d=await r.json();if(Array.isArray(d.reviews)){LIVE=d.reviews;LOAD_OK=true}}catch(e){LOAD_OK=false}renderReviews()}
 renderReviews();loadReviews();
 let RATING=5;const starBtns=[...document.querySelectorAll('#stars-input button')];
 function setRating(v){RATING=v;starBtns.forEach(b=>{const n=+b.dataset.v;b.classList.toggle('on',n<=v);b.setAttribute('aria-checked',n===v)})}
@@ -634,18 +636,21 @@ async function checkKey(){const k=$('admin-key').value.trim(),m=$('admin-msg');i
   m.textContent="Vérification…";
   try{const r=await fetch(`${API}?check=1`,{method:"DELETE",headers:{"x-admin-key":k}});
     if(r.status===403){m.textContent="Clé incorrecte. Vérifiez la variable ADMIN_KEY sur Netlify et redéployez.";return}
-    if(!r.ok)throw 0;adminKey=k;renderReviews();m.textContent="Clé acceptée. Les avis s'affichent ci-dessus avec un bouton « Supprimer ».";
+    if(!r.ok)throw 0;adminKey=k;await loadReviews();
+    m.textContent=!LOAD_OK?"Clé acceptée, mais la liste des avis n'a pas pu être chargée. Rechargez la page."
+      :LIVE.length?`Clé acceptée. ${LIVE.length} avis laissé${LIVE.length>1?'s':''} depuis le site : ils sont en tête des avis, avec un bouton « Supprimer cet avis » en haut de chaque carte.`
+      :"Clé acceptée. Aucun avis n'a encore été laissé depuis le site. Les 8 avis d'origine (tirés des stories) sont fixes et n'ont pas de bouton Supprimer.";
     $('avis').scrollIntoView({behavior:'smooth'});
   }catch(e){m.textContent="Impossible de joindre le serveur. Cette fonction marche uniquement sur le site Netlify."}}
-function adminMode(){if(location.hash!=="#gestion")return;$('admin').hidden=false;const intro=$('intro');if(intro)intro.click();
+function adminMode(){if(location.hash!=="#gestion")return;$('admin').hidden=false;document.body.classList.add('admin-on');const intro=$('intro');if(intro)intro.click();
   setTimeout(()=>{$('avis').scrollIntoView();$('admin-key').focus()},intro&&!intro.hidden?850:0)}
 $('admin-ok').addEventListener('click',checkKey);$('admin-key').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();checkKey()}});
-$('admin-x').addEventListener('click',()=>{$('admin').hidden=true;adminKey="";renderReviews();history.replaceState(null,"",location.pathname)});
+$('admin-x').addEventListener('click',()=>{$('admin').hidden=true;document.body.classList.remove('admin-on');adminKey="";renderReviews();history.replaceState(null,"",location.pathname)});
 addEventListener('hashchange',adminMode);adminMode();
 $('rail').addEventListener('click',async e=>{const b=e.target.closest('.del');if(!b)return;
   if(b.dataset.armed!=="1"){b.dataset.armed="1";b.textContent="Confirmer la suppression";return}
   b.disabled=true;try{const r=await fetch(`${API}?id=${encodeURIComponent(b.dataset.id)}`,{method:"DELETE",headers:{"x-admin-key":adminKey}});
-    if(!r.ok)throw 0;LIVE=LIVE.filter(x=>x.id!==b.dataset.id);renderReviews()}catch(err){b.disabled=false;b.textContent="Clé incorrecte ou erreur"}});
+    if(!r.ok)throw 0;LIVE=LIVE.filter(x=>x.id!==b.dataset.id);renderReviews();$('admin-msg').textContent=`Avis supprimé. ${LIVE.length} avis restant${LIVE.length>1?'s':''} depuis le site.`}catch(err){b.disabled=false;b.textContent="Clé incorrecte ou erreur"}});
 
 // Histoire
 const vid=$('storyVid');
