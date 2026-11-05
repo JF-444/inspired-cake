@@ -492,7 +492,7 @@ $('ribbon').innerHTML=[...flavs,...flavs].map(f=>`<span>${f}</span>`).join('');
 // Galerie
 const ALL="Toutes les créations";let cat=ALL;const cats=[ALL,"Layer cakes","Cupcakes","Anniversaires"];
 const count=c=>c===ALL?WORKS.length:WORKS.filter(w=>w.c===c).length;
-function chips(){$('chips').innerHTML=cats.map(c=>`<button type="button" class="chip" aria-pressed="${c===cat}" data-c="${c}">${c}<span class="n">${count(c)}</span></button>`).join('')}
+function chips(){$('chips').innerHTML=cats.map(c=>`<button type="button" class="chip" aria-pressed="${c===cat}" data-c="${c}">${c}</button>`).join('')}
 $('masonry').innerHTML=WORKS.map((w,i)=>`<button type="button" class="tile reveal" data-i="${i}" data-c="${w.c}" aria-label="Voir : ${w.t}"><img src="img/${w.img}.webp" alt="${w.t}" loading="lazy"><span class="cap"><small>${w.c}</small><b>${w.t}</b></span></button>`).join('');
 $('chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.c;chips();document.querySelectorAll('.tile').forEach(t=>t.classList.toggle('hide',cat!==ALL&&t.dataset.c!==cat));
   const fb=$('filterbar');if(fb.classList.contains('stuck')){const y=$('masonry').getBoundingClientRect().top+scrollY-fb.offsetHeight-nav.offsetHeight-8;scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}});
