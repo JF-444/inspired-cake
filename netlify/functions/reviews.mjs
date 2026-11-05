@@ -49,7 +49,9 @@ export default async (req, context) => {
   if (req.method === "DELETE") {
     const key = Netlify.env.get("ADMIN_KEY");
     if (!key || req.headers.get("x-admin-key") !== key) return json({ error: "Clé incorrecte." }, 403);
-    const id = new URL(req.url).searchParams.get("id") || "";
+    const params = new URL(req.url).searchParams;
+    if (params.has("check")) return json({ ok: true });
+    const id = params.get("id") || "";
     if (!/^[0-9]+-[a-z0-9]+$/.test(id)) return json({ error: "Avis introuvable." }, 400);
     await store.delete("r/" + id);
     return json({ ok: true });
