@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta property="og:title" content="Inspired Cake">
 <meta property="og:description" content="Pâtisserie artisanale sur commande : layer cakes, cupcakes, gâteaux d'anniversaire.">
-<meta property="og:image" content="img/mangue-passion-2.webp">
+<meta property="og:image" content="img/mangue-passion-hd.webp">
 <title>Inspired Cake</title>
 <meta name="description" content="Inspired Cake, pâtisserie artisanale sur commande : layer cakes, cupcakes et gâteaux d'anniversaire faits maison.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -194,7 +194,39 @@ nav .btn{padding:10px 18px;font-size:.92rem}
 .quote{width:min(84vw,360px);flex:none;background:var(--cream);border-radius:22px;padding:26px;display:grid;gap:14px;align-content:space-between;box-shadow:0 20px 40px -30px rgba(74,42,34,.5)}
 .quote p{margin:0;font-size:1rem}
 .quote p::before{content:"“";font-family:var(--display);font-size:3rem;line-height:.4;color:var(--rasp);display:block;margin-bottom:10px;height:18px}
-.quote footer{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.quote footer{display:grid;gap:2px}
+.quote footer b{font-family:var(--display);font-weight:500;font-size:1.1rem;color:var(--choco)}
+.quote footer small{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.quote .qs{color:var(--gold);letter-spacing:2px;font-size:.95rem}
+.quote.new{outline:2px solid var(--rasp);outline-offset:-2px}
+.quote .del{justify-self:start;border:1px solid var(--rasp);color:var(--rasp);background:none;border-radius:999px;padding:4px 12px;font:500 .8rem var(--body);cursor:pointer}
+.rail.static{animation:none;width:auto;overflow-x:auto;padding-bottom:12px}
+.score{display:flex;align-items:center;gap:14px}
+.score b{font-family:var(--display);font-size:3.4rem;font-weight:500;line-height:1;font-variant-numeric:tabular-nums}
+.score small{display:block;color:var(--cocoa);font-size:.9rem}
+.leave{margin-top:56px;background:var(--choco);color:var(--blush);border-radius:32px;padding:clamp(24px,5vw,48px);display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+@media (max-width:860px){.leave{grid-template-columns:1fr;gap:24px}}
+.leave-copy{display:grid;gap:14px;min-width:0}
+.leave h3{font-size:clamp(1.9rem,4.4vw,2.8rem)}
+.leave h3 em{color:#f0a9bd}
+.leave p{margin:0;color:rgba(251,241,240,.78)}
+.review-form{display:grid;gap:16px;min-width:0}
+.review-form label{color:var(--blush)}
+.review-form input,.review-form textarea{background:rgba(251,241,240,.08);border-color:rgba(251,241,240,.22);color:var(--blush)}
+.review-form input::placeholder,.review-form textarea::placeholder{color:rgba(251,241,240,.45)}
+.review-form input:focus,.review-form textarea:focus{border-color:#f0a9bd}
+.rate{border:0;margin:0;padding:0}
+.rate legend{font-size:.85rem;font-weight:600;margin-bottom:4px;padding:0}
+.stars-input{display:inline-flex;flex-direction:row-reverse;gap:4px}
+.stars-input input{position:absolute;opacity:0;width:1px;height:1px}
+.stars-input label{font-size:2.4rem;line-height:1;color:rgba(251,241,240,.25);cursor:pointer;transition:color .15s, transform .15s}
+.stars-input label:hover,.stars-input label:hover~label,.stars-input input:checked~label{color:var(--gold)}
+.stars-input label:hover{transform:scale(1.15)}
+.stars-input input:focus-visible+label{outline:2px solid #f0a9bd;outline-offset:2px;border-radius:4px}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.r-msg{margin:0;font-weight:600}
+.r-msg.ok{color:#9be3b5}.r-msg.err{color:#ffb4c6}
+.admin{margin-top:24px;display:grid;gap:8px;max-width:360px}
 
 /* Commande */
 .order{padding-block:96px}
@@ -204,8 +236,18 @@ nav .btn{padding:10px 18px;font-size:.92rem}
 .order-intro ol{margin:0;padding:0;list-style:none;display:grid;gap:14px;counter-reset:s}
 .order-intro li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;counter-increment:s;color:var(--cocoa)}
 .order-intro li::before{content:counter(s);width:44px;height:44px;border-radius:50%;border:1.5px solid var(--gold);display:grid;place-items:center;font-family:var(--display);font-size:1.2rem;color:var(--choco)}
-.handle-box{display:flex;align-items:center;gap:12px;background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:14px 16px;width:fit-content;max-width:100%}
-.handle-box b{font-weight:600}
+.contacts{display:flex;flex-wrap:wrap;gap:10px}
+.handle-box{display:flex;align-items:center;gap:12px;background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:12px 16px;max-width:100%;text-decoration:none;transition:border-color .2s}
+.handle-box:hover{border-color:var(--choco)}
+.handle-box span{display:grid;line-height:1.25}
+.handle-box small{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cocoa)}
+.handle-box b{font-weight:600;font-variant-numeric:tabular-nums}
+.ic{width:28px;height:28px;flex:none;border-radius:50%;display:inline-block;background-position:center;background-repeat:no-repeat;background-size:62%}
+.ic.wa{background-color:#25d366;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z'/%3E%3C/svg%3E")}
+.ic.ig{background-color:#d6336c;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Crect x='3' y='3' width='18' height='18' rx='5'/%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Ccircle cx='17.5' cy='6.5' r='1' fill='white' stroke='none'/%3E%3C/svg%3E")}
+.btn-wa{background:#1fa855;color:#fff;box-shadow:0 10px 24px -10px rgba(31,168,85,.7)}
+.btn-wa:hover{transform:translateY(-2px);background:#1b974c}
+.btn-wa .ic{width:24px;height:24px;background-color:transparent;background-size:100%}
 form.builder{background:var(--cream);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,4vw,36px);display:grid;gap:18px;box-shadow:0 30px 60px -40px rgba(74,42,34,.45);min-width:0}
 .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--blush);padding:5px;border-radius:999px}
 .seg button{border:0;background:transparent;border-radius:999px;padding:10px 6px;font:500 .92rem var(--body);color:var(--choco);cursor:pointer}
@@ -226,6 +268,7 @@ textarea{resize:vertical;min-height:84px}
 footer.site{background:var(--choco);color:rgba(251,241,240,.8)}
 footer.site .wrap{padding-block:48px calc(36px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:end}
 footer.site .logo{color:var(--blush);font-size:2rem}
+.foot-links{display:grid;gap:4px}
 footer.site small{display:block;margin-top:6px}
 
 /* Visionneuse */
@@ -309,8 +352,8 @@ footer.site small{display:block;margin-top:6px}
       <div class="arch">
         <video src="video/cake-loop.mp4" poster="img/loop-poster.jpg" autoplay muted loop playsinline aria-label="Layer cake caramel beurre salé décoré de feuilles roses et vertes"></video>
       </div>
-      <div class="sticker s1"><img src="img/box-decouverte.webp" alt="Box de cupcakes"></div>
-      <div class="sticker s2"><img src="img/bueno.webp" alt="Layer cake Bueno"></div>
+      <div class="sticker s1"><img src="img/box-decouverte-hd.webp" alt="Box de cupcakes"></div>
+      <div class="sticker s2"><img src="img/bueno-hd.webp" alt="Layer cake Bueno"></div>
       <div class="badge" aria-hidden="true">
         <svg viewBox="0 0 112 112"><defs><path id="c" d="M56,56 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0"/></defs><text><textPath href="#c">Pâtisserie maison · avec amour · </textPath></text></svg>
         <svg class="mini" viewBox="0 0 40 40" fill="none" stroke="#fbf1f0" stroke-width="2.2" stroke-linecap="round"><rect x="17" y="2" width="6" height="13" rx="3" fill="#bd3f66" stroke="none"/><path d="M20 15 C11 21 11 31 20 37 C29 31 29 21 20 15Z"/><path d="M20 15 C16 22 16 30 20 37 C24 30 24 22 20 15Z"/></svg>
@@ -351,7 +394,7 @@ footer.site small{display:block;margin-top:6px}
     <div class="head reveal"><div class="t"><span class="eyebrow">La carte</span><h2>Tarifs &amp; <em>saveurs</em></h2></div></div>
     <div class="menu-grid">
       <article class="card reveal">
-        <div class="pic"><img src="img/mangue-passion-2.webp" alt=""></div>
+        <div class="pic"><img src="img/mangue-passion-hd.webp" alt=""></div>
         <div><span class="sub">By Inspired Cake</span><h3>Layer cakes</h3></div>
         <ul class="pricelist">
           <li>10 parts<span class="dots"></span><b>50 €</b></li>
@@ -365,7 +408,7 @@ footer.site small{display:block;margin-top:6px}
         <p class="fine">Les parfums peuvent être associés selon vos envies. Le tarif peut évoluer selon la décoration choisie.</p>
       </article>
       <article class="card reveal">
-        <div class="pic"><img src="img/cupcakes-mangue.webp" alt=""></div>
+        <div class="pic"><img src="img/cupcakes-mangue-hd.webp" alt=""></div>
         <div><span class="sub">Box gourmandes</span><h3>Cupcakes</h3></div>
         <ul class="pricelist">
           <li>À l'unité<span class="dots"></span><b>2,50 €</b></li>
@@ -383,9 +426,44 @@ footer.site small{display:block;margin-top:6px}
 
 <section class="reviews" id="avis">
   <div class="wrap">
-    <div class="head reveal"><div class="t"><span class="eyebrow">Vos retours</span><h2>Ils ont <em>goûté</em></h2></div><span class="stars" aria-label="Avis clients">★★★★★</span></div>
+    <div class="head reveal">
+      <div class="t"><span class="eyebrow">Vos retours</span><h2>Ils ont <em>goûté</em></h2></div>
+      <div class="score"><b id="avg">5,0</b><div><span class="stars" id="avg-stars" aria-hidden="true">★★★★★</span><small id="avg-count">8 avis</small></div></div>
+    </div>
   </div>
   <div class="rail" id="rail"></div>
+  <div class="wrap">
+    <div class="leave reveal" id="laisser-un-avis">
+      <div class="leave-copy">
+        <span class="eyebrow">Votre avis compte</span>
+        <h3>Vous avez goûté ? <em>Racontez-nous.</em></h3>
+        <p>Votre avis apparaît directement sur le site. Il aide d'autres gourmands à se décider, et ça fait toujours chaud au cœur.</p>
+      </div>
+      <form class="review-form" id="rform" novalidate>
+        <fieldset class="rate"><legend>Votre note</legend>
+          <div class="stars-input" id="stars-input">
+            <input type="radio" name="rating" id="r5" value="5" checked><label for="r5" title="5 étoiles">★</label>
+            <input type="radio" name="rating" id="r4" value="4"><label for="r4" title="4 étoiles">★</label>
+            <input type="radio" name="rating" id="r3" value="3"><label for="r3" title="3 étoiles">★</label>
+            <input type="radio" name="rating" id="r2" value="2"><label for="r2" title="2 étoiles">★</label>
+            <input type="radio" name="rating" id="r1" value="1"><label for="r1" title="1 étoile">★</label>
+          </div>
+        </fieldset>
+        <div class="two">
+          <label>Votre prénom <input type="text" id="r-name" maxlength="40" autocomplete="given-name" placeholder="ex. Sarah" required></label>
+          <label>Ce que vous avez commandé <input type="text" id="r-occ" maxlength="60" placeholder="ex. Layer cake Kinder"></label>
+        </div>
+        <label>Votre commentaire <textarea id="r-text" maxlength="600" placeholder="Le goût, la décoration, le service…" required></textarea></label>
+        <label class="hp" aria-hidden="true">Site web <input type="text" id="r-site" tabindex="-1" autocomplete="off"></label>
+        <button class="btn btn-main" type="submit" id="r-send">Publier mon avis</button>
+        <p class="r-msg" id="r-msg" role="status" hidden></p>
+      </form>
+    </div>
+    <div class="admin" id="admin" hidden>
+      <label>Clé de gestion <input type="password" id="admin-key" autocomplete="off"></label>
+      <p class="hint">Mode gestion : un bouton « Supprimer » apparaît sur les avis publiés depuis le site.</p>
+    </div>
+  </div>
 </section>
 
 <section class="order" id="commander">
@@ -395,10 +473,13 @@ footer.site small{display:block;margin-top:6px}
       <h2>Votre gâteau, <em>en trois clics</em></h2>
       <ol>
         <li>Composez votre commande : produit, taille, saveur, date.</li>
-        <li>Cliquez sur « Envoyer ma demande » : le message est copié et Instagram s'ouvre.</li>
-        <li>Collez le message et envoyez-le. Tiffanie vous répond pour confirmer.</li>
+        <li>Cliquez sur « Envoyer sur WhatsApp » : votre message s'ouvre déjà écrit.</li>
+        <li>Appuyez sur Envoyer. Tiffanie vous répond pour confirmer.</li>
       </ol>
-      <div class="handle-box"><span>Instagram</span><b>@inspiredcake</b></div>
+      <div class="contacts">
+        <a class="handle-box" href="https://wa.me/33641010123" target="_blank" rel="noopener"><span class="ic wa" aria-hidden="true"></span><span><small>WhatsApp</small><b>+33 6 41 01 01 23</b></span></a>
+        <a class="handle-box" href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener"><span class="ic ig" aria-hidden="true"></span><span><small>Instagram</small><b>@inspiredcake</b></span></a>
+      </div>
     </div>
 
     <form class="builder reveal" id="builder" novalidate>
@@ -419,9 +500,10 @@ footer.site small{display:block;margin-top:6px}
       <label>Vos envies <textarea id="notes" placeholder="Texte à écrire, couleurs, thème, allergies…"></textarea></label>
       <div class="estimate" id="est"><div><small>Estimation</small><br><small id="est-note">hors décoration particulière</small></div><b id="est-val">50 €</b></div>
       <div><p class="hint" style="margin-bottom:6px">Votre message :</p><div class="msg" id="msg"></div></div>
-      <a class="btn btn-main" id="send" href="https://ig.me/m/inspiredcake" target="_blank" rel="noopener">Envoyer ma demande sur Instagram</a>
+      <a class="btn btn-wa" id="send-wa" href="https://wa.me/33641010123" target="_blank" rel="noopener"><span class="ic wa" aria-hidden="true"></span>Envoyer sur WhatsApp</a>
+      <a class="btn btn-line" id="send" href="https://ig.me/m/inspiredcake" target="_blank" rel="noopener">Ou par message Instagram</a>
       <p class="done" id="done" hidden></p>
-      <p class="hint">Le message est copié automatiquement. Dans Instagram, collez-le puis envoyez.</p>
+      <p class="hint">Sur WhatsApp, le message est déjà rempli. Sur Instagram, il est copié : collez-le puis envoyez.</p>
     </form>
   </div>
 </section>
@@ -429,7 +511,7 @@ footer.site small{display:block;margin-top:6px}
 <footer class="site">
   <div class="wrap">
     <div><a class="logo" href="#accueil">Inspired <span>Cake</span></a><small>Pâtisserie artisanale · Laissez-vous inspirer</small></div>
-    <div><a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">instagram.com/inspiredcake</a><small>© 2026 Inspired Cake</small></div>
+    <div class="foot-links"><a href="https://wa.me/33641010123" target="_blank" rel="noopener">WhatsApp · +33 6 41 01 01 23</a><a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">Instagram · @inspiredcake</a><small>© 2026 Inspired Cake</small></div>
   </div>
 </footer>
 
@@ -454,7 +536,7 @@ const WORKS=[
  {img:"box-decouverte",t:"La Box Découverte",c:"Cupcakes",d:"Une invitation à la gourmandise : plusieurs saveurs dans une même boîte.",f:""},
  {img:"caramel-beurre-sale",t:"Douceur caramel",c:"Layer cakes",d:"Du moelleux, du caramel et une pointe de fleur de sel.",f:"Caramel beurre salé"},
  {img:"nuage-bleu",t:"Un nuage dans un ciel bleu",c:"Anniversaires",d:"Pour les 2 ans d'un petit garçon, tout en douceur.",f:""},
- {img:"mangue-passion-2",t:"Dégradé mangue – passion",c:"Layer cakes",d:"La douceur de la mangue et le peps du fruit de la passion.",f:"Mangue – passion"},
+ {img:"mangue-passion",t:"Dégradé mangue – passion",c:"Layer cakes",d:"La douceur de la mangue et le peps du fruit de la passion.",f:"Mangue – passion"},
  {img:"bueno",t:"Layer cake Bueno",c:"Layer cakes",d:"Rosaces chocolat-noisette et Happy Birthday doré.",f:"Kinder"},
  {img:"cupcakes-mangue",t:"Cupcakes mangue",c:"Cupcakes",d:"Topping mascarpone chantilly à la mangue.",f:"Mangue"},
  {img:"caramel-coupe",t:"L'intérieur qui compte",c:"Layer cakes",d:"Génoise moelleuse, crème légère et caramel beurre salé.",f:"Caramel beurre salé"},
@@ -493,14 +575,14 @@ $('ribbon').innerHTML=[...flavs,...flavs].map(f=>`<span>${f}</span>`).join('');
 const ALL="Toutes les créations";let cat=ALL;const cats=[ALL,"Layer cakes","Cupcakes","Anniversaires"];
 const count=c=>c===ALL?WORKS.length:WORKS.filter(w=>w.c===c).length;
 function chips(){$('chips').innerHTML=cats.map(c=>`<button type="button" class="chip" aria-pressed="${c===cat}" data-c="${c}">${c}</button>`).join('')}
-$('masonry').innerHTML=WORKS.map((w,i)=>`<button type="button" class="tile reveal" data-i="${i}" data-c="${w.c}" aria-label="Voir : ${w.t}"><img src="img/${w.img}.webp" alt="${w.t}" loading="lazy"><span class="cap"><small>${w.c}</small><b>${w.t}</b></span></button>`).join('');
+$('masonry').innerHTML=WORKS.map((w,i)=>`<button type="button" class="tile reveal" data-i="${i}" data-c="${w.c}" aria-label="Voir : ${w.t}"><img src="img/${w.img}-hd.webp" alt="${w.t}" loading="lazy"><span class="cap"><small>${w.c}</small><b>${w.t}</b></span></button>`).join('');
 $('chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.c;chips();document.querySelectorAll('.tile').forEach(t=>t.classList.toggle('hide',cat!==ALL&&t.dataset.c!==cat));
   const fb=$('filterbar');if(fb.classList.contains('stuck')){const y=$('masonry').getBoundingClientRect().top+scrollY-fb.offsetHeight-nav.offsetHeight-8;scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}});
 chips();
 
 // Visionneuse
 let cur=0;const lb=$('lb');
-function show(i){cur=(i+WORKS.length)%WORKS.length;const w=WORKS[cur];$('lb-img').src=`img/${w.img}.webp`;$('lb-img').alt=w.t;$('lb-title').textContent=w.t;$('lb-cat').textContent=w.c;$('lb-desc').textContent=w.d}
+function show(i){cur=(i+WORKS.length)%WORKS.length;const w=WORKS[cur];$('lb-img').src=`img/${w.img}-hd.webp`;$('lb-img').alt=w.t;$('lb-title').textContent=w.t;$('lb-cat').textContent=w.c;$('lb-desc').textContent=w.d}
 $('masonry').addEventListener('click',e=>{const t=e.target.closest('.tile');if(!t)return;show(+t.dataset.i);lb.hidden=false;$('lb-close').focus()});
 const closeLb=()=>{lb.hidden=true};
 $('lb-close').onclick=closeLb;lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
@@ -509,7 +591,38 @@ document.addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')
 $('lb-want').onclick=()=>{const w=WORKS[cur];closeLb();setProduct(w.c==="Cupcakes"?"cup":"layer");$('model').value=String(cur);if(w.f){const o=[...$('flav').options].find(o=>o.value.startsWith(w.f));if(o)$('flav').value=o.value}update();$('commander').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})};
 
 // Avis
-$('rail').innerHTML=[...REVIEWS,...REVIEWS].map((r,i)=>`<figure class="quote" ${i>=REVIEWS.length?'aria-hidden="true"':''} style="margin:0"><p>${r.t}</p><footer>${r.o}</footer></figure>`).join('');
+const API="/api/reviews";let LIVE=[];let adminKey="";
+const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const starStr=n=>"★".repeat(n)+"☆".repeat(5-n);
+function quoteHTML(r,dup){const live=!!r.id;
+  return `<figure class="quote${r.fresh?' new':''}" ${dup?'aria-hidden="true"':''} style="margin:0"><span class="qs" aria-label="${r.rating||5} sur 5">${starStr(r.rating||5)}</span><p>${esc(r.t)}</p><footer>${r.name?`<b>${esc(r.name)}</b>`:''}<small>${esc(r.o||'')}</small>${live&&adminKey&&!dup?`<button type="button" class="del" data-id="${esc(r.id)}">Supprimer</button>`:''}</footer></figure>`}
+function renderReviews(){
+  const all=[...LIVE.map(r=>({id:r.id,t:r.text,name:r.name,o:r.occasion,rating:r.rating,fresh:r.fresh})),...REVIEWS.map(r=>({...r,rating:5}))];
+  const rail=$('rail');rail.classList.toggle('static',!!adminKey);
+  rail.innerHTML=all.map(r=>quoteHTML(r,false)).join('')+(adminKey?'':all.map(r=>quoteHTML(r,true)).join(''));
+  rail.style.animationDuration=Math.max(50,all.length*9)+'s';
+  const avg=all.reduce((a,r)=>a+(r.rating||5),0)/all.length;
+  $('avg').textContent=avg.toFixed(1).replace('.',',');$('avg-stars').textContent=starStr(Math.round(avg));
+  $('avg-count').textContent=`${all.length} avis`;$('avg-stars').parentElement.parentElement.setAttribute('aria-label',`Note moyenne ${avg.toFixed(1)} sur 5, ${all.length} avis`)}
+async function loadReviews(){try{const r=await fetch(API,{headers:{accept:"application/json"}});if(!r.ok)throw 0;const d=await r.json();if(Array.isArray(d.reviews))LIVE=d.reviews}catch(e){}renderReviews()}
+renderReviews();loadReviews();
+$('rform').addEventListener('submit',async e=>{e.preventDefault();const m=$('r-msg'),btn=$('r-send');
+  const body={name:$('r-name').value.trim(),occasion:$('r-occ').value.trim(),text:$('r-text').value.trim(),rating:+(document.querySelector('input[name=rating]:checked')?.value||5),site:$('r-site').value};
+  const fail=t=>{m.textContent=t;m.className='r-msg err';m.hidden=false};
+  if(body.name.length<2)return fail("Indiquez votre prénom.");
+  if(body.text.length<10)return fail("Écrivez quelques mots de plus (10 caractères minimum).");
+  btn.disabled=true;btn.textContent="Publication…";
+  try{const r=await fetch(API,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)});const d=await r.json().catch(()=>({}));
+    if(!r.ok)throw new Error(d.error||"L'avis n'a pas pu être publié. Réessayez dans un instant.");
+    LIVE.unshift({...d.review,fresh:true});renderReviews();$('rform').reset();
+    m.textContent="Merci ! Votre avis est publié.";m.className='r-msg ok';m.hidden=false;$('rail').scrollLeft=0;
+  }catch(err){fail(err.message&&err.message!=="Failed to fetch"?err.message:"L'avis n'a pas pu être publié. Vérifiez votre connexion et réessayez.")}
+  finally{btn.disabled=false;btn.textContent="Publier mon avis"}});
+if(location.hash==="#gestion"){$('admin').hidden=false;$('admin-key').addEventListener('input',e=>{adminKey=e.target.value.trim();renderReviews()})}
+$('rail').addEventListener('click',async e=>{const b=e.target.closest('.del');if(!b)return;
+  if(b.dataset.armed!=="1"){b.dataset.armed="1";b.textContent="Confirmer la suppression";return}
+  b.disabled=true;try{const r=await fetch(`${API}?id=${encodeURIComponent(b.dataset.id)}`,{method:"DELETE",headers:{"x-admin-key":adminKey}});
+    if(!r.ok)throw 0;LIVE=LIVE.filter(x=>x.id!==b.dataset.id);renderReviews()}catch(err){b.disabled=false;b.textContent="Clé incorrecte ou erreur"}});
 
 // Histoire
 const vid=$('storyVid');
@@ -547,10 +660,12 @@ function compose(){
   if(notes)txt+=`\nDétails : ${notes}`;
   txt+=name?`\nMerci ! ${name}`:"\nMerci !";
   return{txt,price}}
-function update(){const{txt,price}=compose();$('msg').textContent=txt;
+function update(){const{txt,price}=compose();$('msg').textContent=txt;$('send-wa').href=`https://wa.me/33641010123?text=${encodeURIComponent(txt)}`;
   $('est-val').textContent=prod==="custom"?"Sur devis":(price===null?(prod==="cup"?"2,50 € / pièce":"Sur devis"):`${price} €`);$('done').hidden=true}
 ['size','flav','model','date','name','notes'].forEach(id=>$(id).addEventListener('input',update));
 $('builder').addEventListener('submit',e=>e.preventDefault());
+const WA="33641010123";
+$('send-wa').addEventListener('click',()=>{$('send-wa').href=`https://wa.me/${WA}?text=${encodeURIComponent(compose().txt)}`});
 $('send').addEventListener('click',()=>{const d=$('done');const txt=compose().txt;
   const ok=()=>{d.textContent="Message copié. Collez-le dans la conversation Instagram.";d.hidden=false};
   const ko=()=>{const r=document.createRange();r.selectNodeContents($('msg'));const s=getSelection();s.removeAllRanges();s.addRange(r);d.textContent="Copiez le message sélectionné ci-dessus, puis collez-le dans Instagram.";d.hidden=false};
