@@ -217,12 +217,10 @@ nav .btn{padding:10px 18px;font-size:.92rem}
 .review-form input:focus,.review-form textarea:focus{border-color:#f0a9bd}
 .rate{border:0;margin:0;padding:0}
 .rate legend{font-size:.85rem;font-weight:600;margin-bottom:4px;padding:0}
-.stars-input{display:inline-flex;flex-direction:row-reverse;gap:4px}
-.stars-input input{position:absolute;opacity:0;width:1px;height:1px}
-.stars-input label{font-size:2.4rem;line-height:1;color:rgba(251,241,240,.25);cursor:pointer;transition:color .15s, transform .15s}
-.stars-input label:hover,.stars-input label:hover~label,.stars-input input:checked~label{color:var(--gold)}
-.stars-input label:hover{transform:scale(1.15)}
-.stars-input input:focus-visible+label{outline:2px solid #f0a9bd;outline-offset:2px;border-radius:4px}
+.stars-input{display:inline-flex;gap:2px}
+.stars-input button{font-size:2.4rem;line-height:1;padding:4px 6px;min-width:48px;min-height:48px;background:none;border:0;color:rgba(251,241,240,.25);cursor:pointer;transition:color .15s, transform .15s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.stars-input button.on{color:var(--gold)}
+@media (hover:hover){.stars-input button:hover{transform:scale(1.15)}}
 .hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
 .r-msg{margin:0;font-weight:600}
 .r-msg.ok{color:#9be3b5}.r-msg.err{color:#ffb4c6}
@@ -441,12 +439,8 @@ footer.site small{display:block;margin-top:6px}
       </div>
       <form class="review-form" id="rform" novalidate>
         <fieldset class="rate"><legend>Votre note</legend>
-          <div class="stars-input" id="stars-input">
-            <input type="radio" name="rating" id="r5" value="5" checked><label for="r5" title="5 étoiles">★</label>
-            <input type="radio" name="rating" id="r4" value="4"><label for="r4" title="4 étoiles">★</label>
-            <input type="radio" name="rating" id="r3" value="3"><label for="r3" title="3 étoiles">★</label>
-            <input type="radio" name="rating" id="r2" value="2"><label for="r2" title="2 étoiles">★</label>
-            <input type="radio" name="rating" id="r1" value="1"><label for="r1" title="1 étoile">★</label>
+          <div class="stars-input" id="stars-input" role="radiogroup" aria-label="Votre note">
+            <button type="button" role="radio" data-v="1" aria-label="1 étoile">★</button><button type="button" role="radio" data-v="2" aria-label="2 étoiles">★</button><button type="button" role="radio" data-v="3" aria-label="3 étoiles">★</button><button type="button" role="radio" data-v="4" aria-label="4 étoiles">★</button><button type="button" role="radio" data-v="5" aria-label="5 étoiles">★</button>
           </div>
         </fieldset>
         <div class="two">
@@ -606,15 +600,18 @@ function renderReviews(){
   $('avg-count').textContent=`${all.length} avis`;$('avg-stars').parentElement.parentElement.setAttribute('aria-label',`Note moyenne ${avg.toFixed(1)} sur 5, ${all.length} avis`)}
 async function loadReviews(){try{const r=await fetch(API,{headers:{accept:"application/json"}});if(!r.ok)throw 0;const d=await r.json();if(Array.isArray(d.reviews))LIVE=d.reviews}catch(e){}renderReviews()}
 renderReviews();loadReviews();
+let RATING=5;const starBtns=[...document.querySelectorAll('#stars-input button')];
+function setRating(v){RATING=v;starBtns.forEach(b=>{const n=+b.dataset.v;b.classList.toggle('on',n<=v);b.setAttribute('aria-checked',n===v)})}
+starBtns.forEach(b=>b.addEventListener('click',()=>setRating(+b.dataset.v)));setRating(5);
 $('rform').addEventListener('submit',async e=>{e.preventDefault();const m=$('r-msg'),btn=$('r-send');
-  const body={name:$('r-name').value.trim(),occasion:$('r-occ').value.trim(),text:$('r-text').value.trim(),rating:+(document.querySelector('input[name=rating]:checked')?.value||5),site:$('r-site').value};
+  const body={name:$('r-name').value.trim(),occasion:$('r-occ').value.trim(),text:$('r-text').value.trim(),rating:RATING,site:$('r-site').value};
   const fail=t=>{m.textContent=t;m.className='r-msg err';m.hidden=false};
   if(body.name.length<2)return fail("Indiquez votre prénom.");
   if(body.text.length<10)return fail("Écrivez quelques mots de plus (10 caractères minimum).");
   btn.disabled=true;btn.textContent="Publication…";
   try{const r=await fetch(API,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)});const d=await r.json().catch(()=>({}));
     if(!r.ok)throw new Error(d.error||"L'avis n'a pas pu être publié. Réessayez dans un instant.");
-    LIVE.unshift({...d.review,fresh:true});renderReviews();$('rform').reset();
+    LIVE.unshift({...d.review,fresh:true});renderReviews();$('rform').reset();setRating(5);
     m.textContent="Merci ! Votre avis est publié.";m.className='r-msg ok';m.hidden=false;$('rail').scrollLeft=0;
   }catch(err){fail(err.message&&err.message!=="Failed to fetch"?err.message:"L'avis n'a pas pu être publié. Vérifiez votre connexion et réessayez.")}
   finally{btn.disabled=false;btn.textContent="Publier mon avis"}});
