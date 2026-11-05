@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta property="og:title" content="Inspired Cake">
 <meta property="og:description" content="Pâtisserie artisanale sur commande : layer cakes, cupcakes, gâteaux d'anniversaire.">
-<meta property="og:image" content="img/mangue-passion-hd.webp">
+<meta property="og:image" content="img/pistache-framboise.webp">
 <title>Inspired Cake</title>
 <meta name="description" content="Inspired Cake, pâtisserie artisanale sur commande : layer cakes, cupcakes et gâteaux d'anniversaire faits maison.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -175,6 +175,8 @@ nav .btn{padding:10px 18px;font-size:.92rem}
 .pricelist li{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);font-variant-numeric:tabular-nums}
 .pricelist li::before{content:none}
 .pricelist .dots{flex:1}
+.pricelist li.hl{background:var(--petal);border-radius:12px;padding:10px 12px;margin:2px -12px;border-bottom:0;flex-wrap:wrap}
+.new-pill{display:inline-block;background:var(--rasp);color:#fff;font:600 .68rem var(--body);letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px;vertical-align:middle;margin-left:4px}
 .pricelist b{font-family:var(--display);font-size:1.25rem;font-weight:500}
 .flav{display:grid;gap:8px}
 .flav h4{margin:0;font:600 .8rem var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--cocoa)}
@@ -352,15 +354,15 @@ footer.site small{display:block;margin-top:6px}
       <div class="prices">
         <div><b>50 €</b><small>Layer cake 10 parts</small></div>
         <div><b>2,50 €</b><small>Le cupcake</small></div>
-        <div><b>11</b><small>Parfums au choix</small></div>
+        <div><b>18 €</b><small>Boîte découverte <span class="new-pill">Nouveau</span></small></div>
       </div>
     </div>
     <div class="stage">
       <div class="arch">
         <video src="video/cake-loop.mp4" poster="img/loop-poster.jpg" autoplay muted loop playsinline aria-label="Layer cake caramel beurre salé décoré de feuilles roses et vertes"></video>
       </div>
-      <div class="sticker s1"><img src="img/box-decouverte-hd.webp" alt="Box de cupcakes"></div>
-      <div class="sticker s2"><img src="img/bueno-hd.webp" alt="Layer cake Bueno"></div>
+      <div class="sticker s1"><img src="img/box-decouverte.webp" alt="Box de cupcakes"></div>
+      <div class="sticker s2"><img src="img/pistache-framboise.webp" alt="Layer cake pistache framboise"></div>
       <div class="badge" aria-hidden="true">
         <svg viewBox="0 0 112 112"><defs><path id="c" d="M56,56 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0"/></defs><text><textPath href="#c">Pâtisserie maison · avec amour · </textPath></text></svg>
         <svg class="mini" viewBox="0 0 40 40" fill="none" stroke="#fbf1f0" stroke-width="2.2" stroke-linecap="round"><rect x="17" y="2" width="6" height="13" rx="3" fill="#bd3f66" stroke="none"/><path d="M20 15 C11 21 11 31 20 37 C29 31 29 21 20 15Z"/><path d="M20 15 C16 22 16 30 20 37 C24 30 24 22 20 15Z"/></svg>
@@ -401,7 +403,7 @@ footer.site small{display:block;margin-top:6px}
     <div class="head reveal"><div class="t"><span class="eyebrow">La carte</span><h2>Tarifs &amp; <em>saveurs</em></h2></div></div>
     <div class="menu-grid">
       <article class="card reveal">
-        <div class="pic"><img src="img/mangue-passion-hd.webp" alt=""></div>
+        <div class="pic"><img src="img/mangue-passion.webp" alt=""></div>
         <div><span class="sub">By Inspired Cake</span><h3>Layer cakes</h3></div>
         <ul class="pricelist">
           <li>10 parts<span class="dots"></span><b>50 €</b></li>
@@ -415,10 +417,11 @@ footer.site small{display:block;margin-top:6px}
         <p class="fine">Les parfums peuvent être associés selon vos envies. Le tarif peut évoluer selon la décoration choisie.</p>
       </article>
       <article class="card reveal">
-        <div class="pic"><img src="img/cupcakes-mangue-hd.webp" alt=""></div>
+        <div class="pic"><img src="img/box-trio.webp" alt=""></div>
         <div><span class="sub">Box gourmandes</span><h3>Cupcakes</h3></div>
         <ul class="pricelist">
           <li>À l'unité<span class="dots"></span><b>2,50 €</b></li>
+          <li class="hl">Boîte découverte · 3 parfums au choix <span class="new-pill">Nouveau</span><span class="dots"></span><b>18 €</b></li>
           <li>Boîte de 6 · 1 saveur<span class="dots"></span><b>15 €</b></li>
           <li>Boîte de 12 · 2 saveurs<span class="dots"></span><b>30 €</b></li>
           <li>Boîte de 18 · 3 saveurs<span class="dots"></span><b>40 €</b></li>
@@ -477,7 +480,7 @@ footer.site small{display:block;margin-top:6px}
         <li>Appuyez sur Envoyer. Tiffanie vous répond pour confirmer.</li>
       </ol>
       <div class="contacts">
-        <a class="handle-box" href="https://wa.me/33641010123" target="_blank" rel="noopener"><span class="ic wa" aria-hidden="true"></span><span><small>WhatsApp</small><b>+33 6 41 01 01 23</b></span></a>
+        <a class="handle-box" href="https://wa.me/33641010123" target="_blank" rel="noopener"><span class="ic wa" aria-hidden="true"></span><span><small>WhatsApp</small><b>Écrire sur WhatsApp</b></span></a>
         <a class="handle-box" href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener"><span class="ic ig" aria-hidden="true"></span><span><small>Instagram</small><b>@inspiredcake</b></span></a>
       </div>
     </div>
@@ -511,7 +514,7 @@ footer.site small{display:block;margin-top:6px}
 <footer class="site">
   <div class="wrap">
     <div><a class="logo" href="#accueil">Inspired <span>Cake</span></a><small>Pâtisserie artisanale · Laissez-vous inspirer</small></div>
-    <div class="foot-links"><a href="https://wa.me/33641010123" target="_blank" rel="noopener">WhatsApp · +33 6 41 01 01 23</a><a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">Instagram · @inspiredcake</a><small>© 2026 Inspired Cake</small></div>
+    <div class="foot-links"><a href="https://wa.me/33641010123" target="_blank" rel="noopener">WhatsApp · Nous écrire</a><a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">Instagram · @inspiredcake</a><small>© 2026 Inspired Cake</small></div>
   </div>
 </footer>
 
@@ -542,17 +545,26 @@ footer.site small{display:block;margin-top:6px}
 <script>
 const WORKS=[
  {img:"anniv-60-ans",t:"Les 60 ans aux saveurs tropicales",c:"Anniversaires",d:"Layer cake mangue – passion, décor doré et palmes.",f:"Mangue – passion"},
+ {img:"pistache-framboise",t:"Pistache – framboise",c:"Layer cakes",d:"Framboises fraîches, pistaches concassées et rosaces de crème.",f:"Pistache – framboise"},
+ {img:"rose-papillons",t:"Rose rouge et papillons dorés",c:"Anniversaires",d:"Une couronne de crème, une rose rouge et des papillons dorés.",f:""},
  {img:"chocolat-fruits-rouges",t:"Cœur chocolat – fruits rouges",c:"Layer cakes",d:"Décor vintage en crème chocolat, rubans et perles dorées.",f:"Fraise / fruits rouges"},
- {img:"box-decouverte",t:"La Box Découverte",c:"Cupcakes",d:"Une invitation à la gourmandise : plusieurs saveurs dans une même boîte.",f:""},
+ {img:"box-decouverte",t:"La Boîte découverte",c:"Cupcakes",d:"Nouveau : 3 parfums au choix pour 18 €. L'idéal pour tout goûter.",f:"",box:"decouverte"},
+ {img:"degrade-chocolat",t:"Dégradé chocolat – vanille",c:"Layer cakes",d:"Un dégradé du blanc au chocolat, éventail doré et perles.",f:"Chocolat intense"},
  {img:"caramel-beurre-sale",t:"Douceur caramel",c:"Layer cakes",d:"Du moelleux, du caramel et une pointe de fleur de sel.",f:"Caramel beurre salé"},
  {img:"nuage-bleu",t:"Un nuage dans un ciel bleu",c:"Anniversaires",d:"Pour les 2 ans d'un petit garçon, tout en douceur.",f:""},
+ {img:"couronne-framboise",t:"Couronne de framboises",c:"Anniversaires",d:"Rosaces vert tendre et cœur de framboises fraîches.",f:""},
  {img:"mangue-passion",t:"Dégradé mangue – passion",c:"Layer cakes",d:"La douceur de la mangue et le peps du fruit de la passion.",f:"Mangue – passion"},
- {img:"bueno",t:"Layer cake Bueno",c:"Layer cakes",d:"Rosaces chocolat-noisette et Happy Birthday doré.",f:"Kinder"},
+ {img:"vert-dore",t:"Vert d'eau et feuilles d'or",c:"Anniversaires",d:"Crème marbrée vert d'eau, feuilles de ginkgo et perles dorées.",f:""},
+ {img:"fruits-rouges-coupe",t:"Le cœur fruits rouges",c:"Layer cakes",d:"Génoise moelleuse et couches généreuses de fruits rouges.",f:"Fraise / fruits rouges"},
+ {img:"douceur-rose",t:"Douceur rose et perles",c:"Anniversaires",d:"Bordures roses, vermicelles et perles nacrées.",f:""},
  {img:"cupcakes-mangue",t:"Cupcakes mangue",c:"Cupcakes",d:"Topping mascarpone chantilly à la mangue.",f:"Mangue"},
  {img:"caramel-coupe",t:"L'intérieur qui compte",c:"Layer cakes",d:"Génoise moelleuse, crème légère et caramel beurre salé.",f:"Caramel beurre salé"},
- {img:"box-inspired",t:"Box duo de saveurs",c:"Cupcakes",d:"Vanille et fruits rouges dans la boîte Inspired Cake.",f:""},
+ {img:"vert-printemps",t:"Vert printemps",c:"Layer cakes",d:"Crème vert tendre et pétales jaunes peints à la main.",f:""},
+ {img:"bueno-hd",t:"Layer cake Bueno",c:"Layer cakes",d:"Rosaces chocolat-noisette et Happy Birthday doré.",f:"Kinder"},
  {img:"bueno-balcon",t:"Bueno, côté gourmand",c:"Anniversaires",d:"Drip chocolat et rosaces pour un anniversaire gourmand.",f:"Kinder"},
- {img:"box-cupcakes",t:"Prêts à offrir",c:"Cupcakes",d:"Chaque boîte est scellée au logo Inspired Cake.",f:""}
+ {img:"box-trio",t:"Box gourmande",c:"Cupcakes",d:"Mangue, vanille et fruits rouges dans une même boîte.",f:""},
+ {img:"box-inspired-hd",t:"Prêts à offrir",c:"Cupcakes",d:"Chaque boîte est scellée au logo Inspired Cake.",f:""},
+ {img:"cupcake-pastel",t:"Le cupcake pastel",c:"Cupcakes",d:"Rosace marbrée aux couleurs tendres.",f:"Vanille"}
 ];
 const REVIEWS=[
  {t:"Merci beaucoup pour le gâteau d'anniversaire. C'était vraiment délicieux, et tout le monde a adoré. Je repasserai absolument la commande. Mangue passion, c'est vraiment une tuerie !",o:"Anniversaire · mangue – passion"},
@@ -567,7 +579,7 @@ const REVIEWS=[
 const FLAV={layer:{"Saveurs fruitées":["Mangue – passion","Fraise / fruits rouges","Citron / orange – citron","Pistache – framboise (+5 €)","Red velvet (+5 €)"],"Les gourmands":["Kinder","Oréo","Spéculoos","Chocolat intense","Chocolat noisette","Praliné","Caramel","Nutella","Caramel beurre salé"]},
  cup:{"Saveurs":["Vanille","Chocolat","Citron","Nutella","Spéculoos","Caramel beurre salé","Mangue","Fruits rouges"]}};
 const SIZES={layer:[["10 parts",50],["15 parts",65],["20 parts",80],["25 parts",95],["Plus de 25 parts",null]],
- cup:[["Boîte de 6 · 1 saveur",15],["Boîte de 12 · 2 saveurs",30],["Boîte de 18 · 3 saveurs",40],["Boîte de 24 · 4 saveurs",50],["À l'unité (2,50 € pièce)",null]]};
+ cup:[["Boîte découverte · 3 parfums au choix",18],["Boîte de 6 · 1 saveur",15],["Boîte de 12 · 2 saveurs",30],["Boîte de 18 · 3 saveurs",40],["Boîte de 24 · 4 saveurs",50],["À l'unité (2,50 € pièce)",null]]};
 const $=id=>document.getElementById(id);
 
 // Écran d'accueil
@@ -585,20 +597,20 @@ $('ribbon').innerHTML=[...flavs,...flavs].map(f=>`<span>${f}</span>`).join('');
 const ALL="Toutes les créations";let cat=ALL;const cats=[ALL,"Layer cakes","Cupcakes","Anniversaires"];
 const count=c=>c===ALL?WORKS.length:WORKS.filter(w=>w.c===c).length;
 function chips(){$('chips').innerHTML=cats.map(c=>`<button type="button" class="chip" aria-pressed="${c===cat}" data-c="${c}">${c}</button>`).join('')}
-$('masonry').innerHTML=WORKS.map((w,i)=>`<button type="button" class="tile reveal" data-i="${i}" data-c="${w.c}" aria-label="Voir : ${w.t}"><img src="img/${w.img}-hd.webp" alt="${w.t}" loading="lazy"><span class="cap"><small>${w.c}</small><b>${w.t}</b></span></button>`).join('');
+$('masonry').innerHTML=WORKS.map((w,i)=>`<button type="button" class="tile reveal" data-i="${i}" data-c="${w.c}" aria-label="Voir : ${w.t}"><img src="img/${w.img}.webp" alt="${w.t}" loading="lazy"><span class="cap"><small>${w.c}</small><b>${w.t}</b></span></button>`).join('');
 $('chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.c;chips();document.querySelectorAll('.tile').forEach(t=>t.classList.toggle('hide',cat!==ALL&&t.dataset.c!==cat));
   const fb=$('filterbar');if(fb.classList.contains('stuck')){const y=$('masonry').getBoundingClientRect().top+scrollY-fb.offsetHeight-nav.offsetHeight-8;scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}});
 chips();
 
 // Visionneuse
 let cur=0;const lb=$('lb');
-function show(i){cur=(i+WORKS.length)%WORKS.length;const w=WORKS[cur];$('lb-img').src=`img/${w.img}-hd.webp`;$('lb-img').alt=w.t;$('lb-title').textContent=w.t;$('lb-cat').textContent=w.c;$('lb-desc').textContent=w.d}
+function show(i){cur=(i+WORKS.length)%WORKS.length;const w=WORKS[cur];$('lb-img').src=`img/${w.img}.webp`;$('lb-img').alt=w.t;$('lb-title').textContent=w.t;$('lb-cat').textContent=w.c;$('lb-desc').textContent=w.d}
 $('masonry').addEventListener('click',e=>{const t=e.target.closest('.tile');if(!t)return;show(+t.dataset.i);lb.hidden=false;$('lb-close').focus()});
 const closeLb=()=>{lb.hidden=true};
 $('lb-close').onclick=closeLb;lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
 $('lb-prev').onclick=()=>show(cur-1);$('lb-next').onclick=()=>show(cur+1);
 document.addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)});
-$('lb-want').onclick=()=>{const w=WORKS[cur];closeLb();setProduct(w.c==="Cupcakes"?"cup":"layer");$('model').value=String(cur);if(w.f){const o=[...$('flav').options].find(o=>o.value.startsWith(w.f));if(o)$('flav').value=o.value}update();$('commander').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})};
+$('lb-want').onclick=()=>{const w=WORKS[cur];closeLb();setProduct(w.c==="Cupcakes"?"cup":"layer");if(w.box==="decouverte")$('size').value="0";$('model').value=String(cur);if(w.f){const o=[...$('flav').options].find(o=>o.value.startsWith(w.f));if(o)$('flav').value=o.value}update();$('commander').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})};
 
 // Avis
 const API="/api/reviews";let LIVE=[];let adminKey="";
@@ -682,7 +694,8 @@ function compose(){
   if(prod==="custom"){txt+="Je souhaiterais une création sur mesure.";}
   else{const s=SIZES[prod][+$('size').value];price=s[1];const fl=$('flav').value;
     if(prod==="layer"){if(price!==null&&/\+5/.test(fl))price+=5;txt+=`Je souhaiterais commander un layer cake (${s[0].toLowerCase()}), saveur ${fl.replace(/ \(\+5 €\)/,'').toLowerCase()}.`}
-    else{txt+=`Je souhaiterais commander des cupcakes : ${s[0].replace(" (2,50 € pièce)","").toLowerCase()}, saveur ${fl.toLowerCase()}.`}}
+    else{const multi=/parfums|saveurs/.test(s[0]);const what=s[0].replace(" (2,50 € pièce)","");
+      txt+=multi?`Je souhaiterais commander des cupcakes : ${what.charAt(0).toLowerCase()+what.slice(1)}. Parfums : ${fl.toLowerCase()}${notes?'':' (et les autres à préciser)'}.`:`Je souhaiterais commander des cupcakes : ${what.toLowerCase()}, saveur ${fl.toLowerCase()}.`}}
   if(m!=="")txt+=`\nModèle d'inspiration : « ${WORKS[m].t} »`;
   if(date)txt+=`\nPour le ${date}.`;
   if(notes)txt+=`\nDétails : ${notes}`;

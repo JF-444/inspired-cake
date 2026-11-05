@@ -21,4 +21,4 @@ Pour pouvoir supprimer un avis :
 2. Ouvrir le site avec `#gestion` à la fin de l'adresse, taper la clé : un bouton « Supprimer » apparaît sur chaque avis publié depuis le site.
 
 ## Commandes
-Le bouton WhatsApp ouvre une conversation avec le +33 6 41 01 01 23, message déjà rempli. Le numéro est dans `index.html` (constante `WA` et liens `wa.me`).
+Le bouton WhatsApp ouvre directement la conversation, message déjà rempli (le numéro n'est pas affiché sur la page). Le numéro est dans `index.html` (constante `WA` et liens `wa.me`).
