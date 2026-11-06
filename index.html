@@ -132,8 +132,9 @@ main .view{animation:viewin .45s ease both}
 .page-head p{margin:0;color:var(--cocoa);max-width:56ch}
 
 /* Héros */
-.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:44px 60px}
-@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:36px;padding-block:24px 48px}}
+.hero .wrap{display:grid;padding-block:56px 64px}
+@media (max-width:860px){.hero .wrap{padding-block:28px 48px}}
+.hero-copy{max-width:760px}
 .hero-copy{display:grid;gap:22px;min-width:0}
 .hero h1{font-size:clamp(3.1rem,8.4vw,6.4rem);letter-spacing:-.015em}
 .hero h1 .line{display:block;overflow:hidden;padding-bottom:.06em}
@@ -280,6 +281,7 @@ main .view{animation:viewin .45s ease both}
 .dcard h3{font-size:2rem}
 .dcard .big{font-family:var(--display);font-size:2.6rem;line-height:1;color:var(--rasp)}
 .dcard p{margin:0;color:var(--cocoa)}
+.dcard .place{color:var(--choco);font-size:1.1rem}
 .rings{width:100%;max-width:420px;justify-self:center;height:auto}
 .rings text{font-family:var(--body);font-weight:600}
 .zones{list-style:none;margin:0;padding:0;display:grid}
@@ -594,7 +596,7 @@ footer.site small{display:block;margin-top:6px}
       <a href="#accueil"><b>Accueil</b><small>Nouveautés et avis</small></a>
       <a href="#realisations"><b>Les réalisations</b><small>Layer cakes, cupcakes, anniversaires</small></a>
       <a href="#carte"><b>La carte</b><small>Tarifs et saveurs</small></a>
-      <a href="#livraison"><b>Livraison</b><small>Retrait gratuit ou livraison par zone</small></a>
+      <a href="#livraison"><b>Livraison</b><small>Retrait à Chanteloup-les-Vignes ou livraison</small></a>
       <a href="#histoire"><b>Mon histoire</b><small>D'une passion à vos cœurs</small></a>
       <a href="#commander"><b>Commander</b><small>Composez votre gâteau</small></a>
     </nav>
@@ -624,17 +626,6 @@ footer.site small{display:block;margin-top:6px}
           <div><b>50 €</b><small>Layer cake 10 parts</small></div>
           <div><b>2,50 €</b><small>Le cupcake</small></div>
           <div><b>18 €</b><small>Boîte découverte <span class="pill new">Nouveau</span></small></div>
-        </div>
-      </div>
-      <div class="stage">
-        <div class="arch">
-          <video src="video/cake-loop.mp4" poster="img/loop-poster.jpg" autoplay muted loop playsinline aria-label="Layer cake caramel beurre salé décoré de feuilles roses et vertes"></video>
-        </div>
-        <div class="sticker s1"><img src="img/box-decouverte.webp" alt="Boîte découverte de cupcakes"></div>
-        <div class="sticker s2"><img src="img/pistache-framboise.webp" alt="Layer cake pistache framboise"></div>
-        <div class="badge" aria-hidden="true">
-          <svg viewBox="0 0 112 112"><defs><path id="c" d="M56,56 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0"/></defs><text><textPath href="#c">Pâtisserie maison · avec amour · </textPath></text></svg>
-          <svg class="mini" viewBox="0 0 40 40" fill="none" stroke="#fbf1f0" stroke-width="2.2" stroke-linecap="round"><rect x="17" y="2" width="6" height="13" rx="3" fill="#bd3f66" stroke="none"/><path d="M20 15 C11 21 11 31 20 37 C29 31 29 21 20 15Z"/><path d="M20 15 C16 22 16 30 20 37 C24 30 24 22 20 15Z"/></svg>
         </div>
       </div>
     </div>
@@ -752,13 +743,13 @@ footer.site small{display:block;margin-top:6px}
 <div class="view" data-view="livraison" hidden>
   <section class="deliv">
     <div class="wrap">
-      <div class="page-head"><span class="eyebrow">Livraison</span><h2>Retrait ou <em>livraison</em></h2><p>Les commandes se récupèrent à domicile. Je peux aussi vous livrer : les frais dépendent de la distance.</p></div>
+      <div class="page-head"><span class="eyebrow">Livraison</span><h2>Retrait ou <em>livraison</em></h2><p>Les commandes se récupèrent à domicile, à Chanteloup-les-Vignes (78570). Je peux aussi vous livrer : les frais dépendent de la distance.</p></div>
       <div class="deliv-grid">
         <div class="dcard">
           <span class="eyebrow">Par défaut</span>
           <h3>Retrait à domicile</h3>
           <span class="big">Gratuit</span>
-          <p>Vous venez chercher votre commande au créneau convenu. L'adresse vous est communiquée à la confirmation.</p>
+          <p class="place"><b>Chanteloup-les-Vignes</b> (78570)</p><p>Vous venez chercher votre commande au créneau convenu. L'adresse exacte vous est communiquée une fois la commande validée.</p>
           <a class="btn btn-line" href="#commander" style="width:fit-content">Commander</a>
         </div>
         <div class="dcard">
@@ -790,7 +781,7 @@ footer.site small{display:block;margin-top:6px}
             <li><i style="background:#f4dadd;border:1px solid #e3a3b2"></i><span>De 10 à 15 km</span><b>15 €</b></li>
             <li><i style="background:none;border:1.5px dashed #b48a4c"></i><span>Au-delà de 15 km : point de rendez-vous</span><b>Sur devis</b></li>
           </ul>
-          <p class="fine">Distance calculée depuis le lieu de retrait. Les frais s'ajoutent au prix de la commande.</p>
+          <p class="fine">Distance calculée depuis Chanteloup-les-Vignes. Les frais s'ajoutent au prix de la commande.</p>
         </div>
       </div>
     </div>
@@ -898,6 +889,7 @@ footer.site small{display:block;margin-top:6px}
           <button type="button" data-m="retrait" aria-pressed="true">Retrait à domicile</button>
           <button type="button" data-m="livraison" aria-pressed="false">Livraison</button>
         </div>
+        <p class="hint" id="retrait-info">Retrait à Chanteloup-les-Vignes (78570). L'adresse exacte vous est communiquée une fois la commande validée.</p>
         <div class="fs" id="fs-deliv" hidden>
           <label>Zone de livraison <select id="zone"></select></label>
           <label>Ville ou adresse de livraison <input type="text" id="addr" maxlength="160" autocomplete="street-address" placeholder="ex. Créteil, rue…"></label>
@@ -1230,7 +1222,7 @@ const HINTS={layer:"Layer cake de 10 à 25 parts, avec la saveur de votre choix.
 function setProduct(p){prod=p;document.querySelectorAll('#seg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p===p));
   $('fs-layer').hidden=p!=="layer";$('fs-cup').hidden=p!=="cup";$('fs-insp').hidden=p!=="inspired";$('prod-hint').textContent=HINTS[p];update()}
 $('seg').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setProduct(b.dataset.p)});
-$('mode').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;mode=b.dataset.m;document.querySelectorAll('#mode button').forEach(x=>x.setAttribute('aria-pressed',x===b));$('fs-deliv').hidden=mode!=="livraison";update()});
+$('mode').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;mode=b.dataset.m;document.querySelectorAll('#mode button').forEach(x=>x.setAttribute('aria-pressed',x===b));$('fs-deliv').hidden=mode!=="livraison";$('retrait-info').hidden=mode!=="retrait";update()});
 $('l-flav').addEventListener('change',()=>{$('l-other-wrap').hidden=$('l-flav').value!==OTHER;if(!$('l-other-wrap').hidden)$('l-other').focus()});
 $('i-flav').addEventListener('change',()=>{$('i-other-wrap').hidden=$('i-flav').value!==OTHER;if(!$('i-other-wrap').hidden)$('i-other').focus()});
 /* Parfums des cupcakes */
@@ -1273,7 +1265,7 @@ function compose(){
     lines.push(`Je souhaiterais une création Inspired${parts?` pour ${parts} parts environ`:''}, saveur ${lower(flav)}.`);label=`Création Inspired${parts?` ${parts} parts`:''} · ${flav}`}
   if(date)lines.push(`Pour le ${frDate(date)}.`);
   let fee=0,feeKnown=true;
-  if(mode==="retrait")lines.push("Retrait à domicile.");
+  if(mode==="retrait")lines.push("Retrait à domicile à Chanteloup-les-Vignes.");
   else{const z=ZONES[+$('zone').value],a=$('addr').value.trim();fee=z[1];feeKnown=fee!=null;
     lines.push(feeKnown?`Livraison : ${lower(z[0])} (${z[1]} €)${a?`, ${a}`:''}.`:`Livraison au-delà de 15 km : point de rendez-vous à convenir${a?` (${a})`:''}.`)}
   if(notes)lines.push(`Détails : ${notes}`);
