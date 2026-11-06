@@ -13,12 +13,16 @@ Site statique : `index.html`, images dans `img/`, vidéos dans `video/`. Aucune 
 Les réalisations, avis et tarifs sont en haut du `<script>` de `index.html` (tableaux `WORKS`, `REVIEWS`, `SIZES`, `FLAV`).
 Pour ajouter une photo : la déposer dans `img/` puis ajouter une ligne dans `WORKS`.
 
-## Avis clients
-Les avis laissés sur le site sont enregistrés par la fonction `netlify/functions/reviews.mjs` (stockage Netlify Blobs), sans base de données à installer.
+## Espace gestion (calendrier des commandes et avis)
+Ouvrir le site avec `#gestion` à la fin de l'adresse et taper la clé `ADMIN_KEY` (variable d'environnement Netlify).
+- Chaque demande envoyée sur WhatsApp depuis le formulaire est aussi enregistrée comme « Demande » dans le calendrier.
+- Confirmer, refuser, marquer terminée, ou ajouter une commande à la main (Instagram, téléphone…).
+- Onglet Avis : supprimer un avis laissé depuis le site.
 
-Pour pouvoir supprimer un avis :
-1. Netlify → Site configuration → Environment variables → ajouter `ADMIN_KEY` avec un mot de passe de votre choix, puis redéployer.
-2. Ouvrir le site avec `#gestion` à la fin de l'adresse, taper la clé : un bouton « Supprimer » apparaît sur chaque avis publié depuis le site.
+Fonctions Netlify (stockage Netlify Blobs) :
+- `netlify/functions/orders.mjs` : `/api/orders`
+- `netlify/functions/photo.mjs` : `/api/photo` (photos d'inspiration des clients)
+- `netlify/functions/reviews.mjs` : `/api/reviews`
 
 ## Commandes
-Le bouton WhatsApp ouvre directement la conversation, message déjà rempli (le numéro n'est pas affiché sur la page). Le numéro est dans `index.html` (constante `WA` et liens `wa.me`).
+Le bouton WhatsApp ouvre directement la conversation, message déjà rempli (le numéro n'est pas affiché sur la page).
