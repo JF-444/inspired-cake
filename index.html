@@ -147,6 +147,7 @@ main .view{animation:viewin .45s ease both}
 .prices div{display:grid}
 .prices b{font-family:var(--display);font-size:1.7rem;font-weight:500;font-variant-numeric:tabular-nums}
 .prices small{color:var(--cocoa);font-size:.85rem}
+.prices .from{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
 .stage{position:relative;justify-self:center;width:min(100%,460px);min-width:0}
 .arch{aspect-ratio:4/5;max-width:100%;border-radius:999px 999px 28px 28px;overflow:hidden;background:var(--petal);box-shadow:0 40px 80px -40px rgba(74,42,34,.55);position:relative}
 .arch video{width:100%;height:100%;object-fit:cover}
@@ -623,9 +624,9 @@ footer.site small{display:block;margin-top:6px}
           <a class="btn btn-line" href="#realisations">Voir les réalisations</a>
         </div>
         <div class="prices">
-          <div><b>50 €</b><small>Layer cake 10 parts</small></div>
-          <div><b>2,50 €</b><small>Le cupcake</small></div>
-          <div><b>18 €</b><small>Boîte découverte <span class="pill new">Nouveau</span></small></div>
+          <div><small class="from">À partir de</small><b>50 €</b><small>Layer cake 10 parts</small></div>
+          <div><small class="from">À partir de</small><b>2,50 €</b><small>Le cupcake, la pièce</small></div>
+          <div><small class="from"><span class="pill new">Nouveau</span></small><b>18 €</b><small>Boîte découverte</small></div>
         </div>
       </div>
     </div>
