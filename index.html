@@ -394,10 +394,10 @@ textarea{resize:vertical;min-height:84px}
 .stay{background:var(--blush);border-top:1px solid var(--line);padding-block:64px 72px;scroll-margin-top:70px}
 .stay-head{display:grid;gap:10px;margin-bottom:28px;max-width:640px}
 .stay-head p{margin:0;color:var(--cocoa)}
-.stay-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:stretch}
+.stay-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}
 @media (max-width:860px){.stay-grid{grid-template-columns:1fr}}
 .news{background:var(--choco);color:var(--blush);border-radius:28px;padding:clamp(22px,4vw,34px);display:grid;gap:16px;align-content:start;position:relative;overflow:hidden}
-.news h3{font-size:clamp(1.5rem,3.4vw,1.95rem)}
+.news h3{font-size:clamp(1.35rem,3vw,1.6rem)}
 .news h3 em{color:#f0a9bd}
 .news p{margin:0;color:rgba(251,241,240,.8)}
 .news ul{margin:0;padding:0;list-style:none;display:grid;gap:6px;color:rgba(251,241,240,.85);font-size:.95rem}
@@ -640,12 +640,12 @@ footer.site small{display:block;margin-top:6px}
       <a href="#livraison"><b>Livraison</b><small>Retrait à Chanteloup-les-Vignes ou livraison</small></a>
       <a href="#histoire"><b>Mon histoire</b><small>D'une passion à vos cœurs</small></a>
       <a href="#commander"><b>Commander</b><small>Composez votre gâteau</small></a>
-      <a href="#contact"><b>On reste en contact</b><small>Nouveautés par e-mail et Instagram</small></a>
+      <a href="#contact"><b>On reste en contact</b><small>Suivre les créations sur Instagram</small></a>
     </nav>
     <div class="dfoot">
       <div class="soon-line"><span class="pill soon">À venir</span>Le calendrier de l'Avent pour Noël</div>
       <a class="btn btn-main" href="#commander">Commander mon gâteau</a>
-      <div class="contacts-mini"><a href="https://wa.me/33641010123" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">Instagram</a><a href="#avis">Laisser un avis</a><a href="#contact">Newsletter</a></div>
+      <div class="contacts-mini"><a href="https://wa.me/33641010123" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">Instagram</a><a href="#avis">Laisser un avis</a><a href="#contact">Nous suivre</a></div>
     </div>
   </aside>
 </div>
@@ -1021,32 +1021,26 @@ footer.site small{display:block;margin-top:6px}
 
 <section class="stay" id="contact-bloc" aria-labelledby="stay-title">
   <div class="wrap">
-    <div class="stay-head"><span class="eyebrow">On reste en contact</span><h2 id="stay-title">Ne manquez <em>aucune douceur</em></h2><p>Nouvelles saveurs, créations de saison, dates disponibles : restez au courant de ce qui se prépare.</p></div>
+    <div class="stay-head"><span class="eyebrow">On reste en contact</span><h2 id="stay-title">Suivez <em>les créations</em></h2><p>Les gâteaux du moment, les coulisses et les nouveautés : retrouvez Inspired Cake sur Instagram.</p></div>
     <div class="stay-grid">
-      <div class="news">
-        <h3>Les nouveautés, <em>en avant-première</em></h3>
-        <ul>
-          <li>La sortie du calendrier de l'Avent, avant tout le monde</li>
-          <li>Les nouvelles saveurs et les créations de saison</li>
-          <li>Les dates encore libres pour les fêtes</li>
-        </ul>
-        <form id="nform" novalidate>
-          <div class="row">
+      <a class="igc" href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">
+        <div class="igc-top"><span class="igc-ring"><span>IC</span></span><span><b>@inspiredcake</b><small>Pâtisserie maison · Laissez-vous inspirer</small></span></div>
+        <div class="igc-grid" aria-hidden="true"><img src="img/pistache-framboise.webp" alt="" loading="lazy"><img src="img/box-decouverte.webp" alt="" loading="lazy"><img src="img/vert-dore.webp" alt="" loading="lazy"><img src="img/caramel-coupe.webp" alt="" loading="lazy"><img src="img/rose-papillons.webp" alt="" loading="lazy"><img src="img/mangue-passion.webp" alt="" loading="lazy"></div>
+        <span class="btn btn-main"><span class="ic ig" aria-hidden="true" style="width:22px;height:22px;background-color:transparent;background-size:100%"></span>Suivre sur Instagram</span>
+      </a>
+      <div class="social">
+        <div class="news">
+          <h3>Les nouveautés <em>par e-mail</em></h3>
+          <p>Nouvelles créations, saveurs de saison, calendrier de l'Avent : soyez prévenu(e).</p>
+          <form id="nform" novalidate>
             <input type="text" id="n-name" maxlength="40" autocomplete="given-name" placeholder="Prénom" aria-label="Prénom">
             <input type="email" id="n-email" maxlength="120" autocomplete="email" inputmode="email" placeholder="Votre adresse e-mail" aria-label="Adresse e-mail" required>
-          </div>
-          <label class="consent"><input type="checkbox" id="n-ok"> J'accepte de recevoir les nouveautés d'Inspired Cake par e-mail. Pas plus d'un message par mois, désinscription possible à tout moment en répondant à un e-mail.</label>
-          <label class="hp" aria-hidden="true">Site <input type="text" id="n-site" tabindex="-1" autocomplete="off"></label>
-          <button class="btn btn-main" type="submit" id="n-send" style="width:fit-content">Je m'inscris</button>
-          <p class="n-msg" id="n-msg" role="status" hidden></p>
-        </form>
-      </div>
-      <div class="social">
-        <a class="igc" href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">
-          <div class="igc-top"><span class="igc-ring"><span>IC</span></span><span><b>@inspiredcake</b><small>Les créations du moment, en coulisses</small></span></div>
-          <div class="igc-grid" aria-hidden="true"><img src="img/pistache-framboise.webp" alt="" loading="lazy"><img src="img/box-decouverte.webp" alt="" loading="lazy"><img src="img/vert-dore.webp" alt="" loading="lazy"></div>
-          <span class="btn btn-main"><span class="ic ig" aria-hidden="true" style="width:22px;height:22px;background-color:transparent;background-size:100%"></span>Suivre sur Instagram</span>
-        </a>
+            <label class="consent"><input type="checkbox" id="n-ok"> J'accepte de recevoir les nouveautés d'Inspired Cake par e-mail. Désinscription possible à tout moment.</label>
+            <label class="hp" aria-hidden="true">Site <input type="text" id="n-site" tabindex="-1" autocomplete="off"></label>
+            <button class="btn btn-main" type="submit" id="n-send" style="width:fit-content">Je m'inscris</button>
+            <p class="n-msg" id="n-msg" role="status" hidden></p>
+          </form>
+        </div>
         <div class="wac">
           <h3>Une question&nbsp;?</h3>
           <p>Une idée de gâteau, une date à vérifier : écrivez-moi directement.</p>
@@ -1465,7 +1459,7 @@ $('nform').addEventListener('submit',async e=>{e.preventDefault();const m=$('n-m
   btn.disabled=true;btn.textContent="Inscription…";
   try{const r=await fetch('/api/contacts',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email,name:$('n-name').value.trim(),consent:true,site:$('n-site').value})});
     const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||"");
-    $('nform').reset();m.textContent=d.already?"Vous êtes déjà inscrit(e). Merci !":"C'est noté ! Vous serez parmi les premiers informés.";m.className='n-msg ok';m.hidden=false}
+    $('nform').reset();m.textContent=d.already?"Vous êtes déjà inscrit(e). Merci !":"C'est noté ! Vous recevrez les nouveautés.";m.className='n-msg ok';m.hidden=false}
   catch(err){fail(err.message||"L'inscription n'a pas pu être enregistrée. Réessayez dans un instant.")}
   finally{btn.disabled=false;btn.textContent="Je m'inscris"}});
 /* Abonnés (gestion) */
