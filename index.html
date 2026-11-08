@@ -390,6 +390,41 @@ textarea{resize:vertical;min-height:84px}
 .done{color:var(--rasp);font-weight:600;margin:0;font-size:.95rem}
 .hint{font-size:.85rem;color:var(--cocoa);margin:0}
 
+/* On reste en contact */
+.stay{background:var(--blush);border-top:1px solid var(--line);padding-block:64px 72px;scroll-margin-top:70px}
+.stay-head{display:grid;gap:10px;margin-bottom:28px;max-width:640px}
+.stay-head p{margin:0;color:var(--cocoa)}
+.stay-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:stretch}
+@media (max-width:860px){.stay-grid{grid-template-columns:1fr}}
+.news{background:var(--choco);color:var(--blush);border-radius:28px;padding:clamp(22px,4vw,34px);display:grid;gap:16px;align-content:start;position:relative;overflow:hidden}
+.news h3{font-size:clamp(1.5rem,3.4vw,1.95rem)}
+.news h3 em{color:#f0a9bd}
+.news p{margin:0;color:rgba(251,241,240,.8)}
+.news ul{margin:0;padding:0;list-style:none;display:grid;gap:6px;color:rgba(251,241,240,.85);font-size:.95rem}
+.news li{display:flex;gap:10px;align-items:baseline}
+.news li::before{content:"✦";color:var(--gold);font-size:.75rem}
+.news form{display:grid;gap:12px}
+.news .row{display:flex;gap:8px;flex-wrap:wrap}
+.news .row input{flex:1 1 200px}
+.news input[type=email],.news input[type=text]{background:rgba(251,241,240,.08);border-color:rgba(251,241,240,.25);color:var(--blush)}
+.news input::placeholder{color:rgba(251,241,240,.5)}
+.news input:focus{border-color:#f0a9bd}
+.consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.82rem;color:rgba(251,241,240,.75);line-height:1.45;cursor:pointer}
+.consent input{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--rasp);padding:0}
+.n-msg{margin:0;font-weight:600}
+.n-msg.ok{color:#9be3b5}.n-msg.err{color:#ffb4c6}
+.social{display:grid;gap:20px}
+.igc,.wac{background:var(--cream);border:1px solid var(--line);border-radius:28px;padding:clamp(20px,3.5vw,28px);display:grid;gap:14px;text-decoration:none;color:inherit;min-width:0}
+.igc-top{display:flex;align-items:center;gap:12px}
+.igc-ring{width:58px;height:58px;border-radius:50%;padding:3px;background:conic-gradient(from 200deg,#f5b75b,#e1306c,#b23aa3,#f5b75b);flex:none}
+.igc-ring span{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:var(--cream);border:3px solid var(--cream);font-family:var(--display);font-size:1.05rem;color:var(--choco)}
+.igc-top b{font-weight:600;font-size:1.05rem;display:block}
+.igc-top small{color:var(--cocoa);font-size:.85rem}
+.igc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;border-radius:14px;overflow:hidden}
+.igc-grid img{aspect-ratio:1;width:100%;height:100%;object-fit:cover}
+.igc .btn,.wac .btn{width:100%}
+.wac p{margin:0;color:var(--cocoa)}
+.wac h3,.igc h3{font-size:1.35rem}
 footer.site{background:var(--choco);color:rgba(251,241,240,.8)}
 footer.site .wrap{padding-block:44px calc(32px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:end}
 footer.site .logo{color:var(--blush);font-size:2rem}
@@ -605,11 +640,12 @@ footer.site small{display:block;margin-top:6px}
       <a href="#livraison"><b>Livraison</b><small>Retrait à Chanteloup-les-Vignes ou livraison</small></a>
       <a href="#histoire"><b>Mon histoire</b><small>D'une passion à vos cœurs</small></a>
       <a href="#commander"><b>Commander</b><small>Composez votre gâteau</small></a>
+      <a href="#contact"><b>On reste en contact</b><small>Nouveautés par e-mail et Instagram</small></a>
     </nav>
     <div class="dfoot">
       <div class="soon-line"><span class="pill soon">À venir</span>Le calendrier de l'Avent pour Noël</div>
       <a class="btn btn-main" href="#commander">Commander mon gâteau</a>
-      <div class="contacts-mini"><a href="https://wa.me/33641010123" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">Instagram</a><a href="#avis">Laisser un avis</a></div>
+      <div class="contacts-mini"><a href="https://wa.me/33641010123" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">Instagram</a><a href="#avis">Laisser un avis</a><a href="#contact">Newsletter</a></div>
     </div>
   </aside>
 </div>
@@ -644,9 +680,9 @@ footer.site small{display:block;margin-top:6px}
         <img src="img/box-decouverte.webp" alt="">
         <div><span><span class="pill new">Nouveau</span></span><h3>La Boîte découverte</h3><p>3 parfums au choix pour 18 €. Idéal pour tout goûter.</p><span class="go">Commander →</span></div>
       </a>
-      <a class="ann reveal" href="#carte">
+      <a class="ann reveal" href="#contact">
         <span class="art" aria-hidden="true"><svg viewBox="0 0 80 80"><rect x="6" y="14" width="68" height="60" rx="8" fill="#fffaf8"/><path d="M40 14v60M6 44h68" stroke="#b48a4c" stroke-width="5"/><path d="M40 14c-8-12-20-8-14 0M40 14c8-12 20-8 14 0" fill="none" stroke="#bd3f66" stroke-width="4" stroke-linecap="round"/><g font-family="Georgia,serif" font-size="13" fill="#4a2a22" text-anchor="middle"><text x="23" y="34">1</text><text x="57" y="34">12</text><text x="23" y="64">18</text></g><text x="57" y="65" font-family="Georgia,serif" font-size="15" fill="#bd3f66" text-anchor="middle" font-weight="bold">24</text></svg></span>
-        <div><span><span class="pill soon">À venir</span></span><h3>Le calendrier de l'Avent</h3><p>Pour patienter gourmandement jusqu'à Noël. Bientôt disponible.</p><span class="go">En savoir plus →</span></div>
+        <div><span><span class="pill soon">À venir</span></span><h3>Le calendrier de l'Avent</h3><p>Pour patienter gourmandement jusqu'à Noël. Bientôt disponible.</p><span class="go">Être prévenu(e) en premier →</span></div>
       </a>
     </div>
   </section>
@@ -931,7 +967,7 @@ footer.site small{display:block;margin-top:6px}
         <div class="adm-top">
           <div><span class="eyebrow">Espace Inspired Cake</span><h2>Mes <em>commandes</em></h2></div>
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-            <div class="tabs" role="tablist"><button type="button" role="tab" data-tab="cal" aria-selected="true">Calendrier</button><button type="button" role="tab" data-tab="avis" aria-selected="false">Avis</button></div>
+            <div class="tabs" role="tablist"><button type="button" role="tab" data-tab="cal" aria-selected="true">Calendrier</button><button type="button" role="tab" data-tab="avis" aria-selected="false">Avis</button><button type="button" role="tab" data-tab="abonnes" aria-selected="false">Abonnés</button></div>
             <button class="small-btn" type="button" id="adm-out">Se déconnecter</button>
           </div>
         </div>
@@ -970,6 +1006,11 @@ footer.site small{display:block;margin-top:6px}
           <p class="hint" style="margin-bottom:14px">Les avis laissés depuis le site. Les 9 avis d'origine (conversations WhatsApp) sont fixes.</p>
           <div class="olist" id="rv-list"></div>
         </div>
+        <div id="tab-abonnes" hidden>
+          <div class="box-h" style="margin-bottom:14px"><p class="hint" id="sub-count" style="margin:0"></p><span style="display:flex;gap:8px;flex-wrap:wrap"><button class="small-btn" type="button" id="sub-copy">Copier les adresses</button><button class="small-btn" type="button" id="sub-csv">Télécharger (CSV)</button></span></div>
+          <textarea id="sub-all" readonly hidden style="margin-bottom:12px"></textarea>
+          <div class="olist" id="sub-list"></div>
+        </div>
         <p class="err" id="adm-msg" role="status" hidden></p>
       </div>
     </div>
@@ -977,6 +1018,44 @@ footer.site small{display:block;margin-top:6px}
 </div>
 
 </main>
+
+<section class="stay" id="contact-bloc" aria-labelledby="stay-title">
+  <div class="wrap">
+    <div class="stay-head"><span class="eyebrow">On reste en contact</span><h2 id="stay-title">Ne manquez <em>aucune douceur</em></h2><p>Nouvelles saveurs, créations de saison, dates disponibles : restez au courant de ce qui se prépare.</p></div>
+    <div class="stay-grid">
+      <div class="news">
+        <h3>Les nouveautés, <em>en avant-première</em></h3>
+        <ul>
+          <li>La sortie du calendrier de l'Avent, avant tout le monde</li>
+          <li>Les nouvelles saveurs et les créations de saison</li>
+          <li>Les dates encore libres pour les fêtes</li>
+        </ul>
+        <form id="nform" novalidate>
+          <div class="row">
+            <input type="text" id="n-name" maxlength="40" autocomplete="given-name" placeholder="Prénom" aria-label="Prénom">
+            <input type="email" id="n-email" maxlength="120" autocomplete="email" inputmode="email" placeholder="Votre adresse e-mail" aria-label="Adresse e-mail" required>
+          </div>
+          <label class="consent"><input type="checkbox" id="n-ok"> J'accepte de recevoir les nouveautés d'Inspired Cake par e-mail. Pas plus d'un message par mois, désinscription possible à tout moment en répondant à un e-mail.</label>
+          <label class="hp" aria-hidden="true">Site <input type="text" id="n-site" tabindex="-1" autocomplete="off"></label>
+          <button class="btn btn-main" type="submit" id="n-send" style="width:fit-content">Je m'inscris</button>
+          <p class="n-msg" id="n-msg" role="status" hidden></p>
+        </form>
+      </div>
+      <div class="social">
+        <a class="igc" href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">
+          <div class="igc-top"><span class="igc-ring"><span>IC</span></span><span><b>@inspiredcake</b><small>Les créations du moment, en coulisses</small></span></div>
+          <div class="igc-grid" aria-hidden="true"><img src="img/pistache-framboise.webp" alt="" loading="lazy"><img src="img/box-decouverte.webp" alt="" loading="lazy"><img src="img/vert-dore.webp" alt="" loading="lazy"></div>
+          <span class="btn btn-main"><span class="ic ig" aria-hidden="true" style="width:22px;height:22px;background-color:transparent;background-size:100%"></span>Suivre sur Instagram</span>
+        </a>
+        <div class="wac">
+          <h3>Une question&nbsp;?</h3>
+          <p>Une idée de gâteau, une date à vérifier : écrivez-moi directement.</p>
+          <a class="btn btn-wa" href="https://wa.me/33641010123" target="_blank" rel="noopener"><span class="ic wa" aria-hidden="true"></span>Écrire sur WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer class="site">
   <div class="wrap">
@@ -1090,6 +1169,7 @@ function route(){
   let h=decodeURIComponent(location.hash.slice(1)),anchor=null;
   if(h==="avis"){h="accueil";anchor="laisser-un-avis"}
   if(h==="avent"){h="carte";anchor="avent"}
+  if(h==="contact"){h=current||"accueil";anchor="contact-bloc"}
   if(!VIEWS.includes(h))h="accueil";
   const changed=h!==current;current=h;
   document.querySelectorAll('.view').forEach(v=>v.hidden=v.dataset.view!==h);
@@ -1309,7 +1389,7 @@ async function login(k,silent){const err=$('adm-err');ADM.key=k;
   catch(e){ADM.key="";if(silent){ls.del('ic-admin');return}err.hidden=false;err.textContent=e.status===403?"Clé incorrecte.":"Impossible de joindre le serveur. Cet espace fonctionne uniquement sur le site en ligne."}}
 $('adm-form').addEventListener('submit',e=>{e.preventDefault();const k=$('adm-key').value.trim();if(k)login(k,false)});
 $('adm-out').addEventListener('click',()=>{ls.del('ic-admin');ADM.key="";ADM.orders=[];$('adm-app').hidden=true;$('adm-login').hidden=false;$('adm-key').value=""});
-document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{ADM.tab=b.dataset.tab;document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));$('tab-cal').hidden=ADM.tab!=="cal";$('tab-avis').hidden=ADM.tab!=="avis";if(ADM.tab==="avis")renderRv()}));
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{ADM.tab=b.dataset.tab;document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));$('tab-cal').hidden=ADM.tab!=="cal";$('tab-avis').hidden=ADM.tab!=="avis";$('tab-abonnes').hidden=ADM.tab!=="abonnes";if(ADM.tab==="avis")renderRv();if(ADM.tab==="abonnes")loadSubs()}));
 const shortDate=s=>new Date(s+"T12:00").toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});
 const longDate=s=>{const t=new Date(s+"T12:00").toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});return t.charAt(0).toUpperCase()+t.slice(1)};
 const byDate=(a,b)=>(a.date+(a.time||"")).localeCompare(b.date+(b.time||""));
@@ -1375,6 +1455,34 @@ function renderRv(){$('rv-list').innerHTML=LIVE.length?LIVE.map(r=>`<div class="
 $('rv-list').addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;const id=b.closest('.rv-row').dataset.id;
   if(b.dataset.armed!=="1"){b.dataset.armed="1";b.textContent="Confirmer la suppression";return}
   b.disabled=true;try{const r=await fetch(`${API}?id=${encodeURIComponent(id)}`,{method:"DELETE",headers:{"x-admin-key":ADM.key}});if(!r.ok)throw 0;LIVE=LIVE.filter(x=>x.id!==id);renderRv();renderReviews();admMsg("Avis supprimé.")}catch(x){b.disabled=false;b.textContent="Erreur, réessayer"}});
+
+/* Newsletter */
+$('nform').addEventListener('submit',async e=>{e.preventDefault();const m=$('n-msg'),btn=$('n-send');
+  const fail=t=>{m.textContent=t;m.className='n-msg err';m.hidden=false};
+  const email=$('n-email').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){$('n-email').focus();return fail("Vérifiez votre adresse e-mail.")}
+  if(!$('n-ok').checked)return fail("Cochez la case pour accepter de recevoir les nouveautés.");
+  btn.disabled=true;btn.textContent="Inscription…";
+  try{const r=await fetch('/api/contacts',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email,name:$('n-name').value.trim(),consent:true,site:$('n-site').value})});
+    const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||"");
+    $('nform').reset();m.textContent=d.already?"Vous êtes déjà inscrit(e). Merci !":"C'est noté ! Vous serez parmi les premiers informés.";m.className='n-msg ok';m.hidden=false}
+  catch(err){fail(err.message||"L'inscription n'a pas pu être enregistrée. Réessayez dans un instant.")}
+  finally{btn.disabled=false;btn.textContent="Je m'inscris"}});
+/* Abonnés (gestion) */
+let SUBS=[];
+async function loadSubs(){try{const d=await adm('GET','/api/contacts');SUBS=d.contacts||[]}catch(e){admMsg(e.message)}renderSubs()}
+function renderSubs(){$('sub-count').textContent=`${SUBS.length} abonné${SUBS.length>1?'s':''} à la newsletter`;
+  $('sub-list').innerHTML=SUBS.length?SUBS.map(c=>`<div class="rv-row" data-e="${esc(c.email)}"><p><b>${esc(c.name||'Sans prénom')}</b> · ${esc(c.email)}</p><p class="hint">Inscrit le ${new Date(c.createdAt).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'})}</p><button type="button">Retirer</button></div>`).join(''):'<p class="empty">Personne pour l\'instant.</p>'}
+$('sub-copy').addEventListener('click',()=>{const t=SUBS.map(c=>c.email).join(', ');const ta=$('sub-all');
+  const ok=()=>admMsg(`${SUBS.length} adresse${SUBS.length>1?'s':''} copiée${SUBS.length>1?'s':''}. Collez-les dans le champ « Cci » de votre e-mail.`);
+  const ko=()=>{ta.hidden=false;ta.value=t;ta.select();admMsg("Copiez les adresses sélectionnées.")};
+  try{navigator.clipboard.writeText(t).then(ok,ko)}catch(x){ko()}});
+$('sub-csv').addEventListener('click',()=>{const rows=[["Prénom","E-mail","Inscription"],...SUBS.map(c=>[c.name||"",c.email,new Date(c.createdAt).toISOString().slice(0,10)])];
+  const csv="﻿"+rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(";")).join("\n");
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download="abonnes-inspired-cake.csv";document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)});
+$('sub-list').addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;const em=b.closest('.rv-row').dataset.e;
+  if(b.dataset.armed!=="1"){b.dataset.armed="1";b.textContent="Confirmer";return}
+  b.disabled=true;try{await adm('DELETE',`/api/contacts?email=${encodeURIComponent(em)}`);SUBS=SUBS.filter(c=>c.email!==em);renderSubs();admMsg("Abonné retiré.")}catch(x){b.disabled=false;b.textContent="Erreur, réessayer"}});
 
 addEventListener('hashchange',route);route();
 </script>

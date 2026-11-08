@@ -18,11 +18,13 @@ Ouvrir le site avec `#gestion` à la fin de l'adresse et taper la clé `ADMIN_KE
 - Chaque demande envoyée sur WhatsApp depuis le formulaire est aussi enregistrée comme « Demande » dans le calendrier.
 - Confirmer, refuser, marquer terminée, ou ajouter une commande à la main (Instagram, téléphone…).
 - Onglet Avis : supprimer un avis laissé depuis le site.
+- Onglet Abonnés : les inscrits à la newsletter (copier les adresses pour un envoi en Cci, ou télécharger en CSV).
 
 Fonctions Netlify (stockage Netlify Blobs) :
 - `netlify/functions/orders.mjs` : `/api/orders`
 - `netlify/functions/photo.mjs` : `/api/photo` (photos d'inspiration des clients)
 - `netlify/functions/reviews.mjs` : `/api/reviews`
+- `netlify/functions/contacts.mjs` : `/api/contacts` (inscriptions newsletter, avec consentement)
 
 ## Commandes
 Le bouton WhatsApp ouvre directement la conversation, message déjà rempli (le numéro n'est pas affiché sur la page).
