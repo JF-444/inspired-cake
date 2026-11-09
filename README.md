@@ -36,5 +36,6 @@ Page `#noel` : bûche, Cake de l'Avent, cupcakes de Noël. Remise fixée au 24 d
 (constante `NOEL` dans `index.html`). Après le 24 décembre, les liens de Noël disparaissent tout seuls.
 
 ## Frais de livraison automatiques
-L'adresse est recherchée avec le service public de géocodage (data.geopf.fr / IGN). La distance depuis Chanteloup-les-Vignes
-(depuis le 1 rue d’Andrésy, géolocalisé au premier calcul) est estimée (vol d’oiseau × 1,3) puis convertie en zone : 5 / 10 / 15 km, au-delà point de rendez-vous.
+L'adresse du client est recherchée avec le service public de géocodage (data.geopf.fr / IGN). La distance est calculée
+par la fonction `netlify/functions/distance.mjs` (vol d'oiseau × 1,3) puis convertie en zone : 5 / 10 / 15 km, au-delà point de rendez-vous.
+Le point de départ est lu dans la variable d'environnement Netlify `ADRESSE_DEPART` : il n'apparaît jamais dans le site.
