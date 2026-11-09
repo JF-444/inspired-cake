@@ -118,13 +118,15 @@ nav.top .btn{justify-self:end;padding:10px 18px;font-size:.92rem}
 .dhead{display:flex;align-items:center;justify-content:space-between}
 .dclose{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:none;font-size:1.1rem;color:var(--choco);cursor:pointer}
 .dnav{display:grid;gap:2px}
-.dnav a{display:grid;gap:1px;padding:11px 14px;border-radius:16px;text-decoration:none;transition:background .2s}
-.dnav a b{font-family:var(--display);font-weight:500;font-size:1.4rem;line-height:1.15}
-.dnav a small{color:var(--cocoa);font-size:.86rem}
+.dnav a{display:grid;gap:0;padding:7px 12px;border-radius:14px;text-decoration:none;transition:background .2s}
+.dnav a b{font-family:var(--display);font-weight:500;font-size:1.15rem;line-height:1.2}
+.dnav a small{color:var(--cocoa);font-size:.78rem;line-height:1.3}
+.dnav a b .pill{font-size:.6rem;padding:2px 7px}
 .dnav a:hover{background:var(--blush)}
 .dnav a[aria-current="page"]{background:var(--petal)}
 .dnav a[aria-current="page"] b{color:var(--rasp)}
-.dfoot{margin-top:auto;display:grid;gap:12px}
+.dfoot{margin-top:auto;padding-top:20px;display:grid;gap:10px}
+.dfoot .btn{padding:12px 20px}
 .dfoot .soon-line{display:flex;gap:10px;align-items:center;font-size:.9rem;color:var(--cocoa)}
 .dfoot .contacts-mini{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.9rem}
 
@@ -135,9 +137,10 @@ main .view{animation:viewin .45s ease both}
 .page-head p{margin:0;color:var(--cocoa);max-width:56ch}
 
 /* Héros */
-.hero .wrap{display:grid;padding-block:56px 64px}
-@media (max-width:860px){.hero .wrap{padding-block:28px 48px}}
+.hero .wrap{display:grid;padding-block:36px 64px}
+@media (max-width:860px){.hero .wrap{padding-block:16px 48px}}
 .hero-copy{max-width:760px}
+.hero-logo{width:min(300px,72vw);height:auto;margin:-8px 0 -4px -6px}
 .hero{overflow:hidden}
 .hero-copy{display:grid;gap:22px;min-width:0}
 .hero h1{font-size:clamp(2.5rem,7vw,4.8rem);letter-spacing:-.015em}
@@ -219,6 +222,11 @@ main .view{animation:viewin .45s ease both}
 .tile .cap b{font-family:var(--display);font-weight:500;font-size:1.25rem;line-height:1.2}
 .tile .cap small{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
 .tile.hide{display:none}
+.chip .pill{font-size:.6rem;padding:2px 7px;margin-left:4px}
+.chip[aria-pressed="true"] .pill.soon{background:var(--gold)}
+.soon-box{background:var(--cream);border:1.5px dashed var(--gold);border-radius:26px;padding:clamp(24px,5vw,40px);display:grid;gap:12px;justify-items:center;text-align:center}
+.soon-box h3{font-size:clamp(1.6rem,4vw,2.2rem)}
+.soon-box p{margin:0;color:var(--cocoa);max-width:48ch}
 
 /* Histoire */
 .story{background:var(--choco);color:var(--blush);padding-block:64px 80px;position:relative;overflow:hidden}
@@ -242,12 +250,13 @@ main .view{animation:viewin .45s ease both}
 @media (max-width:860px){.story .phone{position:relative;top:auto}}
 .heart{width:.62em;height:.62em;fill:#f0a9bd;vertical-align:.08em;animation:beat 1.6s ease-in-out infinite}
 @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}45%{transform:scale(1.1)}}
-.story-text{display:grid;gap:16px;font-size:1.05rem;line-height:1.75}
-.story-text .first{font-family:var(--display);font-size:1.4rem;line-height:1.45;color:var(--blush)}
+.story-text{display:grid;gap:14px;font-size:1rem;line-height:1.7}
+.story-text .first{font-family:var(--display);font-size:1.25rem;line-height:1.45;color:var(--blush)}
 .story-text .born{font-family:var(--display);font-style:italic;font-size:1.5rem;color:#f0a9bd}
 .mission{margin:8px 0;padding:22px 24px;border-radius:22px;background:rgba(251,241,240,.07);border:1px solid rgba(180,138,76,.45);display:grid;gap:8px;font-family:var(--display);font-size:clamp(1.35rem,3vw,1.75rem);line-height:1.25;color:var(--blush)}
 .sign{display:grid;gap:6px}
-.sign em{font-family:var(--display);font-size:1.35rem;line-height:1.4;color:#f0a9bd}
+.sign{border-top:1px solid rgba(180,138,76,.45);padding-top:16px;margin-top:4px}
+.sign em{font-family:var(--display);font-size:1.25rem;line-height:1.45;color:#fffaf8}
 .sign span{font-family:var(--display);font-style:italic;color:var(--gold);font-size:1.2rem}
 
 /* Carte */
@@ -449,8 +458,24 @@ textarea{resize:vertical;min-height:84px}
 .igc-grid img{aspect-ratio:1;width:100%;height:100%;object-fit:cover}
 .igc .btn,.wac .btn{width:100%}
 .wac p{margin:0;color:var(--cocoa)}
+.btn-ig{background:linear-gradient(135deg,#f5a04b,#e1306c 55%,#b23aa3);color:#fff;box-shadow:0 10px 24px -12px rgba(225,48,108,.7)}
+.btn-ig:hover{transform:translateY(-2px)}
+.btn-ig .ic{width:24px;height:24px;background-color:transparent;background-size:100%}
+.mail-line{font-size:.92rem;text-align:center;overflow-wrap:anywhere}
+.mail-line a{color:var(--rasp);font-weight:600}
 .wac h3,.igc h3{font-size:1.35rem}
 footer.site{background:var(--choco);color:rgba(251,241,240,.8)}
+.faq{padding-block:8px 64px}
+.faq-list{display:grid;gap:10px;margin-top:24px;max-width:760px}
+.faq details{background:var(--cream);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;padding:16px 52px 16px 18px;font-weight:600;position:relative;line-height:1.35}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:var(--petal);color:var(--rasp);display:grid;place-items:center;font-size:1.2rem;line-height:1;transition:transform .25s}
+.faq details[open] summary::after{content:"–"}
+.faq details[open] summary{color:var(--rasp)}
+.faq details div{padding:0 18px 16px}
+.faq details p{margin:0;color:var(--cocoa)}
+.faq a{color:var(--rasp);font-weight:500}
 
 /* ── Noël ── */
 .pill.xmas{background:var(--berry);color:#fff}
@@ -725,11 +750,12 @@ footer.site small{display:block;margin-top:6px}
     <nav class="dnav" id="dnav">
       <a href="#accueil"><b>Accueil</b><small>Nouveautés et avis</small></a>
       <a href="#noel" class="xmas-only"><b>Douceurs de Noël <span class="pill xmas">Noël</span></b><small>Bûches, Cake de l'Avent, cupcakes de Noël</small></a>
-      <a href="#realisations"><b>Les réalisations</b><small>Layer cakes, cupcakes, anniversaires</small></a>
+      <a href="#realisations"><b>Les réalisations</b><small>Layer cakes, cupcakes, créations inspirées</small></a>
       <a href="#carte"><b>La carte</b><small>Tarifs et saveurs</small></a>
       <a href="#livraison"><b>Livraison</b><small>Retrait à Chanteloup-les-Vignes ou livraison</small></a>
       <a href="#histoire"><b>Mon histoire</b><small>D'une passion à vos cœurs</small></a>
       <a href="#commander"><b>Commander</b><small>Composez votre gâteau</small></a>
+      <a href="#faq"><b>Questions fréquentes</b><small>Commande, retrait, livraison, saveurs</small></a>
       <a href="#contact"><b>On reste en contact</b><small>Suivre les créations sur Instagram</small></a>
     </nav>
     <div class="dfoot">
@@ -747,6 +773,7 @@ footer.site small{display:block;margin-top:6px}
   <header class="hero">
     <div class="wrap">
       <div class="hero-copy">
+        <img class="hero-logo" src="img/logo.webp" alt="Inspired Cake, la pâtisserie autrement" width="474" height="312">
         <span class="eyebrow">Pâtisserie artisanale · Sur commande</span>
         <h1><span class="line"><span>Laissez-vous</span></span><span class="line"><span><em>inspirer.</em></span></span></h1>
         <div class="lede"><p class="lede-a">Des créations pâtissières faites maison, imaginées avec passion.</p><p>Layer cakes, cupcakes et douceurs gourmandes, alliant génoises moelleuses, crèmes délicates et décors personnalisés pour rendre chaque occasion unique.</p></div>
@@ -826,6 +853,12 @@ footer.site small{display:block;margin-top:6px}
     <div class="wrap">
       <div class="page-head"><span class="eyebrow">Réalisations</span><h2>Chaque gâteau a <em>son histoire</em></h2><p>Touchez une création pour la voir en grand. Les photos défilent toutes seules.</p></div>
       <div class="filterbar" id="filterbar"><div class="chips" id="chips" role="group" aria-label="Filtrer les réalisations"></div></div>
+      <div class="soon-box" id="soon-box" hidden>
+        <span class="pill soon">À venir</span>
+        <h3>Les créations <em>inspirées</em></h3>
+        <p>Des pièces imaginées sur mesure, du parfum au décor, pour vos moments uniques. Les premières arrivent très bientôt dans cette galerie.</p>
+        <span style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><a class="btn btn-main" href="#commander" id="soon-order">Demander une création Inspired</a><a class="btn btn-line" href="#contact">Être prévenu(e)</a></span>
+      </div>
       <div class="masonry" id="masonry"></div>
     </div>
   </section>
@@ -1045,6 +1078,28 @@ footer.site small{display:block;margin-top:6px}
   </section>
 </div>
 
+<!-- ═══ FAQ ═══ -->
+<div class="view" data-view="faq" hidden>
+  <section class="faq">
+    <div class="wrap">
+      <div class="page-head"><span class="eyebrow">Questions fréquentes</span><h2>Tout savoir <em>avant de commander</em></h2></div>
+      <div class="faq-list">
+        <details open><summary>Comment passer commande&nbsp;?</summary><div><p>Rendez-vous sur la page <a href="#commander">Commander</a> : choisissez votre gâteau, la saveur, la date, puis le retrait ou la livraison. En un clic, votre message s'ouvre déjà rédigé dans WhatsApp. Vous pouvez aussi l'envoyer par message Instagram.</p></div></details>
+        <details><summary>Ma commande est-elle confirmée dès l'envoi du message&nbsp;?</summary><div><p>Pas encore : votre message est une demande. La commande est confirmée lorsque Inspired Cake vous répond pour valider les détails et la date.</p></div></details>
+        <details><summary>Où récupérer ma commande&nbsp;?</summary><div><p>Le retrait se fait à domicile, à Chanteloup-les-Vignes (78570). L'adresse exacte vous est communiquée une fois la commande validée.</p></div></details>
+        <details><summary>Livrez-vous&nbsp;? Combien ça coûte&nbsp;?</summary><div><p>Oui, selon la distance : 5 € jusqu'à 5 km, 10 € de 5 à 10 km, 15 € de 10 à 15 km. Au-delà, un point de rendez-vous est convenu ensemble, sur devis. Les frais se calculent automatiquement quand vous saisissez votre adresse dans le formulaire. <a href="#livraison">Voir les zones</a>.</p></div></details>
+        <details><summary>Quels sont les tarifs&nbsp;?</summary><div><p>Layer cake à partir de 50 € (10 parts), cupcakes à partir de 2,50 € la pièce, Boîte découverte à 18 € (3 parfums). Le tarif peut évoluer selon la décoration choisie. <a href="#carte">Voir la carte complète</a>.</p></div></details>
+        <details><summary>Quelles saveurs proposez-vous&nbsp;?</summary><div><p>Pour les layer cakes : mangue – passion, fraise / fruits rouges, citron, Kinder, Oréo, spéculoos, chocolat, praliné, caramel, Nutella, caramel beurre salé… Pistache – framboise et red velvet sont à +5 €. Vous avez une autre idée&nbsp;? Choisissez « Autre » dans le formulaire et décrivez-la.</p></div></details>
+        <details><summary>Puis-je personnaliser mon gâteau&nbsp;?</summary><div><p>Oui. Indiquez le texte à écrire, les couleurs ou le thème dans « Vos envies ». Pour un layer cake, vous pouvez aussi choisir un modèle de la galerie ou ajouter une photo d'inspiration. Pour une pièce entièrement sur mesure, choisissez « Inspired ».</p></div></details>
+        <details><summary>J'ai une allergie ou une intolérance, que faire&nbsp;?</summary><div><p>Précisez-la dans « Vos envies » au moment de la commande, et n'hésitez pas à poser la question avant de commander.</p></div></details>
+        <details><summary>Jusqu'à quand réserver pour Noël&nbsp;?</summary><div><p>Les <a href="#noel">douceurs de Noël</a> (bûche, Cake de l'Avent, cupcakes de Noël) se réservent avant le 21 décembre, pour une remise le jeudi 24 décembre.</p></div></details>
+        <details><summary>Comment suivre les nouveautés&nbsp;?</summary><div><p>Suivez <a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">@inspiredcake</a> sur Instagram, ou <a href="#contact">inscrivez-vous aux nouveautés par e-mail</a>.</p></div></details>
+      </div>
+      <p class="hint" style="margin-top:20px">Vous ne trouvez pas votre réponse&nbsp;? Écrivez-nous sur <a href="https://wa.me/33641010123" target="_blank" rel="noopener">WhatsApp</a>, sur <a href="https://ig.me/m/inspiredcake" target="_blank" rel="noopener">Instagram</a> ou à <a href="mailto:inspiredcake7@gmail.com">inspiredcake7@gmail.com</a>.</p>
+    </div>
+  </section>
+</div>
+
 <!-- ═══ COMMANDER ═══ -->
 <div class="view" data-view="commander" hidden>
   <section class="order">
@@ -1229,6 +1284,8 @@ footer.site small{display:block;margin-top:6px}
           <h3>Une question&nbsp;?</h3>
           <p>Une idée de gâteau, une date à vérifier : écrivez-moi directement.</p>
           <a class="btn btn-wa" href="https://wa.me/33641010123" target="_blank" rel="noopener"><span class="ic wa" aria-hidden="true"></span>Écrire sur WhatsApp</a>
+          <a class="btn btn-ig" href="https://ig.me/m/inspiredcake" target="_blank" rel="noopener"><span class="ic ig" aria-hidden="true"></span>Écrire sur Instagram</a>
+          <p class="mail-line">Par e-mail : <a href="mailto:inspiredcake7@gmail.com">inspiredcake7@gmail.com</a></p>
         </div>
       </div>
     </div>
@@ -1238,7 +1295,7 @@ footer.site small{display:block;margin-top:6px}
 <footer class="site">
   <div class="wrap">
     <div><a class="logo" href="#accueil">Inspired <span>Cake</span></a><small>Plus qu'une pâtisserie, un message qui prend vie</small></div>
-    <div class="foot-links"><a href="https://wa.me/33641010123" target="_blank" rel="noopener">WhatsApp · Nous écrire</a><a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">Instagram · @inspiredcake</a><small>© 2026 Inspired Cake</small></div>
+    <div class="foot-links"><a href="https://wa.me/33641010123" target="_blank" rel="noopener">WhatsApp · Nous écrire</a><a href="mailto:inspiredcake7@gmail.com">inspiredcake7@gmail.com</a><a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">Instagram · @inspiredcake</a><small>© 2026 Inspired Cake</small></div>
   </div>
 </footer>
 
@@ -1298,19 +1355,19 @@ const ls={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k
 
 /* ── Données ── */
 const WORKS=[
- {imgs:["anniv-60-ans","anniv-60-ans-2"],t:"Les 60 ans aux saveurs tropicales",c:"Anniversaires",d:"Layer cake mangue – passion, décor doré et palmes.",f:"Mangue – passion"},
+ {imgs:["anniv-60-ans","anniv-60-ans-2"],t:"Les 60 ans aux saveurs tropicales",c:"Layer cakes",d:"Layer cake mangue – passion, décor doré et palmes.",f:"Mangue – passion"},
  {imgs:["pistache-framboise"],t:"Pistache – framboise",c:"Layer cakes",d:"Framboises fraîches, pistaches concassées et rosaces de crème.",f:"Pistache – framboise"},
- {imgs:["rose-papillons"],t:"Rose rouge et papillons dorés",c:"Anniversaires",d:"Une couronne de crème, une rose rouge et des papillons dorés.",f:""},
+ {imgs:["rose-papillons"],t:"Rose rouge et papillons dorés",c:"Layer cakes",d:"Une couronne de crème, une rose rouge et des papillons dorés.",f:""},
  {imgs:["chocolat-fruits-rouges","coeur-boite"],t:"Cœur chocolat – fruits rouges",c:"Layer cakes",d:"Décor vintage en crème chocolat, rubans et perles dorées.",f:"Fraise / fruits rouges"},
  {imgs:["box-decouverte","box-trio","box-inspired-hd"],t:"La Boîte découverte",c:"Cupcakes",d:"Nouveau : 3 parfums au choix pour 18 €. L'idéal pour tout goûter.",f:"",box:"decouverte"},
  {imgs:["degrade-chocolat","degrade-chocolat-2"],t:"Dégradé chocolat – vanille",c:"Layer cakes",d:"Un dégradé du blanc au chocolat, éventail doré et perles.",f:"Chocolat intense"},
  {imgs:["caramel-beurre-sale","caramel-main","caramel-coupe"],t:"Douceur caramel",c:"Layer cakes",d:"Du moelleux, du caramel et une pointe de fleur de sel. Génoise et crème légère à l'intérieur.",f:"Caramel beurre salé"},
- {imgs:["nuage-bleu"],t:"Un nuage dans un ciel bleu",c:"Anniversaires",d:"Pour les 2 ans d'un petit garçon, tout en douceur.",f:""},
- {imgs:["couronne-framboise"],t:"Couronne de framboises",c:"Anniversaires",d:"Rosaces vert tendre et cœur de framboises fraîches.",f:""},
+ {imgs:["nuage-bleu"],t:"Un nuage dans un ciel bleu",c:"Layer cakes",d:"Pour les 2 ans d'un petit garçon, tout en douceur.",f:""},
+ {imgs:["couronne-framboise"],t:"Couronne de framboises",c:"Layer cakes",d:"Rosaces vert tendre et cœur de framboises fraîches.",f:""},
  {imgs:["mangue-passion","mangue-table","mangue-boite"],t:"Dégradé mangue – passion",c:"Layer cakes",d:"La douceur de la mangue et le peps du fruit de la passion.",f:"Mangue – passion"},
- {imgs:["vert-dore"],t:"Vert d'eau et feuilles d'or",c:"Anniversaires",d:"Crème marbrée vert d'eau, feuilles de ginkgo et perles dorées.",f:""},
+ {imgs:["vert-dore"],t:"Vert d'eau et feuilles d'or",c:"Layer cakes",d:"Crème marbrée vert d'eau, feuilles de ginkgo et perles dorées.",f:""},
  {imgs:["fruits-rouges-coupe"],t:"Le cœur fruits rouges",c:"Layer cakes",d:"Génoise moelleuse et couches généreuses de fruits rouges.",f:"Fraise / fruits rouges"},
- {imgs:["douceur-rose"],t:"Douceur rose et perles",c:"Anniversaires",d:"Bordures roses, vermicelles et perles nacrées.",f:""},
+ {imgs:["douceur-rose"],t:"Douceur rose et perles",c:"Layer cakes",d:"Bordures roses, vermicelles et perles nacrées.",f:""},
  {imgs:["cupcakes-mangue","box-cupcakes-hd"],t:"Cupcakes mangue",c:"Cupcakes",d:"Topping mascarpone chantilly à la mangue, prêts à offrir.",f:"Mangue"},
  {imgs:["vert-printemps"],t:"Vert printemps",c:"Layer cakes",d:"Crème vert tendre et pétales jaunes peints à la main.",f:""},
  {imgs:["bueno-balcon","bueno-hd"],t:"Layer cake Bueno",c:"Layer cakes",d:"Drip chocolat, rosaces chocolat-noisette et Happy Birthday doré.",f:"Kinder"},
@@ -1341,7 +1398,7 @@ drawer.addEventListener('click',e=>{if(e.target.closest('a'))closeDrawer(false)}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&drawer.classList.contains('open'))closeDrawer(true)});
 
 /* ── Pages ── */
-const VIEWS=["accueil","noel","realisations","carte","livraison","histoire","commander","gestion"];
+const VIEWS=["accueil","noel","realisations","carte","livraison","histoire","faq","commander","gestion"];
 let current="";
 function route(){
   let h=decodeURIComponent(location.hash.slice(1)),anchor=null;
@@ -1366,8 +1423,8 @@ const ribbonFlavs=["Mangue – passion","Caramel beurre salé","Pistache – fra
 $('ribbon').innerHTML=[...ribbonFlavs,...ribbonFlavs].map(f=>`<span>${f}</span>`).join('');
 
 /* ── Galerie ── */
-const ALL="Toutes les créations";let cat=ALL;const cats=[ALL,"Layer cakes","Cupcakes","Anniversaires"];
-function chips(){$('chips').innerHTML=cats.map(c=>`<button type="button" class="chip" aria-pressed="${c===cat}" data-c="${c}">${c}</button>`).join('')}
+const ALL="Toutes les créations",SOON="Créations inspirées";let cat=ALL;const cats=[ALL,"Layer cakes","Cupcakes",SOON];
+function chips(){$('chips').innerHTML=cats.map(c=>`<button type="button" class="chip" aria-pressed="${c===cat}" data-c="${c}">${c}${c===SOON?' <span class="pill soon">À venir</span>':''}</button>`).join('')}
 const many=w=>w.imgs.length>1;
 const slidesHTML=(w,lazy)=>w.imgs.map((n,k)=>`<img src="img/${n}.webp" alt="${esc(w.t)}${many(w)?` (photo ${k+1})`:''}" ${lazy?'loading="lazy"':''} draggable="false">`).join('');
 const dotsHTML=w=>many(w)?w.imgs.map((_,k)=>`<i${k?'':' class="on"'}></i>`).join(''):'';
@@ -1390,7 +1447,7 @@ document.querySelectorAll('.tile').forEach(bindSlides);
     tiles.forEach(t=>{if(!seen.has(t)||t._hover||Date.now()<t._pause||t.classList.contains('hide'))return;if((tick+t._phase)%3)return;
       const sl=t.querySelector('.slides'),n=sl.children.length,k=Math.round(sl.scrollLeft/sl.clientWidth);
       sl.scrollTo({left:((k+1)%n)*sl.clientWidth,behavior:'smooth'})})},1000)})();
-$('chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.c;chips();document.querySelectorAll('.tile').forEach(t=>t.classList.toggle('hide',cat!==ALL&&t.dataset.c!==cat));
+$('chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.c;chips();document.querySelectorAll('.tile').forEach(t=>t.classList.toggle('hide',cat!==ALL&&t.dataset.c!==cat));$('soon-box').hidden=cat!==SOON;
   const fb=$('filterbar');if(fb.classList.contains('stuck')){const y=$('masonry').getBoundingClientRect().top+scrollY-fb.offsetHeight-nav.offsetHeight-8;scrollTo({top:y,behavior:reduceMotion?'auto':'smooth'})}});
 chips();
 
@@ -1601,6 +1658,7 @@ $('send-wa').addEventListener('click',e=>{const c=compose(),err=$('send-err');
   if(c.txt!==lastSent){lastSent=c.txt;
     sendRecord({product:prod,label:c.label,date:c.date,name:c.name,mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:PHOTO.url||"",message:c.txt,site:""})}});
 $('send-ig').addEventListener('click',()=>copyForIg(compose().txt,$('msg'),$('done')));
+$('soon-order').addEventListener('click',()=>setProduct("inspired"));
 document.querySelectorAll('[data-preset="decouverte"]').forEach(a=>a.addEventListener('click',()=>{setProduct("cup");setCupSize(0)}));
 renderCupFlavs();setProduct("layer");
 
@@ -1794,7 +1852,7 @@ $('sub-list').addEventListener('click',async e=>{const b=e.target.closest('butto
   window.rvRestart=()=>{upd();schedule()};upd();schedule()})();
 
 /* Visites (gestion) */
-const VNAMES={accueil:"Accueil",noel:"Douceurs de Noël",realisations:"Réalisations",carte:"La carte",livraison:"Livraison",histoire:"Mon histoire",commander:"Commander"};
+const VNAMES={accueil:"Accueil",noel:"Douceurs de Noël",realisations:"Réalisations",carte:"La carte",livraison:"Livraison",histoire:"Mon histoire",faq:"Questions fréquentes",commander:"Commander"};
 async function loadVisits(){let days=[];try{const d=await adm('GET','/api/visit');days=d.days||[]}catch(e){admMsg(e.message)}
   const map=Object.fromEntries(days.map(d=>[d.date,d]));const list=[];for(let i=29;i>=0;i--){const d=new Date(today);d.setDate(d.getDate()-i);const k=ymd(d);list.push({k,d,n:(map[k]&&map[k].n)||0,pages:(map[k]&&map[k].pages)||{}})}
   const sum=a=>a.reduce((x,y)=>x+y.n,0);const t=list[29].n,w=sum(list.slice(-7)),m=sum(list);

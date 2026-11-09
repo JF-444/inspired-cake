@@ -3,7 +3,7 @@ import { getStore } from "@netlify/blobs";
 const json = (data, status = 200) =>
   new Response(JSON.stringify(data), { status, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } });
 const BOT = /bot|crawl|spider|slurp|preview|facebookexternalhit|whatsapp|telegram|discord|headless|lighthouse|pingdom|curl|wget/i;
-const VIEWS = ["accueil", "noel", "realisations", "carte", "livraison", "histoire", "commander"];
+const VIEWS = ["accueil", "noel", "realisations", "carte", "livraison", "histoire", "faq", "commander"];
 const parisDay = (d = new Date()) => new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Paris", year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
 const isAdmin = (req) => { const k = Netlify.env.get("ADMIN_KEY"); return !!k && req.headers.get("x-admin-key") === k; };
 
