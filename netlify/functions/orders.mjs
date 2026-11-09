@@ -34,7 +34,7 @@ export default async (req, context) => {
 
     const mode = b.mode === "livraison" ? "livraison" : "retrait";
     const order = {
-      id: newId(), date, time: "", name, contact: "WhatsApp",
+      id: newId(), date, time: "", name, contact: /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]{2,}$/.test(String(b.email || "")) ? line(b.email, 120) + " (via le site)" : "WhatsApp",
       product: line(b.label, 120) || "Demande",
       details: text(b.message, 2000),
       price: price(b.price), status: "demande", mode,

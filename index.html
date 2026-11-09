@@ -422,6 +422,10 @@ textarea{resize:vertical;min-height:84px}
 .estimate b{font-family:var(--display);font-size:2rem;font-weight:500;font-variant-numeric:tabular-nums;color:#f0a9bd}
 .msg{background:var(--blush);border:1px dashed var(--gold);border-radius:14px;padding:14px;font-size:.93rem;white-space:pre-wrap;overflow-wrap:anywhere}
 .done{color:var(--rasp);font-weight:600;margin:0;font-size:.95rem}
+.done.ok{background:#e7f4ec;color:#1f6b41;border-radius:14px;padding:12px 14px}
+.site-send{display:grid;gap:12px;background:var(--blush);border:1px solid var(--line);border-radius:18px;padding:16px}
+.or-line{display:flex;align-items:center;gap:12px;margin:0;color:var(--cocoa);font-size:.85rem}
+.or-line::before,.or-line::after{content:"";flex:1;height:1px;background:var(--line)}
 .hint{font-size:.85rem;color:var(--cocoa);margin:0}
 
 /* On reste en contact */
@@ -1068,10 +1072,16 @@ footer.site small{display:block;margin-top:6px}
         <label>Vos envies <textarea id="x-notes" maxlength="800" placeholder="Un message à écrire, une allergie…"></textarea></label>
         <div class="estimate"><div><small>Estimation</small><br><small id="x-est-note">Noël 2026</small></div><b id="x-est-val">20 €</b></div>
         <div><p class="hint" style="margin-bottom:6px">Votre message :</p><div class="msg" id="x-msg"></div></div>
-        <p class="err" id="x-err" role="alert" hidden></p>
+                <p class="err" id="x-err" role="alert" hidden></p>
+        <div class="site-send">
+          <label>Votre e-mail <span class="lbl-note">(pour recevoir la réponse)</span><input type="email" id="x-email" maxlength="120" autocomplete="email" inputmode="email" placeholder="vous@exemple.fr"></label>
+          <button class="btn btn-main" type="button" id="x-site">Envoyer ma demande</button>
+          <p class="hint">Votre demande arrive directement chez Inspired Cake. Votre adresse sert uniquement à vous répondre.</p>
+        </div>
+        <p class="done" id="x-done" role="status" hidden></p>
+        <p class="or-line"><span>ou</span></p>
         <a class="btn btn-wa" id="x-wa" href="https://wa.me/33641010123" target="_blank" rel="noopener"><span class="ic wa" aria-hidden="true"></span>Réserver sur WhatsApp</a>
         <a class="btn btn-line" id="x-ig" href="https://ig.me/m/inspiredcake" target="_blank" rel="noopener">Ou par message Instagram</a>
-        <p class="done" id="x-done" hidden></p>
         <p class="hint">Pensez à réserver vos douceurs avant le 21 décembre.</p>
       </form>
     </div>
@@ -1084,7 +1094,7 @@ footer.site small{display:block;margin-top:6px}
     <div class="wrap">
       <div class="page-head"><span class="eyebrow">Questions fréquentes</span><h2>Tout savoir <em>avant de commander</em></h2></div>
       <div class="faq-list">
-        <details open><summary>Comment passer commande&nbsp;?</summary><div><p>Rendez-vous sur la page <a href="#commander">Commander</a> : choisissez votre gâteau, la saveur, la date, puis le retrait ou la livraison. En un clic, votre message s'ouvre déjà rédigé dans WhatsApp. Vous pouvez aussi l'envoyer par message Instagram.</p></div></details>
+        <details open><summary>Comment passer commande&nbsp;?</summary><div><p>Rendez-vous sur la page <a href="#commander">Commander</a> : choisissez votre gâteau, la saveur, la date, puis le retrait ou la livraison. Envoyez ensuite votre demande directement depuis le site avec votre e-mail, ou ouvrez-la déjà rédigée dans WhatsApp ou Instagram.</p></div></details>
         <details><summary>Ma commande est-elle confirmée dès l'envoi du message&nbsp;?</summary><div><p>Pas encore : votre message est une demande. La commande est confirmée lorsque Inspired Cake vous répond pour valider les détails et la date.</p></div></details>
         <details><summary>Où récupérer ma commande&nbsp;?</summary><div><p>Le retrait se fait à domicile, à Chanteloup-les-Vignes (78570). L'adresse exacte vous est communiquée une fois la commande validée.</p></div></details>
         <details><summary>Livrez-vous&nbsp;? Combien ça coûte&nbsp;?</summary><div><p>Oui, selon la distance : 5 € jusqu'à 5 km, 10 € de 5 à 10 km, 15 € de 10 à 15 km. Au-delà, un point de rendez-vous est convenu ensemble, sur devis. Les frais se calculent automatiquement quand vous saisissez votre adresse dans le formulaire. <a href="#livraison">Voir les zones</a>.</p></div></details>
@@ -1109,8 +1119,8 @@ footer.site small{display:block;margin-top:6px}
         <h2>Votre gâteau, <em>en trois clics</em></h2>
         <ol>
           <li>Composez votre commande : produit, saveur, date, retrait ou livraison.</li>
-          <li>Cliquez sur « Envoyer sur WhatsApp » : votre message s'ouvre déjà écrit.</li>
-          <li>Appuyez sur Envoyer. Je vous réponds pour confirmer.</li>
+          <li>Envoyez votre demande depuis le site avec votre e-mail, ou sur WhatsApp : le message est déjà écrit.</li>
+          <li>Je vous réponds pour confirmer.</li>
         </ol>
         <div class="contacts">
           <a class="handle-box" href="https://wa.me/33641010123" target="_blank" rel="noopener"><span class="ic wa" aria-hidden="true"></span><span><small>WhatsApp</small><b>Écrire sur WhatsApp</b></span></a>
@@ -1174,10 +1184,16 @@ footer.site small{display:block;margin-top:6px}
 
         <div class="estimate"><div><small>Estimation</small><br><small id="est-note">hors décoration particulière</small></div><b id="est-val">50 €</b></div>
         <div><p class="hint" style="margin-bottom:6px">Votre message :</p><div class="msg" id="msg"></div></div>
-        <p class="err" id="send-err" role="alert" hidden></p>
+                <p class="err" id="send-err" role="alert" hidden></p>
+        <div class="site-send">
+          <label>Votre e-mail <span class="lbl-note">(pour recevoir la réponse)</span><input type="email" id="m-email" maxlength="120" autocomplete="email" inputmode="email" placeholder="vous@exemple.fr"></label>
+          <button class="btn btn-main" type="button" id="m-site">Envoyer ma demande</button>
+          <p class="hint">Votre demande arrive directement chez Inspired Cake. Votre adresse sert uniquement à vous répondre.</p>
+        </div>
+        <p class="done" id="done" role="status" hidden></p>
+        <p class="or-line"><span>ou</span></p>
         <a class="btn btn-wa" id="send-wa" href="https://wa.me/33641010123" target="_blank" rel="noopener"><span class="ic wa" aria-hidden="true"></span>Envoyer sur WhatsApp</a>
         <a class="btn btn-line" id="send-ig" href="https://ig.me/m/inspiredcake" target="_blank" rel="noopener">Ou par message Instagram</a>
-        <p class="done" id="done" hidden></p>
         <p class="hint">Sur WhatsApp, le message est déjà rempli. Sur Instagram, il est copié : collez-le puis envoyez.</p>
       </form>
     </div>
@@ -1297,6 +1313,12 @@ footer.site small{display:block;margin-top:6px}
     <div class="foot-links"><a href="https://wa.me/33641010123" target="_blank" rel="noopener">WhatsApp · Nous écrire</a><a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">Instagram · @inspiredcake</a><small>© 2026 Inspired Cake</small></div>
   </div>
 </footer>
+
+<!-- Formulaire lu par Netlify pour envoyer les demandes par e-mail (jamais affiché) -->
+<form name="commande" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="commande">
+  <input name="bot-field"><input name="prenom"><input type="email" name="email"><input name="type"><input name="produit"><input name="date"><input name="remise"><input name="estimation"><input name="photo"><textarea name="message"></textarea>
+</form>
 
 <!-- Visionneuse -->
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
@@ -1570,6 +1592,23 @@ function Delivery(host,onChange){
       const fee=z[1],known=fee!=null;
       return{mode:"livraison",fee:known?fee:0,feeKnown:known,zoneLabel:z[0]+(st.km?` (≈ ${st.km} km)`:""),address:addr,
         line:known?`Livraison${addr?` : ${addr}`:''} (${st.km?`≈ ${st.km} km, `:''}${fee} €).`:`Livraison au-delà de 15 km${addr?` (${addr})`:''} : point de rendez-vous à convenir.`}}}}
+const EMAIL_RE=/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]{2,}$/;
+async function sendByMail(fields){
+  const body=new URLSearchParams({"form-name":"commande","bot-field":"",...fields}).toString();
+  const r=await fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body});
+  if(!r.ok)throw new Error("send")}
+function wireSiteSend(pref,getC,check,errEl,doneEl,record){
+  const btn=$(pref+"-site"),em=$(pref+"-email");let lastMail="";
+  btn.addEventListener('click',async()=>{const c=getC();const fail=(t,el)=>{errEl.textContent=t;errEl.hidden=false;doneEl.hidden=true;if(el)el.focus()};
+    const pb=check(c);if(pb)return fail(pb[0],pb[1]);
+    const email=em.value.trim();if(!EMAIL_RE.test(email))return fail("Indiquez une adresse e-mail valide pour recevoir la réponse.",em);
+    if(c.txt+email===lastMail){doneEl.textContent="Votre demande est déjà envoyée. Vous recevrez une réponse par e-mail.";doneEl.className="done ok";doneEl.hidden=false;return}
+    btn.disabled=true;btn.textContent="Envoi…";errEl.hidden=true;
+    try{await sendByMail({prenom:c.name,email,type:c.kind,produit:c.label,date:c.dateLabel,remise:c.D.mode==="livraison"?`Livraison · ${c.D.zoneLabel}${c.D.address?` · ${c.D.address}`:''}`:"Retrait à domicile",estimation:c.total!=null?euro(c.total):"sur devis",photo:c.photo||"",message:c.txt});
+      lastMail=c.txt+email;record(c,email);
+      doneEl.textContent=`Merci ${c.name} ! Votre demande est envoyée. Vous recevrez une réponse à ${email}.`;doneEl.className="done ok";doneEl.hidden=false}
+    catch(e){fail("L'envoi n'a pas fonctionné. Réessayez, ou envoyez votre demande sur WhatsApp ou Instagram.")}
+    finally{btn.disabled=false;btn.textContent="Envoyer ma demande"}})}
 function sendRecord(payload){try{fetch('/api/orders',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(()=>{})}catch(x){}}
 function copyForIg(txt,msgEl,doneEl){const ok=()=>{doneEl.textContent="Message copié. Collez-le dans la conversation Instagram.";doneEl.hidden=false};
   const ko=()=>{const r=document.createRange();r.selectNodeContents(msgEl);const s=getSelection();s.removeAllRanges();s.addRange(r);doneEl.textContent="Copiez le message sélectionné ci-dessus, puis collez-le dans Instagram.";doneEl.hidden=false};
@@ -1643,7 +1682,7 @@ function update(){const c=compose();$('msg').textContent=c.txt;$('send-wa').href
   else if(c.price==null)v="Sur devis";
   else if(!c.feeKnown){v=euro(c.price);note="+ livraison sur devis"}
   else{v=euro(c.total);if(c.D.mode==="livraison")note=`dont ${c.fee} € de livraison`}
-  $('est-val').textContent=v;$('est-note').textContent=note;$('done').hidden=true;$('send-err').hidden=true;
+  $('est-val').textContent=v;$('est-note').textContent=note;$('send-err').hidden=true;
   $('send-wa').classList.toggle('busy',PHOTO.state==="uploading")}
 ['l-size','l-flav','l-other','l-model','c-size','c-qty','i-parts','i-flav','i-other','date','name','notes'].forEach(id=>$(id).addEventListener('input',update));
 $('builder').addEventListener('submit',e=>e.preventDefault());
@@ -1657,6 +1696,10 @@ $('send-wa').addEventListener('click',e=>{const c=compose(),err=$('send-err');
   if(c.txt!==lastSent){lastSent=c.txt;
     sendRecord({product:prod,label:c.label,date:c.date,name:c.name,mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:PHOTO.url||"",message:c.txt,site:""})}});
 $('send-ig').addEventListener('click',()=>copyForIg(compose().txt,$('msg'),$('done')));
+wireSiteSend("m",()=>{const c=compose();return{...c,kind:"Commande",dateLabel:c.date?frDate(c.date):"",photo:PHOTO.url}},
+  c=>PHOTO.state==="uploading"?["Patientez quelques secondes, la photo s'envoie…"]:!c.date?["Choisissez la date souhaitée.",$('date')]:c.name.length<2?["Indiquez votre prénom.",$('name')]:null,
+  $('send-err'),$('done'),
+  (c,email)=>sendRecord({product:prod,label:c.label,date:c.date,name:c.name,email,mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:PHOTO.url||"",message:c.txt,site:""}));
 $('soon-order').addEventListener('click',()=>setProduct("inspired"));
 document.querySelectorAll('[data-preset="decouverte"]').forEach(a=>a.addEventListener('click',()=>{setProduct("cup");setCupSize(0)}));
 renderCupFlavs();setProduct("layer");
@@ -1698,7 +1741,7 @@ function xCompose(){const name=$('x-name').value.trim(),notes=$('x-notes').value
 function xUpdate(){const c=xCompose();$('x-msg').textContent=c.txt;$('x-wa').href=`https://wa.me/${WA}?text=${encodeURIComponent(c.txt)}`;
   $('x-est-val').textContent=euro(c.total!=null?c.total:c.price);
   $('x-est-note').textContent=c.D.mode==="livraison"?(c.D.feeKnown?`dont ${c.D.fee} € de livraison`:"+ livraison sur devis"):"Retrait le 24 décembre";
-  $('x-err').hidden=true;$('x-done').hidden=true;$('x-wa').classList.toggle('busy',xClosed)}
+  $('x-err').hidden=true;$('x-wa').classList.toggle('busy',xClosed)}
 $('x-seg').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setX(b.dataset.x)});
 ['x-size','x-flav','x-lot','x-name','x-notes'].forEach(id=>$(id).addEventListener('input',()=>{if(id==='x-lot')xRenderCup();xUpdate()}));
 $('x-cup-flavs').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b||b.disabled)return;const f=b.dataset.f;xSel=xSel.includes(f)?xSel.filter(x=>x!==f):[...xSel,f];xRenderCup();xUpdate()});
@@ -1712,6 +1755,10 @@ $('x-wa').addEventListener('click',e=>{const c=xCompose(),err=$('x-err');const s
   $('x-wa').href=`https://wa.me/${WA}?text=${encodeURIComponent(c.txt)}`;
   if(c.txt!==xLast){xLast=c.txt;sendRecord({product:"noel-"+xprod,label:c.label,date:NOEL.day,name:c.name,mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:"",message:c.txt,site:""})}});
 $('x-ig').addEventListener('click',()=>copyForIg(xCompose().txt,$('x-msg'),$('x-done')));
+wireSiteSend("x",()=>({...xCompose(),kind:"Noël",dateLabel:NOEL.dayLabel,photo:""}),
+  c=>xClosed?["Les réservations de Noël sont closes."]:(xprod==="cup"&&!xSel.length)?["Choisissez au moins un parfum."]:c.name.length<2?["Indiquez votre prénom.",$('x-name')]:null,
+  $('x-err'),$('x-done'),
+  (c,email)=>sendRecord({product:"noel-"+xprod,label:c.label,date:NOEL.day,name:c.name,email,mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:"",message:c.txt,site:""}));
 xRenderCup();setX("buche");
 
 /* ── Visites : compteur simple, sans cookie ── */
