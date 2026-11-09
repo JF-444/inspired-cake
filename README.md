@@ -37,4 +37,4 @@ Page `#noel` : bûche, Cake de l'Avent, cupcakes de Noël. Remise fixée au 24 d
 
 ## Frais de livraison automatiques
 L'adresse est recherchée avec le service public de géocodage (data.geopf.fr / IGN). La distance depuis Chanteloup-les-Vignes
-est estimée (vol d'oiseau × 1,3) puis convertie en zone : 5 / 10 / 15 km, au-delà point de rendez-vous.
+(depuis le 1 rue d’Andrésy, géolocalisé au premier calcul) est estimée (vol d’oiseau × 1,3) puis convertie en zone : 5 / 10 / 15 km, au-delà point de rendez-vous.
