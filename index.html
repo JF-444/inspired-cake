@@ -8,7 +8,7 @@
 <meta property="og:site_name" content="Inspired Cake">
 <meta property="og:url" content="https://inspired-cake.netlify.app/">
 <meta property="og:title" content="Inspired Cake · Pâtisserie artisanale">
-<meta property="og:description" content="Layer cakes, cupcakes et gourmandises faits maison. Plus qu'une pâtisserie, un message qui prend vie.">
+<meta property="og:description" content="Des créations pâtissières faites maison, imaginées avec passion. Plus qu'une pâtisserie, un message qui prend vie.">
 <meta property="og:image" content="https://inspired-cake.netlify.app/og-image.jpg">
 <meta property="og:image:secure_url" content="https://inspired-cake.netlify.app/og-image.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -142,7 +142,9 @@ main .view{animation:viewin .45s ease both}
 .hero h1 .line>span{display:inline-block;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
 .hero h1 .line:nth-child(2)>span{animation-delay:.12s}
 @keyframes rise{from{transform:translateY(105%)}to{transform:none}}
-.hero p.lede{font-size:1.15rem;color:var(--cocoa);max-width:44ch;margin:0}
+.hero .lede{display:grid;gap:10px;max-width:48ch}
+.hero .lede p{margin:0;font-size:1.08rem;color:var(--cocoa)}
+.hero .lede .lede-a{font-size:1.2rem;color:var(--choco);font-weight:500}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
 .prices{display:flex;flex-wrap:wrap;gap:24px 28px;padding-top:8px;border-top:1px solid var(--line);margin-top:6px}
 .prices div{display:grid}
@@ -669,7 +671,7 @@ footer.site small{display:block;margin-top:6px}
       <div class="hero-copy">
         <span class="eyebrow">Pâtisserie artisanale · Sur commande</span>
         <h1><span class="line"><span>Laissez-vous</span></span><span class="line"><span><em>inspirer.</em></span></span></h1>
-        <p class="lede">Layer cakes, cupcakes et gourmandises faits maison. Génoise moelleuse, crèmes légères et décors pensés pour vous.</p>
+        <div class="lede"><p class="lede-a">Des créations pâtissières faites maison, imaginées avec passion.</p><p>Layer cakes, cupcakes et douceurs gourmandes, alliant génoises moelleuses, crèmes délicates et décors personnalisés pour rendre chaque occasion unique.</p></div>
         <div class="ctas">
           <a class="btn btn-main" href="#commander">Commander mon gâteau</a>
           <a class="btn btn-line" href="#realisations">Voir les réalisations</a>
