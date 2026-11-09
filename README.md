@@ -18,13 +18,23 @@ Ouvrir le site avec `#gestion` à la fin de l'adresse et taper la clé `ADMIN_KE
 - Chaque demande envoyée sur WhatsApp depuis le formulaire est aussi enregistrée comme « Demande » dans le calendrier.
 - Confirmer, refuser, marquer terminée, ou ajouter une commande à la main (Instagram, téléphone…).
 - Onglet Avis : supprimer un avis laissé depuis le site.
+- Onglet Visites : visites par jour (30 derniers jours) et pages les plus vues, sans cookie.
 - Onglet Abonnés : les inscrits à la newsletter (copier les adresses pour un envoi en Cci, ou télécharger en CSV).
 
 Fonctions Netlify (stockage Netlify Blobs) :
 - `netlify/functions/orders.mjs` : `/api/orders`
 - `netlify/functions/photo.mjs` : `/api/photo` (photos d'inspiration des clients)
 - `netlify/functions/reviews.mjs` : `/api/reviews`
+- `netlify/functions/visit.mjs` : `/api/visit` (compteur de visites par jour)
 - `netlify/functions/contacts.mjs` : `/api/contacts` (inscriptions newsletter, avec consentement)
 
 ## Commandes
 Le bouton WhatsApp ouvre directement la conversation, message déjà rempli (le numéro n'est pas affiché sur la page).
+
+## Noël
+Page `#noel` : bûche, Cake de l'Avent, cupcakes de Noël. Remise fixée au 24 décembre, réservations jusqu'au 21 décembre
+(constante `NOEL` dans `index.html`). Après le 24 décembre, les liens de Noël disparaissent tout seuls.
+
+## Frais de livraison automatiques
+L'adresse est recherchée avec le service public de géocodage (data.geopf.fr / IGN). La distance depuis Chanteloup-les-Vignes
+est estimée (vol d'oiseau × 1,3) puis convertie en zone : 5 / 10 / 15 km, au-delà point de rendez-vous.

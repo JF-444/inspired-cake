@@ -39,6 +39,9 @@
   --gold:#b48a4c;       /* or des décors */
   --line:#ecd5d3;
   --ok:#3f8a5c;         /* statut terminé */
+  --pine:#1d3a2a;       /* sapin (Noël) */
+  --pine-2:#142a1e;
+  --berry:#a3202f;      /* baie (Noël) */
   --display:"Playfair Display", "Didot", Georgia, serif;
   --body:"Jost", "Avenir Next", system-ui, sans-serif;
   color-scheme:light;
@@ -375,8 +378,18 @@ form.builder{background:var(--cream);border:1px solid var(--line);border-radius:
 .seg.duo{grid-template-columns:1fr 1fr}
 .seg button{border:0;background:transparent;border-radius:999px;padding:10px 6px;font:500 .92rem var(--body);color:var(--choco);cursor:pointer;min-height:42px}
 .seg button[aria-pressed="true"]{background:var(--choco);color:var(--blush)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media (max-width:480px){.two{grid-template-columns:1fr}.seg button{font-size:.84rem}}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:480px){.two{grid-template-columns:minmax(0,1fr)}.seg button{font-size:.84rem}}
+input[type=date]{-webkit-appearance:none;appearance:none;display:block;min-height:47px;line-height:1.3}
+input[type=date]::-webkit-date-and-time-value{text-align:left}
+.ac{position:relative;display:block}
+.ac-list{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:15;margin:0;padding:6px;list-style:none;background:var(--cream);border:1.5px solid var(--line);border-radius:14px;box-shadow:0 18px 30px -18px rgba(74,42,34,.5);max-height:260px;overflow:auto}
+.ac-list li{padding:9px 10px;border-radius:10px;cursor:pointer;font-weight:400;font-size:.95rem;line-height:1.3}
+.ac-list li small{display:block;color:var(--cocoa);font-size:.8rem}
+.ac-list li[aria-selected="true"],.ac-list li:hover{background:var(--petal)}
+.dl-res{margin:0;font-size:.92rem;color:var(--cocoa)}
+.dl-res b{color:var(--rasp);font-family:var(--display);font-size:1.15rem;font-weight:500}
+.dl{display:grid;gap:14px}
 label{display:grid;gap:6px;font-size:.85rem;font-weight:600;min-width:0}
 .lbl-note{font-weight:400;color:var(--cocoa)}
 input,select,textarea{font:400 1rem var(--body);color:var(--choco);background:var(--blush);border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;width:100%;min-width:0}
@@ -438,6 +451,70 @@ textarea{resize:vertical;min-height:84px}
 .wac p{margin:0;color:var(--cocoa)}
 .wac h3,.igc h3{font-size:1.35rem}
 footer.site{background:var(--choco);color:rgba(251,241,240,.8)}
+
+/* ── Noël ── */
+.pill.xmas{background:var(--berry);color:#fff}
+.xmas-cta{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;background:var(--pine);color:#f6ead2;border-radius:22px;padding:14px 18px;text-decoration:none;max-width:560px;position:relative;overflow:hidden;box-shadow:0 18px 34px -22px rgba(20,42,30,.9)}
+.xmas-cta::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 20%,rgba(230,190,110,.35) 0 6px,transparent 7px),radial-gradient(circle at 70% 80%,rgba(230,190,110,.25) 0 4px,transparent 5px),radial-gradient(circle at 96% 70%,rgba(255,255,255,.2) 0 3px,transparent 4px);pointer-events:none}
+.xmas-cta:hover{transform:translateY(-2px)}
+.xmas-cta{transition:transform .25s}
+.xmas-cta .xi{width:46px;height:46px;border-radius:50%;background:var(--berry);display:grid;place-items:center}
+.xmas-cta .xi svg{width:26px;height:26px}
+.xmas-cta b{font-family:var(--display);font-weight:500;font-size:1.3rem;display:block;color:#fff}
+.xmas-cta small{font-size:.86rem;color:#e6cf9c}
+.xmas-cta .go{font-size:1.4rem;color:#e6cf9c}
+.xhead{background:radial-gradient(120% 90% at 85% 0%,#2c5a40 0,var(--pine) 45%,var(--pine-2) 100%);color:#f6ead2;padding-block:44px 52px;position:relative;overflow:hidden}
+.xhead::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.9;background:
+ radial-gradient(circle at 8% 22%,rgba(240,200,120,.55) 0 5px,transparent 14px),radial-gradient(circle at 18% 70%,rgba(240,200,120,.35) 0 4px,transparent 12px),
+ radial-gradient(circle at 78% 30%,rgba(240,200,120,.45) 0 6px,transparent 16px),radial-gradient(circle at 92% 64%,rgba(255,255,255,.3) 0 3px,transparent 10px),
+ radial-gradient(circle at 60% 12%,rgba(240,200,120,.3) 0 3px,transparent 10px),radial-gradient(circle at 40% 88%,rgba(255,255,255,.18) 0 4px,transparent 12px)}
+.xhead .wrap{position:relative;display:grid;gap:14px}
+.xhead .eyebrow{color:#e6cf9c}
+.xhead h2{color:#fff;font-size:clamp(2.1rem,6vw,3.2rem)}
+.xhead h2 em{color:#e6c587}
+.xhead p{margin:0;max-width:52ch;color:rgba(246,234,210,.85);letter-spacing:.04em}
+.xinfo{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.xinfo span{border:1px solid rgba(230,197,135,.55);border-radius:999px;padding:7px 14px;font-size:.88rem;color:#f6ead2;background:rgba(0,0,0,.12)}
+.xinfo span b{color:#e6c587;font-weight:600}
+.xprod{padding-block:36px 8px}
+.xgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:20px}
+.xcard{background:var(--cream);border:1px solid var(--line);border-radius:26px;padding:16px 16px 20px;display:grid;gap:10px;justify-items:center;text-align:center;align-content:start}
+.xcard img{width:min(100%,240px);height:auto;filter:drop-shadow(0 14px 18px rgba(74,42,34,.25))}
+.xcard h3{font-size:1.5rem;color:var(--berry)}
+.xcard p{margin:0;color:var(--cocoa);font-size:.95rem;max-width:26ch}
+.xprice{display:grid;gap:2px;background:var(--blush);border-radius:14px;padding:10px 16px;width:100%;font-variant-numeric:tabular-nums}
+.xprice span{display:flex;justify-content:space-between;gap:10px}
+.xprice b{font-family:var(--display);font-weight:500;font-size:1.15rem}
+.xcard .btn{width:100%;margin-top:4px}
+.xflav{padding-block:28px 8px}
+.xflav-box{background:var(--cream);border:1px solid var(--line);border-radius:26px;padding:20px;display:grid;gap:14px}
+.xflav-box h3{font-size:1.5rem;text-align:center;color:var(--berry)}
+.xflav-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;text-align:center}
+@media (max-width:560px){.xflav-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.xflav-row figure{margin:0;display:grid;gap:6px;justify-items:center;font-size:.86rem;font-weight:600;line-height:1.25}
+.xflav-row img{width:72px;height:72px;object-fit:contain}
+.xflav-row small{display:block;color:var(--gold);font-weight:600}
+.xnote{margin:0;text-align:center;font-size:.88rem;color:var(--cocoa)}
+.xorder{padding-block:28px 64px}
+.xorder .builder{max-width:720px;margin:0 auto}
+.xday{display:flex;align-items:center;gap:12px;background:var(--pine);color:#f6ead2;border-radius:16px;padding:12px 16px}
+.xday b{font-family:var(--display);font-weight:500;font-size:1.25rem;color:#fff}
+.xday small{display:block;color:#e6cf9c;font-size:.82rem}
+.xday svg{width:30px;height:30px;flex:none}
+.xclosed{background:var(--berry);color:#fff;border-radius:14px;padding:12px 16px;margin:0;font-weight:500}
+.xorder .seg button[aria-pressed="true"]{background:var(--pine)}
+
+/* Visites (gestion) */
+.vchart{display:grid;grid-template-columns:repeat(30,minmax(0,1fr));align-items:end;gap:3px;height:180px;padding:8px 0 0;border-bottom:1px solid var(--line)}
+.vchart i{display:block;background:var(--rasp);border-radius:4px 4px 0 0;min-height:2px;position:relative}
+.vchart i.today{background:var(--gold)}
+.vaxis{display:grid;grid-template-columns:repeat(30,minmax(0,1fr));gap:3px;font-size:.68rem;color:var(--cocoa);margin-top:4px;font-variant-numeric:tabular-nums}
+.vaxis span{text-align:center;white-space:nowrap}
+.vpages{display:grid;gap:6px}
+.vpages div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;font-size:.92rem}
+.vpages div span{position:relative;z-index:0}
+.vpages div span::before{content:"";position:absolute;left:0;top:2px;bottom:2px;width:var(--w);background:var(--petal);border-radius:6px;z-index:-1}
+.vpages b{font-variant-numeric:tabular-nums}
 footer.site .wrap{padding-block:44px calc(32px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:end}
 footer.site .logo{color:var(--blush);font-size:2rem}
 .foot-links{display:grid;gap:4px}
@@ -460,7 +537,7 @@ footer.site small{display:block;margin-top:6px}
 .lb-nav{display:flex;gap:8px}
 .lb-nav button{flex:1;border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:9px;cursor:pointer;font:500 .9rem var(--body);color:var(--choco)}
 
-/* ── Espace gestion ── */
+/* ── Espace gestion : styles ── */
 .adm{padding-block:28px 72px}
 .login{max-width:440px;margin:32px auto 0;background:var(--cream);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,5vw,36px);display:grid;gap:14px}
 .login h2{font-size:1.9rem}
@@ -647,6 +724,7 @@ footer.site small{display:block;margin-top:6px}
     <div class="dhead"><a class="logo" href="#accueil">Inspired <span>Cake</span></a><button class="dclose" id="dclose" type="button" aria-label="Fermer le menu">✕</button></div>
     <nav class="dnav" id="dnav">
       <a href="#accueil"><b>Accueil</b><small>Nouveautés et avis</small></a>
+      <a href="#noel" class="xmas-only"><b>Douceurs de Noël <span class="pill xmas">Noël</span></b><small>Bûches, Cake de l'Avent, cupcakes de Noël</small></a>
       <a href="#realisations"><b>Les réalisations</b><small>Layer cakes, cupcakes, anniversaires</small></a>
       <a href="#carte"><b>La carte</b><small>Tarifs et saveurs</small></a>
       <a href="#livraison"><b>Livraison</b><small>Retrait à Chanteloup-les-Vignes ou livraison</small></a>
@@ -655,7 +733,7 @@ footer.site small{display:block;margin-top:6px}
       <a href="#contact"><b>On reste en contact</b><small>Suivre les créations sur Instagram</small></a>
     </nav>
     <div class="dfoot">
-      <div class="soon-line"><span class="pill soon">À venir</span>Le calendrier de l'Avent pour Noël</div>
+      <a class="soon-line xmas-only" href="#noel" style="text-decoration:none"><span class="pill xmas">Noël</span>Réservez avant le 21 décembre</a>
       <a class="btn btn-main" href="#commander">Commander mon gâteau</a>
       <div class="contacts-mini"><a href="https://wa.me/33641010123" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">Instagram</a><a href="#avis">Laisser un avis</a><a href="#contact">Nous suivre</a></div>
     </div>
@@ -676,6 +754,11 @@ footer.site small{display:block;margin-top:6px}
           <a class="btn btn-main" href="#commander">Commander mon gâteau</a>
           <a class="btn btn-line" href="#realisations">Voir les réalisations</a>
         </div>
+        <a class="xmas-cta xmas-only" href="#noel">
+          <span class="xi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#e6c587"><path d="M12 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 15l-5.4 3 1.2-6-4.5-4.2 6.1-.7z"/></svg></span>
+          <span><b>Douceurs de Noël</b><small>Bûches, Cake de l'Avent, cupcakes · à réserver avant le 21 décembre</small></span>
+          <span class="go" aria-hidden="true">→</span>
+        </a>
         <div class="prices">
           <div><small class="from">À partir de</small><b>50 €</b><small>Layer cake 10 parts</small></div>
           <div><small class="from">À partir de</small><b>2,50 €</b><small>Le cupcake, la pièce</small></div>
@@ -692,9 +775,9 @@ footer.site small{display:block;margin-top:6px}
         <img src="img/box-decouverte.webp" alt="">
         <div><span><span class="pill new">Nouveau</span></span><h3>La Boîte découverte</h3><p>3 parfums au choix pour 18 €. Idéal pour tout goûter.</p><span class="go">Commander →</span></div>
       </a>
-      <a class="ann reveal" href="#contact">
-        <span class="art" aria-hidden="true"><svg viewBox="0 0 80 80"><rect x="6" y="14" width="68" height="60" rx="8" fill="#fffaf8"/><path d="M40 14v60M6 44h68" stroke="#b48a4c" stroke-width="5"/><path d="M40 14c-8-12-20-8-14 0M40 14c8-12 20-8 14 0" fill="none" stroke="#bd3f66" stroke-width="4" stroke-linecap="round"/><g font-family="Georgia,serif" font-size="13" fill="#4a2a22" text-anchor="middle"><text x="23" y="34">1</text><text x="57" y="34">12</text><text x="23" y="64">18</text></g><text x="57" y="65" font-family="Georgia,serif" font-size="15" fill="#bd3f66" text-anchor="middle" font-weight="bold">24</text></svg></span>
-        <div><span><span class="pill soon">À venir</span></span><h3>Le calendrier de l'Avent</h3><p>Pour patienter gourmandement jusqu'à Noël. Bientôt disponible.</p><span class="go">Être prévenu(e) en premier →</span></div>
+      <a class="ann reveal xmas-only" href="#noel">
+        <img src="img/noel-buche.webp" alt="" style="object-fit:contain;background:var(--pine)">
+        <div><span><span class="pill xmas">Noël</span></span><h3>Les douceurs de Noël</h3><p>Bûche, Cake de l'Avent et cupcakes de Noël. Remise le 24 décembre.</p><span class="go">Réserver →</span></div>
       </a>
     </div>
   </section>
@@ -782,13 +865,13 @@ footer.site small{display:block;margin-top:6px}
           <div class="flav"><h4>Les saveurs</h4><div class="tags"><span>Vanille</span><span>Chocolat</span><span>Citron</span><span>Nutella</span><span>Spéculoos</span><span>Caramel beurre salé</span><span>Mangue</span><span>Fruits rouges</span></div></div>
           <p class="fine">Topping mascarpone chantilly uniquement.</p>
         </article>
-        <article class="soon-card" id="avent">
-          <span class="art" aria-hidden="true"><svg viewBox="0 0 80 80"><rect x="6" y="14" width="68" height="60" rx="8" fill="#fffaf8"/><path d="M40 14v60M6 44h68" stroke="#b48a4c" stroke-width="5"/><path d="M40 14c-8-12-20-8-14 0M40 14c8-12 20-8 14 0" fill="none" stroke="#bd3f66" stroke-width="4" stroke-linecap="round"/><g font-family="Georgia,serif" font-size="13" fill="#4a2a22" text-anchor="middle"><text x="23" y="34">1</text><text x="57" y="34">12</text><text x="23" y="64">18</text></g><text x="57" y="65" font-family="Georgia,serif" font-size="15" fill="#bd3f66" text-anchor="middle" font-weight="bold">24</text></svg></span>
+        <article class="soon-card xmas-only" id="avent">
+          <span class="art" aria-hidden="true" style="background:var(--pine)"><img src="img/noel-cake-avent.webp" alt="" style="width:86%;height:auto"></span>
           <div>
-            <span><span class="pill soon">À venir</span></span>
-            <h3>Le calendrier de l'Avent <em>pour Noël</em></h3>
-            <p>Une nouvelle création Inspired Cake pour patienter gourmandement jusqu'à Noël. Les détails et le tarif arrivent très bientôt.</p>
-            <a class="btn btn-main" id="avent-btn" href="https://wa.me/33641010123" target="_blank" rel="noopener">Être prévenu(e) sur WhatsApp</a>
+            <span><span class="pill xmas">Noël 2026</span></span>
+            <h3>Les douceurs <em>de Noël</em></h3>
+            <p>Bûche de Noël, Cake de l'Avent et cupcakes de Noël, à réserver avant le 21 décembre pour une remise le 24.</p>
+            <a class="btn btn-main" href="#noel">Voir les douceurs de Noël</a>
           </div>
         </article>
       </div>
@@ -873,6 +956,95 @@ footer.site small{display:block;margin-top:6px}
   </section>
 </div>
 
+<!-- ═══ NOËL ═══ -->
+<div class="view" data-view="noel" hidden>
+  <section class="xhead">
+    <div class="wrap">
+      <span class="eyebrow">Noël 2026</span>
+      <h2>Nos gâteaux <em>pour Noël</em></h2>
+      <p>Des saveurs gourmandes pour des fêtes magiques.</p>
+      <div class="xinfo"><span>Réservation avant le <b>21 décembre</b></span><span>Remise le <b>jeudi 24 décembre</b></span></div>
+    </div>
+  </section>
+  <section class="xprod">
+    <div class="wrap xgrid">
+      <article class="xcard">
+        <img src="img/noel-buche.webp" alt="Bûche de Noël au chocolat" loading="lazy">
+        <h3>Bûche de Noël</h3>
+        <p>Parce que Noël est encore plus beau lorsqu'il se partage.</p>
+        <div class="xprice"><span>4-5 parts <b>20 €</b></span><span>8-9 parts <b>38 €</b></span></div>
+        <a class="btn btn-main" href="#noel" data-x="buche">Réserver une bûche</a>
+      </article>
+      <article class="xcard">
+        <img src="img/noel-cake-avent.webp" alt="Cake de l'Avent en forme de cadeau" loading="lazy">
+        <h3>Cake de l'Avent</h3>
+        <p>Une création unique, imaginée pour illuminer votre temps d'attente.</p>
+        <div class="xprice"><span>5 parts <b>30 €</b></span><span>10 parts <b>55 €</b></span></div>
+        <a class="btn btn-main" href="#noel" data-x="cake">Réserver un Cake de l'Avent</a>
+      </article>
+      <article class="xcard">
+        <img src="img/noel-cupcakes.webp" alt="Cupcakes de Noël" loading="lazy">
+        <h3>Cupcakes de Noël</h3>
+        <p>Parce que les petites attentions font de grandes joies.</p>
+        <div class="xprice"><span>La pièce <b>3 €</b></span><span>Par lot de 6 <b>2 saveurs</b></span></div>
+        <a class="btn btn-main" href="#noel" data-x="cup">Réserver des cupcakes</a>
+      </article>
+    </div>
+  </section>
+  <section class="xflav">
+    <div class="wrap">
+      <div class="xflav-box">
+        <h3>Parfums disponibles</h3>
+        <div class="xflav-row">
+          <figure><img src="img/p-chocolat.webp" alt="" loading="lazy">Chocolat</figure>
+          <figure><img src="img/p-caramel.webp" alt="" loading="lazy">Caramel beurre salé</figure>
+          <figure><img src="img/p-fruits-rouges.webp" alt="" loading="lazy">Fruits rouges</figure>
+          <figure><img src="img/p-mangue.webp" alt="" loading="lazy">Mangue passion<small>+3 €</small></figure>
+          <figure><img src="img/p-pistache.webp" alt="" loading="lazy">Pistache framboise<small>+5 €</small></figure>
+        </div>
+        <p class="xnote">Cupcakes de Noël : chocolat, caramel beurre salé, mangue ou fruits rouges.</p>
+      </div>
+    </div>
+  </section>
+  <section class="xorder" id="x-form-bloc">
+    <div class="wrap">
+      <form class="builder" id="xform" novalidate>
+        <div><span class="eyebrow">Réservation de Noël</span><h2 style="margin-top:6px">Réserver <em>ma douceur</em></h2></div>
+        <p class="xclosed" id="x-closed" hidden>Les réservations de Noël sont closes. Merci à toutes et à tous, et joyeuses fêtes !</p>
+        <div class="seg" role="group" aria-label="Douceur de Noël" id="x-seg">
+          <button type="button" data-x="buche" aria-pressed="true">Bûche</button>
+          <button type="button" data-x="cake" aria-pressed="false">Cake de l'Avent</button>
+          <button type="button" data-x="cup" aria-pressed="false">Cupcakes</button>
+        </div>
+        <div class="two" id="x-fs-gateau">
+          <label>Taille <select id="x-size"></select></label>
+          <label>Saveur <select id="x-flav"></select></label>
+        </div>
+        <div class="fs" id="x-fs-cup" hidden>
+          <label>Format <select id="x-lot"></select></label>
+          <div class="fs" style="gap:8px">
+            <span class="fs-title" style="margin:0">Parfums</span>
+            <p class="cup-hint" id="x-cup-hint"></p>
+            <div class="fchips" id="x-cup-flavs" role="group" aria-label="Parfums des cupcakes de Noël"></div>
+          </div>
+        </div>
+        <span class="fs-title">Remise</span>
+        <div class="xday"><svg viewBox="0 0 24 24" fill="none" stroke="#e6c587" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><text x="12" y="18.5" text-anchor="middle" font-size="7" fill="#e6c587" stroke="none" font-family="Georgia,serif">24</text></svg><span><b>Jeudi 24 décembre</b><small>Même date pour toutes les commandes de Noël</small></span></div>
+        <div class="dl" id="dl-noel"></div>
+        <label>Prénom <input type="text" id="x-name" autocomplete="given-name" placeholder="Votre prénom" maxlength="40"></label>
+        <label>Vos envies <textarea id="x-notes" maxlength="800" placeholder="Un message à écrire, une allergie…"></textarea></label>
+        <div class="estimate"><div><small>Estimation</small><br><small id="x-est-note">Noël 2026</small></div><b id="x-est-val">20 €</b></div>
+        <div><p class="hint" style="margin-bottom:6px">Votre message :</p><div class="msg" id="x-msg"></div></div>
+        <p class="err" id="x-err" role="alert" hidden></p>
+        <a class="btn btn-wa" id="x-wa" href="https://wa.me/33641010123" target="_blank" rel="noopener"><span class="ic wa" aria-hidden="true"></span>Réserver sur WhatsApp</a>
+        <a class="btn btn-line" id="x-ig" href="https://ig.me/m/inspiredcake" target="_blank" rel="noopener">Ou par message Instagram</a>
+        <p class="done" id="x-done" hidden></p>
+        <p class="hint">Pensez à réserver vos douceurs avant le 21 décembre.</p>
+      </form>
+    </div>
+  </section>
+</div>
+
 <!-- ═══ COMMANDER ═══ -->
 <div class="view" data-view="commander" hidden>
   <section class="order">
@@ -942,16 +1114,7 @@ footer.site small{display:block;margin-top:6px}
           <label>Date souhaitée <input type="date" id="date"></label>
           <label>Prénom <input type="text" id="name" autocomplete="given-name" placeholder="Votre prénom" maxlength="40"></label>
         </div>
-        <div class="seg duo" role="group" aria-label="Remise de la commande" id="mode">
-          <button type="button" data-m="retrait" aria-pressed="true">Retrait à domicile</button>
-          <button type="button" data-m="livraison" aria-pressed="false">Livraison</button>
-        </div>
-        <p class="hint" id="retrait-info">Retrait à Chanteloup-les-Vignes (78570). L'adresse exacte vous est communiquée une fois la commande validée.</p>
-        <div class="fs" id="fs-deliv" hidden>
-          <label>Zone de livraison <select id="zone"></select></label>
-          <label>Ville ou adresse de livraison <input type="text" id="addr" maxlength="160" autocomplete="street-address" placeholder="ex. Créteil, rue…"></label>
-          <p class="hint">Voir <a href="#livraison">les zones de livraison</a>.</p>
-        </div>
+        <div class="dl" id="dl-main"></div>
         <label>Vos envies <textarea id="notes" maxlength="800" placeholder="Texte à écrire, couleurs, thème, allergies…"></textarea></label>
 
         <div class="estimate"><div><small>Estimation</small><br><small id="est-note">hors décoration particulière</small></div><b id="est-val">50 €</b></div>
@@ -982,7 +1145,7 @@ footer.site small{display:block;margin-top:6px}
         <div class="adm-top">
           <div><span class="eyebrow">Espace Inspired Cake</span><h2>Mes <em>commandes</em></h2></div>
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-            <div class="tabs" role="tablist"><button type="button" role="tab" data-tab="cal" aria-selected="true">Calendrier</button><button type="button" role="tab" data-tab="avis" aria-selected="false">Avis</button><button type="button" role="tab" data-tab="abonnes" aria-selected="false">Abonnés</button></div>
+            <div class="tabs" role="tablist"><button type="button" role="tab" data-tab="cal" aria-selected="true">Calendrier</button><button type="button" role="tab" data-tab="avis" aria-selected="false">Avis</button><button type="button" role="tab" data-tab="abonnes" aria-selected="false">Abonnés</button><button type="button" role="tab" data-tab="visites" aria-selected="false">Visites</button></div>
             <button class="small-btn" type="button" id="adm-out">Se déconnecter</button>
           </div>
         </div>
@@ -1026,6 +1189,12 @@ footer.site small{display:block;margin-top:6px}
           <textarea id="sub-all" readonly hidden style="margin-bottom:12px"></textarea>
           <div class="olist" id="sub-list"></div>
         </div>
+        <div id="tab-visites" hidden>
+          <div class="stats" id="v-stats"></div>
+          <div class="box"><div class="box-h"><h3>Visites par jour</h3><span class="hint">30 derniers jours</span></div><div class="vchart" id="v-chart" role="img"></div><div class="vaxis" id="v-axis"></div></div>
+          <div class="box" style="margin-top:18px"><div class="box-h"><h3>Pages les plus vues</h3><span class="hint">30 derniers jours</span></div><div class="vpages" id="v-pages"></div></div>
+          <p class="hint" style="margin-top:12px">Une visite = une personne qui ouvre le site (ses propres visites ne sont pas comptées une fois connectée ici). Aucun cookie, aucune donnée personnelle.</p>
+        </div>
         <p class="err" id="adm-msg" role="status" hidden></p>
       </div>
     </div>
@@ -1046,7 +1215,7 @@ footer.site small{display:block;margin-top:6px}
       <div class="social">
         <div class="news">
           <h3>Les nouveautés <em>par e-mail</em></h3>
-          <p>Nouvelles créations, saveurs de saison, calendrier de l'Avent : soyez prévenu(e).</p>
+          <p>Nouvelles créations, saveurs de saison, offres de Noël : soyez prévenu(e).</p>
           <form id="nform" novalidate>
             <input type="text" id="n-name" maxlength="40" autocomplete="given-name" placeholder="Prénom" aria-label="Prénom">
             <input type="email" id="n-email" maxlength="120" autocomplete="email" inputmode="email" placeholder="Votre adresse e-mail" aria-label="Adresse e-mail" required>
@@ -1172,12 +1341,12 @@ drawer.addEventListener('click',e=>{if(e.target.closest('a'))closeDrawer(false)}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&drawer.classList.contains('open'))closeDrawer(true)});
 
 /* ── Pages ── */
-const VIEWS=["accueil","realisations","carte","livraison","histoire","commander","gestion"];
+const VIEWS=["accueil","noel","realisations","carte","livraison","histoire","commander","gestion"];
 let current="";
 function route(){
   let h=decodeURIComponent(location.hash.slice(1)),anchor=null;
   if(h==="avis"){h="accueil";anchor="laisser-un-avis"}
-  if(h==="avent"){h="carte";anchor="avent"}
+  if(h==="avent"){h="noel"}
   if(h==="contact"){h=current||"accueil";anchor="contact-bloc"}
   if(!VIEWS.includes(h))h="accueil";
   const changed=h!==current;current=h;
@@ -1292,22 +1461,75 @@ function onScroll(){nav.classList.toggle('scrolled',scrollY>10);if(current!=="re
   const top=parseFloat(getComputedStyle(fbar).top)||0;fbar.classList.toggle('stuck',fbar.getBoundingClientRect().top<=top+1&&$('masonry').getBoundingClientRect().bottom>top+fbar.offsetHeight)}
 addEventListener('scroll',onScroll,{passive:true});
 
+/* ── Retrait / livraison (calcul automatique des frais) ── */
+const BASE={lat:48.9783,lon:2.0333};const ROAD=1.3;
+function haversine(a,b){const R=6371,t=x=>x*Math.PI/180;const h=Math.sin(t(b.lat-a.lat)/2)**2+Math.cos(t(a.lat))*Math.cos(t(b.lat))*Math.sin(t(b.lon-a.lon)/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
+const zoneFor=km=>km<=5?0:km<=10?1:km<=15?2:3;
+async function geocode(q){
+  const qs=`?q=${encodeURIComponent(q)}&limit=5&autocomplete=1&lat=${BASE.lat}&lon=${BASE.lon}`;
+  for(const u of ["https://data.geopf.fr/geocodage/search/"+qs,"https://api-adresse.data.gouv.fr/search/"+qs]){
+    try{const r=await fetch(u);if(!r.ok)continue;const d=await r.json();if(Array.isArray(d.features))return d.features.filter(f=>f.geometry&&f.geometry.coordinates).map(f=>({label:f.properties.label,city:f.properties.city||f.properties.name,postcode:f.properties.postcode||"",lon:f.geometry.coordinates[0],lat:f.geometry.coordinates[1]}))}catch(e){}}
+  return null}
+function Delivery(host,onChange){
+  const zid=host.id+"-z";
+  host.innerHTML=`<div class="seg duo" role="group" aria-label="Remise de la commande"><button type="button" data-m="retrait" aria-pressed="true">Retrait à domicile</button><button type="button" data-m="livraison" aria-pressed="false">Livraison</button></div>
+  <p class="hint" data-ret>Retrait à Chanteloup-les-Vignes (78570). L'adresse exacte vous est communiquée une fois la commande validée.</p>
+  <div class="fs" data-liv hidden>
+    <label>Adresse de livraison <span class="ac"><input type="text" data-addr maxlength="160" autocomplete="off" placeholder="Tapez votre adresse ou votre ville" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="${zid}-l"><ul class="ac-list" id="${zid}-l" role="listbox" hidden></ul></span></label>
+    <p class="dl-res" data-res aria-live="polite">Les frais de livraison se calculent dès que vous choisissez votre adresse dans la liste.</p>
+    <label>Zone de livraison <select data-zone></select></label>
+    <p class="hint">Distance estimée par la route depuis Chanteloup-les-Vignes. <a href="#livraison">Voir les zones</a>.</p>
+  </div>`;
+  const q=x=>host.querySelector(x),inp=q('[data-addr]'),list=q('.ac-list'),res=q('[data-res]'),zsel=q('[data-zone]');
+  zsel.innerHTML=ZONES.map((z,i)=>`<option value="${i}">${z[0]}${z[1]!=null?` · ${z[1]} €`:' · sur devis'}</option>`).join('');
+  const st={mode:"retrait",zone:0,km:null,picked:null,items:[],active:-1};
+  host.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{st.mode=b.dataset.m;host.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));q('[data-liv]').hidden=st.mode!=="livraison";q('[data-ret]').hidden=st.mode!=="retrait";onChange()}));
+  const closeList=()=>{list.hidden=true;inp.setAttribute('aria-expanded','false');st.active=-1};
+  function showList(items){st.items=items;st.active=-1;if(!items.length){closeList();return}
+    list.innerHTML=items.map((f,i)=>`<li role="option" id="${zid}-o${i}" data-i="${i}" aria-selected="false">${esc(f.label)}<small>${esc(f.postcode)} ${esc(f.city||'')}</small></li>`).join('');list.hidden=false;inp.setAttribute('aria-expanded','true')}
+  function pick(f){st.picked=f;inp.value=f.label;closeList();
+    st.km=Math.max(1,Math.round(haversine(BASE,f)*ROAD));st.zone=zoneFor(st.km);zsel.value=String(st.zone);const z=ZONES[st.zone];
+    res.innerHTML=z[1]!=null?`${esc(f.city||f.label)} · environ ${st.km} km → <b>${z[1]} €</b>`:`${esc(f.city||f.label)} · environ ${st.km} km → au-delà de 15 km, <b>point de rendez-vous</b> (sur devis)`;onChange()}
+  let timer=null,seq=0;
+  inp.addEventListener('input',()=>{st.picked=null;st.km=null;const v=inp.value.trim();clearTimeout(timer);
+    res.textContent=v.length<3?"Les frais de livraison se calculent dès que vous choisissez votre adresse dans la liste.":"Recherche…";
+    if(v.length>=3)timer=setTimeout(async()=>{const my=++seq;const r=await geocode(v);if(my!==seq)return;
+      if(r===null){res.textContent="Recherche indisponible : choisissez votre zone ci-dessous.";closeList();return}
+      showList(r);res.textContent=r.length?"Choisissez votre adresse dans la liste.":"Adresse introuvable : vérifiez-la ou choisissez votre zone ci-dessous."},260);
+    else closeList();onChange()});
+  list.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(!li)return;e.preventDefault();pick(st.items[+li.dataset.i])});
+  list.addEventListener('click',e=>{const li=e.target.closest('li');if(li&&!st.picked)pick(st.items[+li.dataset.i])});
+  inp.addEventListener('keydown',e=>{if(list.hidden)return;const n=st.items.length;
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();st.active=(st.active+(e.key==='ArrowDown'?1:-1)+n)%n;list.querySelectorAll('li').forEach((li,i)=>li.setAttribute('aria-selected',i===st.active));inp.setAttribute('aria-activedescendant',`${zid}-o${st.active}`)}
+    else if(e.key==='Enter'&&st.active>=0){e.preventDefault();pick(st.items[st.active])}else if(e.key==='Escape')closeList()});
+  inp.addEventListener('blur',()=>setTimeout(()=>{if(!list.hidden&&!st.picked&&st.items.length===1)pick(st.items[0]);closeList()},150));
+  zsel.addEventListener('change',()=>{st.zone=+zsel.value;st.km=null;res.textContent="Zone choisie à la main.";onChange()});
+  return{get mode(){return st.mode},
+    state(){const z=ZONES[st.zone],addr=inp.value.trim();
+      if(st.mode==="retrait")return{mode:"retrait",fee:0,feeKnown:true,zoneLabel:"",address:"",line:"Retrait à domicile à Chanteloup-les-Vignes."};
+      const fee=z[1],known=fee!=null;
+      return{mode:"livraison",fee:known?fee:0,feeKnown:known,zoneLabel:z[0]+(st.km?` (≈ ${st.km} km)`:""),address:addr,
+        line:known?`Livraison${addr?` : ${addr}`:''} (${st.km?`≈ ${st.km} km, `:''}${fee} €).`:`Livraison au-delà de 15 km${addr?` (${addr})`:''} : point de rendez-vous à convenir.`}}}}
+function sendRecord(payload){try{fetch('/api/orders',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(()=>{})}catch(x){}}
+function copyForIg(txt,msgEl,doneEl){const ok=()=>{doneEl.textContent="Message copié. Collez-le dans la conversation Instagram.";doneEl.hidden=false};
+  const ko=()=>{const r=document.createRange();r.selectNodeContents(msgEl);const s=getSelection();s.removeAllRanges();s.addRange(r);doneEl.textContent="Copiez le message sélectionné ci-dessus, puis collez-le dans Instagram.";doneEl.hidden=false};
+  try{navigator.clipboard.writeText(txt).then(ok,ko)}catch(x){ko()}}
+
 /* ── Commande ── */
-let prod="layer",mode="retrait",cupSel=[],PHOTO={url:null,state:"none"};
+let prod="layer",cupSel=[],PHOTO={url:null,state:"none"};
+const dlMain=Delivery($("dl-main"),()=>update());
 function fillFlav(sel,groups,otherLabel){sel.innerHTML=Object.entries(groups).map(([g,a])=>`<optgroup label="${g}">${a.map(x=>`<option>${x}</option>`).join('')}</optgroup>`).join('')+`<option value="${OTHER}">${otherLabel}</option>`}
 $('l-size').innerHTML=LAYER_SIZES.map((s,i)=>`<option value="${i}">${s[0]}</option>`).join('');
 fillFlav($('l-flav'),LAYER_FLAV,"Autre (préciser)…");
 fillFlav($('i-flav'),{"Choisir un parfum":[...LAYER_FLAV["Saveurs fruitées"],...LAYER_FLAV["Les gourmands"]]},"J'écris mes saveurs…");
 $('l-model').innerHTML='<option value="">Aucun modèle</option>'+WORKS.map((w,i)=>w.c==="Cupcakes"?"":`<option value="${i}">${esc(w.t)}</option>`).join('');
 $('c-size').innerHTML=CUP_SIZES.map((s,i)=>`<option value="${i}">${s[0]}</option>`).join('');
-$('zone').innerHTML=ZONES.map((z,i)=>`<option value="${i}">${z[0]}${z[1]!=null?` · ${z[1]} €`:' · sur devis'}</option>`).join('');
 const today=new Date();const ymd=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 $('date').min=ymd(today);
 const HINTS={layer:"Layer cake de 10 à 25 parts, avec la saveur de votre choix.",cup:"Cupcakes en boîte ou à l'unité, topping mascarpone chantilly.",inspired:"Inspired : une création imaginée pour vous, du parfum au décor."};
 function setProduct(p){prod=p;document.querySelectorAll('#seg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p===p));
   $('fs-layer').hidden=p!=="layer";$('fs-cup').hidden=p!=="cup";$('fs-insp').hidden=p!=="inspired";$('prod-hint').textContent=HINTS[p];update()}
 $('seg').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setProduct(b.dataset.p)});
-$('mode').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;mode=b.dataset.m;document.querySelectorAll('#mode button').forEach(x=>x.setAttribute('aria-pressed',x===b));$('fs-deliv').hidden=mode!=="livraison";$('retrait-info').hidden=mode!=="retrait";update()});
 $('l-flav').addEventListener('change',()=>{$('l-other-wrap').hidden=$('l-flav').value!==OTHER;if(!$('l-other-wrap').hidden)$('l-other').focus()});
 $('i-flav').addEventListener('change',()=>{$('i-other-wrap').hidden=$('i-flav').value!==OTHER;if(!$('i-other-wrap').hidden)$('i-other').focus()});
 /* Parfums des cupcakes */
@@ -1349,24 +1571,21 @@ function compose(){
   else{const parts=parseInt($('i-parts').value)||0;const fv=$('i-flav').value;flav=fv===OTHER?($('i-other').value.trim()||"à définir ensemble"):fv.replace(/ \(\+5 €\)/,'');
     lines.push(`Je souhaiterais une création Inspired${parts?` pour ${parts} parts environ`:''}, saveur ${lower(flav)}.`);label=`Création Inspired${parts?` ${parts} parts`:''} · ${flav}`}
   if(date)lines.push(`Pour le ${frDate(date)}.`);
-  let fee=0,feeKnown=true;
-  if(mode==="retrait")lines.push("Retrait à domicile à Chanteloup-les-Vignes.");
-  else{const z=ZONES[+$('zone').value],a=$('addr').value.trim();fee=z[1];feeKnown=fee!=null;
-    lines.push(feeKnown?`Livraison : ${lower(z[0])} (${z[1]} €)${a?`, ${a}`:''}.`:`Livraison au-delà de 15 km : point de rendez-vous à convenir${a?` (${a})`:''}.`)}
+  const D=dlMain.state();const fee=D.fee,feeKnown=D.feeKnown;lines.push(D.line);
   if(notes)lines.push(`Détails : ${notes}`);
   const total=price!=null&&feeKnown?price+(fee||0):null;
-  if(total!=null)lines.push(`Estimation du site : ${euro(total)}${mode==="livraison"?" livraison comprise":""}.`);
+  if(total!=null)lines.push(`Estimation du site : ${euro(total)}${D.mode==="livraison"?" livraison comprise":""}.`);
   lines.push(name?`Merci ! ${name}`:"Merci !");
-  return{txt:lines.join("\n"),price,fee,feeKnown,total,label,date,name,notes}}
+  return{txt:lines.join("\n"),price,fee,feeKnown,total,label,date,name,notes,D}}
 function update(){const c=compose();$('msg').textContent=c.txt;$('send-wa').href=`https://wa.me/${WA}?text=${encodeURIComponent(c.txt)}`;
   let v,note="hors décoration particulière";
   if(prod==="inspired")v="Sur devis";
   else if(c.price==null)v="Sur devis";
   else if(!c.feeKnown){v=euro(c.price);note="+ livraison sur devis"}
-  else{v=euro(c.total);if(mode==="livraison")note=`dont ${c.fee} € de livraison`}
+  else{v=euro(c.total);if(c.D.mode==="livraison")note=`dont ${c.fee} € de livraison`}
   $('est-val').textContent=v;$('est-note').textContent=note;$('done').hidden=true;$('send-err').hidden=true;
   $('send-wa').classList.toggle('busy',PHOTO.state==="uploading")}
-['l-size','l-flav','l-other','l-model','c-size','c-qty','i-parts','i-flav','i-other','date','name','notes','zone','addr'].forEach(id=>$(id).addEventListener('input',update));
+['l-size','l-flav','l-other','l-model','c-size','c-qty','i-parts','i-flav','i-other','date','name','notes'].forEach(id=>$(id).addEventListener('input',update));
 $('builder').addEventListener('submit',e=>e.preventDefault());
 let lastSent="";
 $('send-wa').addEventListener('click',e=>{const c=compose(),err=$('send-err');
@@ -1376,15 +1595,70 @@ $('send-wa').addEventListener('click',e=>{const c=compose(),err=$('send-err');
   if(c.name.length<2)return stop("Indiquez votre prénom.",$('name'));
   $('send-wa').href=`https://wa.me/${WA}?text=${encodeURIComponent(c.txt)}`;
   if(c.txt!==lastSent){lastSent=c.txt;
-    const payload={product:prod,label:c.label,date:c.date,name:c.name,mode,zone:mode==="livraison"?ZONES[+$('zone').value][0]:"",address:mode==="livraison"?$('addr').value.trim():"",price:c.total,notes:c.notes,photo:PHOTO.url||"",message:c.txt,site:""};
-    try{fetch('/api/orders',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(()=>{})}catch(x){}}});
-$('send-ig').addEventListener('click',()=>{const d=$('done');const txt=compose().txt;
-  const ok=()=>{d.textContent="Message copié. Collez-le dans la conversation Instagram.";d.hidden=false};
-  const ko=()=>{const r=document.createRange();r.selectNodeContents($('msg'));const s=getSelection();s.removeAllRanges();s.addRange(r);d.textContent="Copiez le message sélectionné ci-dessus, puis collez-le dans Instagram.";d.hidden=false};
-  try{navigator.clipboard.writeText(txt).then(ok,ko)}catch(x){ko()}});
+    sendRecord({product:prod,label:c.label,date:c.date,name:c.name,mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:PHOTO.url||"",message:c.txt,site:""})}});
+$('send-ig').addEventListener('click',()=>copyForIg(compose().txt,$('msg'),$('done')));
 document.querySelectorAll('[data-preset="decouverte"]').forEach(a=>a.addEventListener('click',()=>{setProduct("cup");setCupSize(0)}));
-$('avent-btn').href=`https://wa.me/${WA}?text=${encodeURIComponent("Bonjour Inspired Cake ! Je souhaite être prévenu(e) de la sortie du calendrier de l'Avent Inspired Cake. Merci !")}`;
 renderCupFlavs();setProduct("layer");
+
+/* ── Douceurs de Noël ── */
+const NOEL={day:"2026-12-24",deadline:"2026-12-21",dayLabel:"jeudi 24 décembre"};
+const X_SIZES={buche:[["4-5 parts",20],["8-9 parts",38]],cake:[["5 parts",30],["10 parts",55]]};
+const X_FLAV=[["Chocolat",0],["Caramel beurre salé",0],["Fruits rouges",0],["Mangue – passion",3],["Pistache – framboise",5]];
+const X_CUP_FLAV=["Chocolat","Caramel beurre salé","Mangue","Fruits rouges"];
+const X_LOTS=[6,12,18,24,30];
+const X_NAME={buche:"Bûche de Noël",cake:"Cake de l'Avent",cup:"Cupcakes de Noël"};
+let xprod="buche",xSel=[];
+const todayStr=ymd(today);
+if(todayStr>NOEL.day)document.querySelectorAll('.xmas-only').forEach(el=>el.hidden=true);
+const xClosed=todayStr>NOEL.deadline;$('x-closed').hidden=!xClosed;
+$('x-flav').innerHTML=X_FLAV.map((f,i)=>`<option value="${i}">${f[0]}${f[1]?` (+${f[1]} €)`:''}</option>`).join('');
+$('x-lot').innerHTML=X_LOTS.map((n,i)=>`<option value="${i}">Lot de ${n} · ${n*3} €</option>`).join('');
+const xMax=()=>Math.min(X_LOTS[+$('x-lot').value]/6*2,X_CUP_FLAV.length);
+function xRenderCup(){const max=xMax();xSel=xSel.slice(0,max);
+  $('x-cup-flavs').innerHTML=X_CUP_FLAV.map(f=>{const on=xSel.includes(f);return `<button type="button" class="chip" data-f="${esc(f)}" aria-pressed="${on}" ${!on&&xSel.length>=max?'disabled':''}>${f}</button>`}).join('');
+  $('x-cup-hint').innerHTML=`Lot de ${X_LOTS[+$('x-lot').value]} : choisissez <b>${max} parfum${max>1?'s':''}</b> · ${xSel.length}/${max} sélectionné${xSel.length>1?'s':''}`}
+const dlNoel=Delivery($("dl-noel"),()=>xUpdate());
+function setX(p){xprod=p;document.querySelectorAll('#x-seg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.x===p));
+  $('x-fs-gateau').hidden=p==="cup";$('x-fs-cup').hidden=p!=="cup";
+  if(p!=="cup")$('x-size').innerHTML=X_SIZES[p].map((s,i)=>`<option value="${i}">${s[0]} · ${s[1]} €</option>`).join('');
+  xUpdate()}
+function xCompose(){const name=$('x-name').value.trim(),notes=$('x-notes').value.trim();let price,label,lines=["Bonjour Inspired Cake !"];
+  if(xprod==="cup"){const n=X_LOTS[+$('x-lot').value],max=xMax();price=n*3;const fl=xSel.length?xSel.map(lower).join(", "):"à préciser";
+    lines.push(`Je souhaiterais réserver des cupcakes de Noël : lot de ${n} (${max} parfums). Parfums : ${fl}${xSel.length&&xSel.length<max?` (+ ${max-xSel.length} à préciser)`:''}.`);label=`Noël · Cupcakes lot de ${n} · ${fl}`}
+  else{const sz=X_SIZES[xprod][+$('x-size').value],f=X_FLAV[+$('x-flav').value];price=sz[1]+f[1];
+    lines.push(`Je souhaiterais réserver ${xprod==="buche"?"une bûche de Noël":"un Cake de l'Avent"} de ${sz[0]}, saveur ${lower(f[0])}.`);label=`Noël · ${X_NAME[xprod]} ${sz[0]} · ${f[0]}`}
+  lines.push(`Pour le ${NOEL.dayLabel}.`);
+  const D=dlNoel.state();lines.push(D.line);
+  if(notes)lines.push(`Détails : ${notes}`);
+  const total=D.feeKnown?price+D.fee:null;
+  lines.push(total!=null?`Estimation du site : ${euro(total)}${D.mode==="livraison"?" livraison comprise":""}.`:`Estimation du site : ${euro(price)} + livraison sur devis.`);
+  lines.push(name?`Merci ! ${name}`:"Merci !");
+  return{txt:lines.join("\n"),price,total,label,name,notes,D}}
+function xUpdate(){const c=xCompose();$('x-msg').textContent=c.txt;$('x-wa').href=`https://wa.me/${WA}?text=${encodeURIComponent(c.txt)}`;
+  $('x-est-val').textContent=euro(c.total!=null?c.total:c.price);
+  $('x-est-note').textContent=c.D.mode==="livraison"?(c.D.feeKnown?`dont ${c.D.fee} € de livraison`:"+ livraison sur devis"):"Retrait le 24 décembre";
+  $('x-err').hidden=true;$('x-done').hidden=true;$('x-wa').classList.toggle('busy',xClosed)}
+$('x-seg').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setX(b.dataset.x)});
+['x-size','x-flav','x-lot','x-name','x-notes'].forEach(id=>$(id).addEventListener('input',()=>{if(id==='x-lot')xRenderCup();xUpdate()}));
+$('x-cup-flavs').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b||b.disabled)return;const f=b.dataset.f;xSel=xSel.includes(f)?xSel.filter(x=>x!==f):[...xSel,f];xRenderCup();xUpdate()});
+document.querySelectorAll('.xcard [data-x]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();setX(a.dataset.x);$('x-form-bloc').scrollIntoView({behavior:reduceMotion?'auto':'smooth'})}));
+$('xform').addEventListener('submit',e=>e.preventDefault());
+let xLast="";
+$('x-wa').addEventListener('click',e=>{const c=xCompose(),err=$('x-err');const stop=(t,el)=>{e.preventDefault();err.textContent=t;err.hidden=false;if(el)el.focus()};
+  if(xClosed)return stop("Les réservations de Noël sont closes.");
+  if(xprod==="cup"&&!xSel.length)return stop("Choisissez au moins un parfum.");
+  if(c.name.length<2)return stop("Indiquez votre prénom.",$('x-name'));
+  $('x-wa').href=`https://wa.me/${WA}?text=${encodeURIComponent(c.txt)}`;
+  if(c.txt!==xLast){xLast=c.txt;sendRecord({product:"noel-"+xprod,label:c.label,date:NOEL.day,name:c.name,mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:"",message:c.txt,site:""})}});
+$('x-ig').addEventListener('click',()=>copyForIg(xCompose().txt,$('x-msg'),$('x-done')));
+xRenderCup();setX("buche");
+
+/* ── Visites : compteur simple, sans cookie ── */
+(()=>{if(location.hash==="#gestion"||ls.get('ic-admin'))return;let first=true;
+  try{if(sessionStorage.getItem('ic-v'))first=false;else sessionStorage.setItem('ic-v','1')}catch(e){}
+  const ping=v=>{if(ls.get('ic-admin'))return;try{fetch('/api/visit',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({v,first}),keepalive:true}).catch(()=>{})}catch(e){}first=false};
+  let last="";addEventListener('hashchange',()=>{setTimeout(()=>{if(current&&current!==last&&current!=="gestion"){last=current;ping(current)}},50)});
+  setTimeout(()=>{last=current||"accueil";if(last!=="gestion")ping(last)},400)})();
 
 /* ── Espace gestion ── */
 const ST={demande:"Demande",confirmee:"Confirmée",terminee:"Terminée",annulee:"Annulée"};
@@ -1397,7 +1671,7 @@ async function login(k,silent){const err=$('adm-err');ADM.key=k;
   catch(e){ADM.key="";if(silent){ls.del('ic-admin');return}err.hidden=false;err.textContent=e.status===403?"Clé incorrecte.":"Impossible de joindre le serveur. Cet espace fonctionne uniquement sur le site en ligne."}}
 $('adm-form').addEventListener('submit',e=>{e.preventDefault();const k=$('adm-key').value.trim();if(k)login(k,false)});
 $('adm-out').addEventListener('click',()=>{ls.del('ic-admin');ADM.key="";ADM.orders=[];$('adm-app').hidden=true;$('adm-login').hidden=false;$('adm-key').value=""});
-document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{ADM.tab=b.dataset.tab;document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));$('tab-cal').hidden=ADM.tab!=="cal";$('tab-avis').hidden=ADM.tab!=="avis";$('tab-abonnes').hidden=ADM.tab!=="abonnes";if(ADM.tab==="avis")renderRv();if(ADM.tab==="abonnes")loadSubs()}));
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{ADM.tab=b.dataset.tab;document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));$('tab-cal').hidden=ADM.tab!=="cal";$('tab-avis').hidden=ADM.tab!=="avis";$('tab-abonnes').hidden=ADM.tab!=="abonnes";$('tab-visites').hidden=ADM.tab!=="visites";if(ADM.tab==="avis")renderRv();if(ADM.tab==="abonnes")loadSubs();if(ADM.tab==="visites")loadVisits()}));
 const shortDate=s=>new Date(s+"T12:00").toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});
 const longDate=s=>{const t=new Date(s+"T12:00").toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});return t.charAt(0).toUpperCase()+t.slice(1)};
 const byDate=(a,b)=>(a.date+(a.time||"")).localeCompare(b.date+(b.time||""));
@@ -1514,6 +1788,19 @@ $('sub-list').addEventListener('click',async e=>{const b=e.target.closest('butto
   if('IntersectionObserver' in window)new IntersectionObserver(es=>{visible=es[0].isIntersecting;schedule()},{threshold:.35}).observe(rail);else visible=true;
   document.addEventListener('visibilitychange',schedule);addEventListener('hashchange',()=>setTimeout(schedule,200));
   window.rvRestart=()=>{upd();schedule()};upd();schedule()})();
+
+/* Visites (gestion) */
+const VNAMES={accueil:"Accueil",noel:"Douceurs de Noël",realisations:"Réalisations",carte:"La carte",livraison:"Livraison",histoire:"Mon histoire",commander:"Commander"};
+async function loadVisits(){let days=[];try{const d=await adm('GET','/api/visit');days=d.days||[]}catch(e){admMsg(e.message)}
+  const map=Object.fromEntries(days.map(d=>[d.date,d]));const list=[];for(let i=29;i>=0;i--){const d=new Date(today);d.setDate(d.getDate()-i);const k=ymd(d);list.push({k,d,n:(map[k]&&map[k].n)||0,pages:(map[k]&&map[k].pages)||{}})}
+  const sum=a=>a.reduce((x,y)=>x+y.n,0);const t=list[29].n,w=sum(list.slice(-7)),m=sum(list);
+  $('v-stats').innerHTML=`<div class="stat"><b>${t}</b><small>visite${t>1?'s':''} aujourd'hui</small></div><div class="stat"><b>${w}</b><small>sur 7 jours</small></div><div class="stat"><b>${m}</b><small>sur 30 jours</small></div><div class="stat"><b>${(m/30).toFixed(1).replace('.',',')}</b><small>par jour en moyenne</small></div>`;
+  const max=Math.max(1,...list.map(x=>x.n));
+  $('v-chart').innerHTML=list.map((x,i)=>`<i class="${i===29?'today':''}" style="height:${x.n?Math.max(2,x.n/max*100):0}%" title="${x.d.toLocaleDateString('fr-FR',{day:'numeric',month:'short'})} : ${x.n} visite${x.n>1?'s':''}"></i>`).join('');
+  $('v-chart').setAttribute('aria-label',`Visites par jour sur 30 jours, maximum ${max}`);
+  $('v-axis').innerHTML=list.map((x,i)=>`<span>${i%5===4||i===29?x.d.getDate():''}</span>`).join('');
+  const pg={};list.forEach(x=>Object.entries(x.pages).forEach(([k,v])=>{pg[k]=(pg[k]||0)+v}));const ent=Object.entries(pg).sort((a,b)=>b[1]-a[1]);const pm=Math.max(1,...ent.map(e=>e[1]));
+  $('v-pages').innerHTML=ent.length?ent.map(([k,v])=>`<div><span style="--w:${v/pm*100}%">${esc(VNAMES[k]||k)}</span><b>${v}</b></div>`).join(''):'<p class="empty">Pas encore de visites enregistrées.</p>'}
 
 addEventListener('hashchange',route);route();
 </script>
