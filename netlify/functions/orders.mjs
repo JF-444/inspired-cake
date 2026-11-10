@@ -72,7 +72,8 @@ export default async (req, context) => {
       price: price(b.price), status: STATUSES.includes(b.status) ? b.status : "confirmee",
       mode: b.mode === "livraison" ? "livraison" : "retrait",
       zone: line(b.zone, 60), address: line(b.address, 160),
-      paid: b.paid === undefined ? !!prev.paid : !!b.paid, discount: b.discount === undefined ? !!prev.discount : !!b.discount,
+      paid: b.paid === undefined ? !!prev.paid : !!b.paid, paidFull: b.paidFull === undefined ? !!prev.paidFull : !!b.paidFull,
+      phone: b.phone === undefined ? prev.phone || "" : line(b.phone, 20), discount: b.discount === undefined ? !!prev.discount : !!b.discount,
       photo: photo(b.photo ?? prev.photo), source: prev.source || "manuel",
       createdAt: prev.createdAt || Date.now(), updatedAt: Date.now(),
     };

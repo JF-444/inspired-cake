@@ -833,7 +833,7 @@ footer.site small{display:block;margin-top:6px}
         </div>
         <a class="xmas-cta xmas-only" href="#noel">
           <span class="xi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#e6c587"><path d="M12 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 15l-5.4 3 1.2-6-4.5-4.2 6.1-.7z"/></svg></span>
-          <span><b>Douceurs de Noël</b><small>Bûches roulées, cupcakes · à réserver avant le 21 décembre</small></span>
+          <span><b>Douceurs de Noël</b><small>Bûches, cupcakes · à réserver avant le 21 décembre</small></span>
           <span class="go" aria-hidden="true">→</span>
         </a>
         <div class="prices">
@@ -853,7 +853,7 @@ footer.site small{display:block;margin-top:6px}
         <div><span><span class="pill new">Nouveau</span></span><h3>La Boîte découverte</h3><p>3 parfums au choix pour 18 €. Idéal pour tout goûter.</p><span class="go">Commander →</span></div>
       </a>
       <a class="ann reveal xmas-only" href="#noel">
-        <img src="img/noel-buche.webp" alt="" style="object-fit:contain;background:var(--pine)">
+        <img src="img/noel-buches-roulees.webp" alt="" style="object-fit:contain;background:var(--pine)">
         <div><span><span class="pill xmas">Noël</span></span><h3>Les douceurs de Noël</h3><p>Trois bûches roulées et des cupcakes de fête. Remise le 24 décembre.</p><span class="go">Réserver →</span></div>
       </a>
     </div>
@@ -949,7 +949,7 @@ footer.site small{display:block;margin-top:6px}
           <p class="fine">Topping mascarpone chantilly uniquement.</p>
         </article>
         <article class="soon-card xmas-only" id="avent">
-          <span class="art" aria-hidden="true" style="background:var(--pine)"><img src="img/noel-buche.webp" alt="" style="width:86%;height:auto"></span>
+          <span class="art" aria-hidden="true" style="background:var(--pine)"><img src="img/noel-buches-roulees.webp" alt="" style="width:86%;height:auto"></span>
           <div>
             <span><span class="pill xmas">Noël 2026</span></span>
             <h3>Les douceurs <em>de Noël</em></h3>
@@ -1053,7 +1053,7 @@ footer.site small{display:block;margin-top:6px}
     <div class="wrap xgrid">
       <article class="xcard">
         <img src="img/noel-buches-roulees.webp" alt="Trois bûches roulées de Noël" loading="lazy">
-        <h3>Bûches roulées</h3>
+        <h3>Bûches</h3>
         <p>Des bûches roulées artisanales alliant biscuits moelleux, crèmes onctueuses et associations de saveurs, pour offrir un moment de douceur.</p>
         <div class="xprice"><span>4-5 parts <b>20 €</b></span><span>8-9 parts <b>38 €</b></span></div>
         <a class="btn btn-main" href="#noel" data-x="buche">Réserver une bûche</a>
@@ -1189,6 +1189,11 @@ footer.site small{display:block;margin-top:6px}
           <li>Envoyez votre demande depuis le site avec votre e-mail, ou sur WhatsApp : le message est déjà écrit.</li>
           <li>Je vous réponds pour confirmer.</li>
         </ol>
+        <a class="xmas-cta xmas-only" href="#noel">
+          <span class="xi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#e6c587"><path d="M12 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 15l-5.4 3 1.2-6-4.5-4.2 6.1-.7z"/></svg></span>
+          <span><b>Une commande pour Noël&nbsp;?</b><small>Bûches et cupcakes de Noël · à réserver avant le 21 décembre</small></span>
+          <span class="go" aria-hidden="true">→</span>
+        </a>
         <div class="contacts">
           <a class="handle-box" href="https://wa.me/33641010123" target="_blank" rel="noopener"><span class="ic wa" aria-hidden="true"></span><span><small>WhatsApp</small><b>Écrire sur WhatsApp</b></span></a>
           <a class="handle-box" href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener"><span class="ic ig" aria-hidden="true"></span><span><small>Instagram</small><b>@inspiredcake</b></span></a>
@@ -1332,7 +1337,6 @@ footer.site small{display:block;margin-top:6px}
             <div class="box-h"><h3>Coordonnées de paiement</h3></div>
             <p class="hint">Ces informations restent privées : elles ne s'affichent jamais sur le site. Elles sont ajoutées au message de confirmation que vous envoyez au client.</p>
             <label>Lien ou adresse PayPal <input type="text" id="s-paypal" maxlength="160" placeholder="ex. paypal.me/votrenom"></label>
-            <label>Titulaire du compte <input type="text" id="s-holder" maxlength="80"></label>
             <label>IBAN <input type="text" id="s-iban" maxlength="42" autocomplete="off" spellcheck="false"></label>
             <label>BIC <span class="lbl-note">(facultatif)</span><input type="text" id="s-bic" maxlength="15" autocomplete="off" spellcheck="false"></label>
             <label>Adresse exacte de retrait <span class="lbl-note">(envoyée seulement dans les confirmations)</span><input type="text" id="s-addr" maxlength="160"></label>
@@ -1419,12 +1423,17 @@ footer.site small{display:block;margin-top:6px}
 <div class="modal" id="cf" hidden role="dialog" aria-modal="true" aria-labelledby="cf-title">
   <form class="sheet" id="cf-form" novalidate>
     <h3 id="cf-title">Confirmer la commande</h3>
-    <div class="two">
+    <div class="two" id="cf-conf-row">
       <label>Prix total (€) <input type="number" id="cf-price" min="0" step="0.5" inputmode="decimal"></label>
       <label class="consent" style="align-self:end;color:var(--choco);font-size:.9rem"><input type="checkbox" id="cf-disc"> Remise fidélité -15 %</label>
     </div>
+    <div class="seg seg-2" role="group" aria-label="Paiement reçu" id="cf-paid-row" hidden>
+      <button type="button" data-k="acompte" aria-pressed="true">Acompte reçu</button>
+      <button type="button" data-k="total" aria-pressed="false">Paiement total reçu</button>
+    </div>
     <div class="cf-sum" id="cf-sum"></div>
     <label>Message au client <span class="lbl-note">(modifiable)</span><textarea id="cf-msg" rows="12"></textarea></label>
+    <label>Numéro WhatsApp du client <span class="lbl-note">(pour ouvrir directement sa conversation)</span><input type="tel" id="cf-phone" maxlength="20" placeholder="ex. 06 12 34 56 78" autocomplete="off"></label>
     <p class="hint" id="cf-hint"></p>
     <div class="cf-acts">
       <a class="btn btn-main" id="cf-mail" href="#">Envoyer par e-mail</a>
@@ -1895,7 +1904,7 @@ function ocard(o,showDate){return `<article class="ocard" data-id="${esc(o.id)}"
   <b>${esc(o.name)}</b>${loyaltyBadge(o)}<p>${esc(o.product||'')}</p>
   <p class="ometa">${o.price!=null&&o.price!==""?euro(+o.price):'Prix à définir'} · ${o.mode==="livraison"?`Livraison${o.zone?` (${esc(o.zone)})`:''}${o.address?` · ${esc(o.address)}`:''}`:'Retrait'}${o.contact?` · ${esc(o.contact)}`:''}</p>
   ${o.photo?`<a href="${esc(o.photo)}" target="_blank" rel="noopener"><img class="othumb" src="${esc(o.photo)}" alt="Photo d'inspiration" loading="lazy"></a>`:''}
-  <div class="oact">${o.status==="demande"?'<button type="button" class="go" data-act="confirm">Confirmer</button><button type="button" data-act="annulee">Refuser</button>':''}${o.status==="confirmee"?`<button type="button" data-act="paid">${o.paid?'Acompte reçu ✓':'Acompte reçu ?'}</button><button type="button" data-act="confirm">Message de confirmation</button><button type="button" data-act="terminee">Marquer terminée</button>`:''}<button type="button" data-act="edit">Ouvrir</button></div></article>`}
+  <div class="oact">${o.status==="demande"?'<button type="button" class="go" data-act="confirm">Confirmer</button><button type="button" data-act="annulee">Refuser</button>':''}${o.status==="confirmee"?`<button type="button" data-act="paid">${o.paid?(o.paidFull?'Payé ✓':'Acompte reçu ✓'):'Paiement reçu ?'}</button><button type="button" data-act="confirm">Message de confirmation</button><button type="button" data-act="terminee">Marquer terminée</button>`:''}<button type="button" data-act="edit">Ouvrir</button></div></article>`}
 function renderAdmin(){
   const O=ADM.orders,tStr=ymd(today),mm=`${ADM.y}-${String(ADM.m+1).padStart(2,'0')}`;
   const inMonth=O.filter(o=>o.date&&o.date.startsWith(mm)&&o.status!=="annulee");
@@ -1926,7 +1935,7 @@ async function saveOrder(o){const d=await adm('PUT','/api/orders',o);const i=ADM
 $('tab-cal').addEventListener('click',async e=>{const b=e.target.closest('[data-act]');if(!b)return;const id=b.closest('.ocard').dataset.id;const o=ADM.orders.find(x=>x.id===id);if(!o)return;
   if(b.dataset.act==="edit")return openEditor(o);
   if(b.dataset.act==="confirm")return openConfirm(o);
-  if(b.dataset.act==="paid"){b.disabled=true;try{await saveOrder({...o,paid:!o.paid});admMsg(o.paid?"Acompte marqué non reçu.":`Acompte de ${o.name} reçu.`)}catch(err){b.disabled=false;admMsg(err.message)}return}
+  if(b.dataset.act==="paid")return openConfirm(o,"paid");
   b.disabled=true;try{await saveOrder({...o,status:b.dataset.act});admMsg(`Commande de ${o.name} : ${ST[b.dataset.act].toLowerCase()}.`)}catch(err){b.disabled=false;admMsg(err.message)}});
 /* Fiche commande */
 let editing=null;
@@ -2038,13 +2047,16 @@ function loyaltyBadge(o){const n=priorValid(o);if(n===null)return '';const pos=n
 /* Réglages de paiement (privés) */
 let SET=null;
 async function loadSettings(){if(SET)return SET;try{const d=await adm('GET','/api/reglages');SET=d.settings||{}}catch(e){SET={}}return SET}
-async function fillSettings(){const v=await loadSettings();$('s-paypal').value=v.paypal||"";$('s-holder').value=v.holder||"";$('s-iban').value=v.iban||"";$('s-bic').value=v.bic||"";$('s-addr').value=v.address||"";$('s-dep').value=v.deposit??40}
-$('set-form').addEventListener('submit',async e=>{e.preventDefault();const v={paypal:$('s-paypal').value.trim(),holder:$('s-holder').value.trim(),iban:$('s-iban').value.replace(/\s+/g,' ').trim().toUpperCase(),bic:$('s-bic').value.trim().toUpperCase(),address:$('s-addr').value.trim(),deposit:Math.min(100,Math.max(0,+$('s-dep').value||0))};
+async function fillSettings(){const v=await loadSettings();$('s-paypal').value=v.paypal||"";$('s-iban').value=v.iban||"";$('s-bic').value=v.bic||"";$('s-addr').value=v.address||"";$('s-dep').value=v.deposit??40}
+$('set-form').addEventListener('submit',async e=>{e.preventDefault();const v={paypal:$('s-paypal').value.trim(),holder:"",iban:$('s-iban').value.replace(/\s+/g,' ').trim().toUpperCase(),bic:$('s-bic').value.trim().toUpperCase(),address:$('s-addr').value.trim(),deposit:Math.min(100,Math.max(0,+$('s-dep').value||0))};
   try{const d=await adm('PUT','/api/reglages',v);SET=d.settings;admMsg("Coordonnées enregistrées.")}catch(x){admMsg(x.message)}});
 /* Message de confirmation */
-let cfOrder=null;
+let cfOrder=null,cfMode="confirm",cfKind="acompte";
+const veille=d=>{const t=new Date(d+"T12:00");t.setDate(t.getDate()-1);return longDate(ymd(t)).toLowerCase()};
+const waNum=v=>{let d=String(v||"").replace(/[^\d+]/g,"");if(d.startsWith("+"))d=d.slice(1);else if(d.startsWith("00"))d=d.slice(2);else if(/^0\d{9}$/.test(d))d="33"+d.slice(1);return /^\d{8,15}$/.test(d)?d:""};
+const phoneOf=o=>o.phone||(waNum(o.contact)?o.contact:"");
 const money=n=>euro(Math.round(n*100)/100);
-function cfText(){const o=cfOrder,v=SET||{},dep=v.deposit??40;let price=$('cf-price').value===""?null:+$('cf-price').value;const disc=$('cf-disc').checked;
+function cfText(){if(cfMode==="paid")return paidText();const o=cfOrder,v=SET||{},dep=v.deposit??40;let price=$('cf-price').value===""?null:+$('cf-price').value;const disc=$('cf-disc').checked;
   const final=price!=null?(disc?price*0.85:price):null;const acompte=final!=null?final*dep/100:null;
   const after=(()=>{const n=priorValid(o);if(n===null)return null;return (n%(FID_N+1))+1})();
   $('cf-sum').innerHTML=final!=null?`<span>Prix${disc?' (après -15 %)':''} <b>${money(final)}</b></span><span>Acompte ${dep} % <b>${money(acompte)}</b></span><span>Solde <b>${money(final-acompte)}</b></span>`:'<span>Indiquez le prix total pour calculer l\'acompte.</span>';
@@ -2055,25 +2067,40 @@ function cfText(){const o=cfOrder,v=SET||{},dep=v.deposit??40;let price=$('cf-pr
   L.push("");
   if(acompte!=null&&dep>0)L.push(`Pour valider définitivement la commande, merci de régler l'acompte de ${dep} %, soit ${money(acompte)} :`);else L.push("Moyens de paiement :");
   if(v.paypal)L.push(`• PayPal : ${v.paypal}`);
-  if(v.iban)L.push(`• Virement : ${v.holder?v.holder+" · ":""}IBAN ${v.iban}${v.bic?` · BIC ${v.bic}`:''}`);
-  if(final!=null&&acompte!=null&&dep>0&&dep<100)L.push(`Le solde (${money(final-acompte)}) est à régler au retrait.`);
+  if(v.iban)L.push(`• Virement à Inspired Cake : IBAN ${v.iban}${v.bic?` · BIC ${v.bic}`:''}`);
+  if(final!=null&&acompte!=null&&dep>0&&dep<100){L.push(`Le solde (${money(final-acompte)}) est à régler au plus tard le ${veille(o.date)}.`);L.push(`Vous pouvez aussi régler la totalité (${money(final)}) dès maintenant si vous le préférez.`)}
   L.push("Le paiement en espèces est possible si vous me le signalez à l'avance.");
   if(after!==null){L.push("");L.push(disc||after>FID_N?"Votre carte de fidélité repart à zéro : merci pour votre fidélité !":after>=FID_N?`Carte de fidélité : ${FID_N}/${FID_N} tampons. Votre prochaine commande bénéficiera de -15 % !`:`Carte de fidélité : ${after}/${FID_N} tampons.`)}
   L.push("","Merci pour votre confiance !","Inspired Cake");
   return{txt:L.join("\n"),final}}
+function paidText(){const o=cfOrder,v=SET||{},dep=v.deposit??40,price=o.price!=null&&o.price!==""?+o.price:null,full=cfKind==="total";
+  const acompte=price!=null?price*dep/100:null,solde=price!=null&&acompte!=null?price-acompte:null;
+  $('cf-sum').innerHTML=price!=null?(full?`<span>Payé <b>${money(price)}</b></span><span>Reste à payer <b>0 €</b></span>`:`<span>Acompte reçu <b>${money(acompte)}</b></span><span>Solde à régler avant le ${veille(o.date)} <b>${money(solde)}</b></span>`):'<span>Indiquez le prix dans la fiche de la commande pour calculer les montants.</span>';
+  const L=[`Bonjour ${o.name} !`,""];
+  if(full)L.push(`J'ai bien reçu votre paiement${price!=null?` de ${money(price)}`:''}, merci ! Votre commande est entièrement réglée et définitivement validée :`);
+  else L.push(`J'ai bien reçu votre acompte${acompte!=null?` de ${money(acompte)}`:''}, merci ! Votre commande est définitivement validée :`);
+  L.push(`• ${o.product||"Votre commande"}`,`• Le ${longDate(o.date).toLowerCase()}${o.time?` à ${o.time}`:''}`);
+  if(o.mode==="livraison")L.push(`• Livraison${o.address?` : ${o.address}`:''}`);else L.push(v.address?`• Retrait à l'adresse : ${v.address}`:"• Retrait à domicile à Chanteloup-les-Vignes");
+  if(!full){L.push("");L.push(`Le solde${solde!=null?` (${money(solde)})`:''} est à régler au plus tard le ${veille(o.date)}, par PayPal ou virement comme pour l'acompte.`)}
+  L.push("","À très vite !","Inspired Cake");
+  return{txt:L.join("\n"),final:price}}
 function cfRefresh(){const {txt}=cfText();$('cf-msg').value=txt;cfLinks()}
 function cfLinks(){const txt=$('cf-msg').value,em=mailOf(cfOrder);
-  $('cf-mail').href=em?`mailto:${em}?subject=${encodeURIComponent("Confirmation de votre commande Inspired Cake")}&body=${encodeURIComponent(txt)}`:'#';
-  $('cf-mail').classList.toggle('busy',!em);$('cf-wa').href=`https://wa.me/?text=${encodeURIComponent(txt)}`;
-  const v=SET||{};$('cf-hint').textContent=(!v.paypal&&!v.iban?"Ajoutez vos coordonnées PayPal et RIB dans l'onglet Paiement. ":"")+(em?`Envoi par e-mail à ${em}.`:"Pas d'e-mail pour ce client : envoyez le message sur WhatsApp ou copiez-le.")}
-async function openConfirm(o){cfOrder=o;await loadSettings();$('cf-title').textContent=`Confirmer · ${o.name}`;$('cf-price').value=o.price??"";
+  $('cf-mail').href=em?`mailto:${em}?subject=${encodeURIComponent(cfMode==="paid"?"Paiement reçu : votre commande Inspired Cake est validée":"Confirmation de votre commande Inspired Cake")}&body=${encodeURIComponent(txt)}`:'#';
+  $('cf-mail').classList.toggle('busy',!em);const wn=waNum($('cf-phone').value);$('cf-wa').href=`https://wa.me/${wn}?text=${encodeURIComponent(txt)}`;
+  const v=SET||{};$('cf-hint').textContent=(!v.paypal&&!v.iban?"Ajoutez vos coordonnées PayPal et RIB dans l'onglet Paiement. ":"")+(em?`Envoi par e-mail à ${em}. `:"Pas d'e-mail pour ce client : envoyez le message sur WhatsApp ou copiez-le. ")+(wn?"":"Indiquez son numéro pour que WhatsApp ouvre directement sa conversation.")}
+async function openConfirm(o,mode="confirm"){cfOrder=o;cfMode=mode;await loadSettings();$('cf-conf-row').hidden=mode==="paid";$('cf-paid-row').hidden=mode!=="paid";$('cf-phone').value=phoneOf(o);if(mode==="paid"){cfKind=o.paidFull?"total":"acompte";setKind()}$('cf-title').textContent=`${mode==="paid"?"Paiement reçu":"Confirmer"} · ${o.name}`;$('cf-price').value=o.price??"";
   const n=priorValid(o);$('cf-disc').checked=o.discount!=null?!!o.discount:(n!==null&&n%(FID_N+1)===FID_N);$('cf-done').hidden=true;cfRefresh();$('cf').hidden=false;document.body.classList.add('lock')}
 function closeConfirm(){$('cf').hidden=true;document.body.classList.remove('lock')}
+function setKind(){$('cf-paid-row').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===cfKind))}
+$('cf-paid-row').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;cfKind=b.dataset.k;setKind();cfRefresh()});
+$('cf-phone').addEventListener('input',cfLinks);
 $('cf-price').addEventListener('input',cfRefresh);$('cf-disc').addEventListener('change',cfRefresh);$('cf-msg').addEventListener('input',cfLinks);
 $('cf-close').onclick=closeConfirm;$('cf').addEventListener('click',e=>{if(e.target===$('cf'))closeConfirm()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('cf').hidden)closeConfirm()});
-async function cfMarkConfirmed(){const {final}=cfText();const o=cfOrder;if(o.status==="confirmee"&&o.price===final)return;
-  try{const s=await saveOrder({...o,status:o.status==="terminee"?"terminee":"confirmee",price:final,discount:$('cf-disc').checked});cfOrder=s;const d=$('cf-done');d.textContent="Commande enregistrée comme confirmée.";d.className="done ok";d.hidden=false}catch(x){admMsg(x.message)}}
+async function cfMarkConfirmed(){const {final}=cfText();const o=cfOrder;const phone=$('cf-phone').value.trim();
+  const upd=cfMode==="paid"?{paid:true,paidFull:cfKind==="total"}:{price:final,discount:$('cf-disc').checked};
+  try{const s=await saveOrder({...o,...upd,phone,status:o.status==="terminee"?"terminee":"confirmee"});cfOrder=s;const d=$('cf-done');d.textContent=cfMode==="paid"?"Paiement enregistré, commande validée.":"Commande enregistrée comme confirmée.";d.className="done ok";d.hidden=false}catch(x){admMsg(x.message)}}
 $('cf-mail').addEventListener('click',e=>{if(!mailOf(cfOrder)){e.preventDefault();return}cfMarkConfirmed()});
 $('cf-wa').addEventListener('click',()=>cfMarkConfirmed());
 $('cf-copy').addEventListener('click',()=>{const t=$('cf-msg').value;const ok=()=>{const d=$('cf-done');d.textContent="Message copié. Collez-le dans la conversation avec le client.";d.className="done ok";d.hidden=false};
