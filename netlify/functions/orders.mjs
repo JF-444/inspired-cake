@@ -8,6 +8,7 @@ const isDate = (s) => /^\d{4}-\d{2}-\d{2}$/.test(s) && !isNaN(new Date(s + "T12:
 const STATUSES = ["demande", "confirmee", "terminee", "annulee"];
 const price = (v) => (v === null || v === "" || v === undefined || isNaN(Number(v)) ? null : Math.max(0, Math.round(Number(v) * 100) / 100));
 const photo = (v) => { const s = String(v ?? "").trim(); return /^(https:\/\/[^\s"'<>]+)?\/api\/photo\?id=[a-z0-9-]+$/i.test(s) ? s.slice(0, 300) : ""; };
+const mail = (v) => { const s = line(v, 120).toLowerCase(); return /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]{2,}$/.test(s) ? s : ""; };
 const newId = () => `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 
 function isAdmin(req) {
@@ -34,7 +35,7 @@ export default async (req, context) => {
 
     const mode = b.mode === "livraison" ? "livraison" : "retrait";
     const order = {
-      id: newId(), date, time: "", name, contact: /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]{2,}$/.test(String(b.email || "")) ? line(b.email, 120) + " (via le site)" : "WhatsApp",
+      id: newId(), date, time: "", name, email: mail(b.email), contact: b.channel === "site" ? "Via le site" : "WhatsApp",
       product: line(b.label, 120) || "Demande",
       details: text(b.message, 2000),
       price: price(b.price), status: "demande", mode,
@@ -67,10 +68,11 @@ export default async (req, context) => {
     const time = /^\d{2}:\d{2}$/.test(b.time || "") ? b.time : "";
     const order = {
       ...prev, id, date, time, name,
-      contact: line(b.contact, 80), product: line(b.product, 120), details: text(b.details, 2000),
+      contact: line(b.contact, 80), email: b.email === undefined ? prev.email || "" : mail(b.email), product: line(b.product, 120), details: text(b.details, 2000),
       price: price(b.price), status: STATUSES.includes(b.status) ? b.status : "confirmee",
       mode: b.mode === "livraison" ? "livraison" : "retrait",
       zone: line(b.zone, 60), address: line(b.address, 160),
+      paid: b.paid === undefined ? !!prev.paid : !!b.paid, discount: b.discount === undefined ? !!prev.discount : !!b.discount,
       photo: photo(b.photo ?? prev.photo), source: prev.source || "manuel",
       createdAt: prev.createdAt || Date.now(), updatedAt: Date.now(),
     };

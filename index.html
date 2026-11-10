@@ -140,7 +140,17 @@ main .view{animation:viewin .45s ease both}
 .hero .wrap{display:grid;padding-block:36px 64px}
 @media (max-width:860px){.hero .wrap{padding-block:16px 48px}}
 .hero-copy{max-width:760px}
-.hero-logo{width:min(300px,72vw);height:auto;margin:-8px 0 -4px -6px}
+.logo-bubble{position:absolute;z-index:5;top:12px;right:max(14px,env(safe-area-inset-right,0px));width:92px;height:92px;border-radius:50%;box-shadow:0 14px 28px -16px rgba(74,42,34,.55);transition:transform .3s}
+.logo-bubble img{width:100%;height:100%;display:block}
+.logo-bubble:hover{transform:rotate(-6deg) scale(1.04)}
+@media (min-width:1180px){.logo-bubble{right:calc((100vw - 1180px)/2 + 18px)}}
+main{position:relative}
+main[data-current="noel"] .logo-bubble,main[data-current="gestion"] .logo-bubble{display:none}
+@media (max-width:760px){
+  .logo-bubble{width:66px;height:66px;top:6px;right:16px}
+  main:not([data-current="noel"]):not([data-current="gestion"]) .view>section:first-child,
+  main:not([data-current="noel"]):not([data-current="gestion"]) .view>header:first-child>.wrap{padding-top:64px}
+}
 .hero{overflow:hidden}
 .hero-copy{display:grid;gap:22px;min-width:0}
 .hero h1{font-size:clamp(2.5rem,7vw,4.8rem);letter-spacing:-.015em}
@@ -469,6 +479,25 @@ textarea{resize:vertical;min-height:84px}
 .mail-line a{color:var(--rasp);font-weight:600}
 .wac h3,.igc h3{font-size:1.35rem}
 footer.site{background:var(--choco);color:rgba(251,241,240,.8)}
+.fid{padding-block:8px 64px}
+.fid-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:24px;margin-top:24px;align-items:start}
+@media (max-width:820px){.fid-grid{grid-template-columns:1fr}}
+.fid-look{background:var(--cream);border:1px solid var(--line);border-radius:24px;padding:20px;display:grid;gap:12px}
+.fid-look .btn{width:fit-content}
+.fid-card{background:linear-gradient(135deg,var(--choco),#62382d);color:var(--blush);border-radius:26px;padding:22px;display:grid;gap:16px;box-shadow:0 30px 50px -30px rgba(74,42,34,.8);position:relative;overflow:hidden}
+.fid-card::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;border:1.5px solid rgba(180,138,76,.35)}
+.fid-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.fid-top .logo{color:var(--blush);font-size:1.4rem}
+.fid-top small{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.stamps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;justify-items:center}
+.stamp{width:100%;max-width:64px;aspect-ratio:1;border-radius:50%;border:1.5px dashed rgba(251,241,240,.35);display:grid;place-items:center;font:600 .8rem var(--body);color:rgba(251,241,240,.45);font-variant-numeric:tabular-nums}
+.stamp.on{border:0;background:var(--gold);color:var(--choco);animation:stampin .45s cubic-bezier(.2,.8,.2,1.4) both}
+.stamp.on svg{width:58%;height:58%}
+.stamp.gift{border:1.5px solid #f0a9bd;color:#f0a9bd;font-size:.95rem}
+.stamp.gift.on{background:var(--rasp);color:#fff}
+@keyframes stampin{from{transform:scale(1.6) rotate(-20deg);opacity:0}to{transform:none;opacity:1}}
+.fid-msg{margin:0;font-size:.95rem;color:rgba(251,241,240,.85)}
+.fid-msg b{color:#f0a9bd}
 .faq{padding-block:8px 64px}
 .faq-list{display:grid;gap:10px;margin-top:24px;max-width:760px}
 .faq details{background:var(--cream);border:1px solid var(--line);border-radius:18px;overflow:hidden}
@@ -619,6 +648,12 @@ footer.site small{display:block;margin-top:6px}
 .spill{color:#fff;font:600 .68rem var(--body);letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
 .odate{font-size:.82rem;color:var(--cocoa);font-variant-numeric:tabular-nums}
 .ocard b{font-family:var(--display);font-weight:500;font-size:1.15rem}
+.lbadge{display:inline-block;width:fit-content;justify-self:start;align-self:flex-start;margin-left:8px;font:600 .68rem var(--body);letter-spacing:.06em;padding:2px 8px;border-radius:999px;background:var(--petal);color:var(--choco);vertical-align:middle}
+.lbadge.reward{background:var(--rasp);color:#fff}
+.cf-sum{display:grid;gap:4px;background:var(--blush);border-radius:14px;padding:12px 14px;font-variant-numeric:tabular-nums}
+.cf-sum span{display:flex;justify-content:space-between;gap:10px}
+.cf-acts{display:flex;flex-wrap:wrap;gap:8px}
+.cf-acts .btn{padding:11px 16px;font-size:.92rem}
 .ocard p{margin:0;font-size:.9rem;overflow-wrap:anywhere}
 .ometa{color:var(--cocoa)}
 .oact{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
@@ -759,6 +794,7 @@ footer.site small{display:block;margin-top:6px}
       <a href="#livraison"><b>Livraison</b><small>Retrait à Chanteloup-les-Vignes ou livraison</small></a>
       <a href="#histoire"><b>Mon histoire</b><small>D'une passion à vos cœurs</small></a>
       <a href="#commander"><b>Commander</b><small>Composez votre gâteau</small></a>
+      <a href="#fidelite"><b>Carte de fidélité</b><small>7 commandes = -15 % sur la suivante</small></a>
       <a href="#faq"><b>Questions fréquentes</b><small>Commande, retrait, livraison, saveurs</small></a>
       <a href="#contact"><b>On reste en contact</b><small>Suivre les créations sur Instagram</small></a>
     </nav>
@@ -771,13 +807,13 @@ footer.site small{display:block;margin-top:6px}
 </div>
 
 <main id="app">
+<a class="logo-bubble" href="#accueil" aria-label="Inspired Cake, accueil"><img src="img/logo-bulle.webp" alt="" width="92" height="92"></a>
 
 <!-- ═══ ACCUEIL ═══ -->
 <div class="view" data-view="accueil">
   <header class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <img class="hero-logo" src="img/logo.webp" alt="Inspired Cake, la pâtisserie autrement" width="474" height="312">
         <span class="eyebrow">Pâtisserie artisanale · Sur commande</span>
         <h1><span class="line"><span>Laissez-vous</span></span><span class="line"><span><em>inspirer.</em></span></span></h1>
         <div class="lede"><p class="lede-a">Des créations pâtissières faites maison, imaginées avec passion.</p><p>Layer cakes, cupcakes et douceurs gourmandes, alliant génoises moelleuses, crèmes délicates et décors personnalisés pour rendre chaque occasion unique.</p></div>
@@ -1074,9 +1110,9 @@ footer.site small{display:block;margin-top:6px}
         <div><p class="hint" style="margin-bottom:6px">Votre message :</p><div class="msg" id="x-msg"></div></div>
                 <p class="err" id="x-err" role="alert" hidden></p>
         <div class="site-send">
-          <label>Votre e-mail <span class="lbl-note">(pour recevoir la réponse)</span><input type="email" id="x-email" maxlength="120" autocomplete="email" inputmode="email" placeholder="vous@exemple.fr"></label>
+          <label>Votre e-mail <span class="lbl-note">(réponse et carte de fidélité)</span><input type="email" id="x-email" maxlength="120" autocomplete="email" inputmode="email" placeholder="vous@exemple.fr"></label>
           <button class="btn btn-main" type="button" id="x-site">Envoyer ma demande</button>
-          <p class="hint">Votre demande arrive directement chez Inspired Cake. Votre adresse sert uniquement à vous répondre.</p>
+          <p class="hint">Votre demande arrive directement chez Inspired Cake. Votre adresse sert à vous répondre et à tamponner votre <a href="#fidelite">carte de fidélité</a>.</p>
         </div>
         <p class="done" id="x-done" role="status" hidden></p>
         <p class="or-line"><span>ou</span></p>
@@ -1088,6 +1124,27 @@ footer.site small{display:block;margin-top:6px}
   </section>
 </div>
 
+<!-- ═══ FIDÉLITÉ ═══ -->
+<div class="view" data-view="fidelite" hidden>
+  <section class="fid">
+    <div class="wrap">
+      <div class="page-head"><span class="eyebrow">Carte de fidélité</span><h2>7 commandes, <em>-15&nbsp;% sur la suivante</em></h2><p>Chaque commande validée ajoute un tampon sur votre carte, enregistrée avec votre adresse e-mail. Indiquez la même adresse à chaque commande.</p></div>
+      <div class="fid-grid">
+        <form class="fid-look" id="fid-form" novalidate>
+          <label>Votre adresse e-mail <input type="email" id="fid-email" autocomplete="email" inputmode="email" placeholder="vous@exemple.fr" maxlength="120"></label>
+          <button class="btn btn-main" type="submit" id="fid-go">Voir ma carte</button>
+          <p class="err" id="fid-err" role="alert" hidden></p>
+        </form>
+        <div class="fid-card" id="fid-card" aria-live="polite">
+          <div class="fid-top"><span class="logo">Inspired <span>Cake</span></span><small>Carte de fidélité</small></div>
+          <div class="stamps" id="stamps"></div>
+          <p class="fid-msg" id="fid-msg">Entrez votre e-mail pour voir vos tampons.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 <!-- ═══ FAQ ═══ -->
 <div class="view" data-view="faq" hidden>
   <section class="faq">
@@ -1095,7 +1152,10 @@ footer.site small{display:block;margin-top:6px}
       <div class="page-head"><span class="eyebrow">Questions fréquentes</span><h2>Tout savoir <em>avant de commander</em></h2></div>
       <div class="faq-list">
         <details open><summary>Comment passer commande&nbsp;?</summary><div><p>Rendez-vous sur la page <a href="#commander">Commander</a> : choisissez votre gâteau, la saveur, la date, puis le retrait ou la livraison. Envoyez ensuite votre demande directement depuis le site avec votre e-mail, ou ouvrez-la déjà rédigée dans WhatsApp ou Instagram.</p></div></details>
-        <details><summary>Ma commande est-elle confirmée dès l'envoi du message&nbsp;?</summary><div><p>Pas encore : votre message est une demande. La commande est confirmée lorsque Inspired Cake vous répond pour valider les détails et la date.</p></div></details>
+        <details><summary>Combien de temps à l'avance faut-il commander&nbsp;?</summary><div><p>Au plus tard 2 jours avant votre événement. Pour une grande occasion, n'hésitez pas à réserver plus tôt.</p></div></details>
+        <details><summary>Ma commande est-elle confirmée dès l'envoi du message&nbsp;?</summary><div><p>Pas encore : votre message est une demande. Inspired Cake vous répond pour valider les détails et la date, et vous envoie la confirmation avec les informations de paiement.</p></div></details>
+        <details><summary>Faut-il verser un acompte&nbsp;? Comment payer&nbsp;?</summary><div><p>Oui, un acompte de 40 % est demandé pour valider la commande. Le paiement se fait par PayPal ou par virement bancaire : les coordonnées vous sont envoyées avec la confirmation. Les espèces peuvent être acceptées, à condition de le signaler en amont.</p></div></details>
+        <details><summary>Comment conserver mon gâteau, et combien de temps&nbsp;?</summary><div><p>Pour une fraîcheur maximale, dégustez les gâteaux fruités dans les 24 à 48 heures. Les autres se conservent jusqu'à 72 heures.</p></div></details>
         <details><summary>Où récupérer ma commande&nbsp;?</summary><div><p>Le retrait se fait à domicile, à Chanteloup-les-Vignes (78570). L'adresse exacte vous est communiquée une fois la commande validée.</p></div></details>
         <details><summary>Livrez-vous&nbsp;? Combien ça coûte&nbsp;?</summary><div><p>Oui, selon la distance : 5 € jusqu'à 5 km, 10 € de 5 à 10 km, 15 € de 10 à 15 km. Au-delà, un point de rendez-vous est convenu ensemble, sur devis. Les frais se calculent automatiquement quand vous saisissez votre adresse dans le formulaire. <a href="#livraison">Voir les zones</a>.</p></div></details>
         <details><summary>Quels sont les tarifs&nbsp;?</summary><div><p>Layer cake à partir de 50 € (10 parts), cupcakes à partir de 2,50 € la pièce, Boîte découverte à 18 € (3 parfums). Le tarif peut évoluer selon la décoration choisie. <a href="#carte">Voir la carte complète</a>.</p></div></details>
@@ -1103,6 +1163,7 @@ footer.site small{display:block;margin-top:6px}
         <details><summary>Puis-je personnaliser mon gâteau&nbsp;?</summary><div><p>Oui. Indiquez le texte à écrire, les couleurs ou le thème dans « Vos envies ». Pour un layer cake, vous pouvez aussi choisir un modèle de la galerie ou ajouter une photo d'inspiration. Pour une pièce entièrement sur mesure, choisissez « Inspired ».</p></div></details>
         <details><summary>J'ai une allergie ou une intolérance, que faire&nbsp;?</summary><div><p>Précisez-la dans « Vos envies » au moment de la commande, et n'hésitez pas à poser la question avant de commander.</p></div></details>
         <details><summary>Jusqu'à quand réserver pour Noël&nbsp;?</summary><div><p>Les <a href="#noel">douceurs de Noël</a> (bûche, Cake de l'Avent, cupcakes de Noël) se réservent avant le 21 décembre, pour une remise le jeudi 24 décembre.</p></div></details>
+        <details><summary>Comment fonctionne la carte de fidélité&nbsp;?</summary><div><p>Chaque commande validée vous rapporte un tampon, enregistré avec votre adresse e-mail. Au bout de 7 commandes, vous bénéficiez de -15 % sur la suivante. Pensez à indiquer la même adresse e-mail à chaque commande, et <a href="#fidelite">consultez votre carte ici</a>.</p></div></details>
         <details><summary>Comment suivre les nouveautés&nbsp;?</summary><div><p>Suivez <a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">@inspiredcake</a> sur Instagram, ou <a href="#contact">inscrivez-vous aux nouveautés par e-mail</a>.</p></div></details>
       </div>
       <p class="hint" style="margin-top:20px">Vous ne trouvez pas votre réponse&nbsp;? Écrivez-nous sur <a href="https://wa.me/33641010123" target="_blank" rel="noopener">WhatsApp</a> ou sur <a href="https://ig.me/m/inspiredcake" target="_blank" rel="noopener">Instagram</a>.</p>
@@ -1176,7 +1237,7 @@ footer.site small{display:block;margin-top:6px}
 
         <span class="fs-title">Date et remise</span>
         <div class="two">
-          <label>Date souhaitée <input type="date" id="date"></label>
+          <label>Date souhaitée <span class="lbl-note">(2 jours minimum)</span><input type="date" id="date"></label>
           <label>Prénom <input type="text" id="name" autocomplete="given-name" placeholder="Votre prénom" maxlength="40"></label>
         </div>
         <div class="dl" id="dl-main"></div>
@@ -1186,9 +1247,9 @@ footer.site small{display:block;margin-top:6px}
         <div><p class="hint" style="margin-bottom:6px">Votre message :</p><div class="msg" id="msg"></div></div>
                 <p class="err" id="send-err" role="alert" hidden></p>
         <div class="site-send">
-          <label>Votre e-mail <span class="lbl-note">(pour recevoir la réponse)</span><input type="email" id="m-email" maxlength="120" autocomplete="email" inputmode="email" placeholder="vous@exemple.fr"></label>
+          <label>Votre e-mail <span class="lbl-note">(réponse et carte de fidélité)</span><input type="email" id="m-email" maxlength="120" autocomplete="email" inputmode="email" placeholder="vous@exemple.fr"></label>
           <button class="btn btn-main" type="button" id="m-site">Envoyer ma demande</button>
-          <p class="hint">Votre demande arrive directement chez Inspired Cake. Votre adresse sert uniquement à vous répondre.</p>
+          <p class="hint">Votre demande arrive directement chez Inspired Cake. Votre adresse sert à vous répondre et à tamponner votre <a href="#fidelite">carte de fidélité</a>.</p>
         </div>
         <p class="done" id="done" role="status" hidden></p>
         <p class="or-line"><span>ou</span></p>
@@ -1216,7 +1277,7 @@ footer.site small{display:block;margin-top:6px}
         <div class="adm-top">
           <div><span class="eyebrow">Espace Inspired Cake</span><h2>Mes <em>commandes</em></h2></div>
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-            <div class="tabs" role="tablist"><button type="button" role="tab" data-tab="cal" aria-selected="true">Calendrier</button><button type="button" role="tab" data-tab="avis" aria-selected="false">Avis</button><button type="button" role="tab" data-tab="abonnes" aria-selected="false">Abonnés</button><button type="button" role="tab" data-tab="visites" aria-selected="false">Visites</button></div>
+            <div class="tabs" role="tablist"><button type="button" role="tab" data-tab="cal" aria-selected="true">Calendrier</button><button type="button" role="tab" data-tab="avis" aria-selected="false">Avis</button><button type="button" role="tab" data-tab="abonnes" aria-selected="false">Abonnés</button><button type="button" role="tab" data-tab="visites" aria-selected="false">Visites</button><button type="button" role="tab" data-tab="reglages" aria-selected="false">Paiement</button></div>
             <button class="small-btn" type="button" id="adm-out">Se déconnecter</button>
           </div>
         </div>
@@ -1259,6 +1320,19 @@ footer.site small{display:block;margin-top:6px}
           <div class="box-h" style="margin-bottom:14px"><p class="hint" id="sub-count" style="margin:0"></p><span style="display:flex;gap:8px;flex-wrap:wrap"><button class="small-btn" type="button" id="sub-copy">Copier les adresses</button><button class="small-btn" type="button" id="sub-csv">Télécharger (CSV)</button></span></div>
           <textarea id="sub-all" readonly hidden style="margin-bottom:12px"></textarea>
           <div class="olist" id="sub-list"></div>
+        </div>
+        <div id="tab-reglages" hidden>
+          <form class="box" id="set-form" novalidate style="max-width:640px">
+            <div class="box-h"><h3>Coordonnées de paiement</h3></div>
+            <p class="hint">Ces informations restent privées : elles ne s'affichent jamais sur le site. Elles sont ajoutées au message de confirmation que vous envoyez au client.</p>
+            <label>Lien ou adresse PayPal <input type="text" id="s-paypal" maxlength="160" placeholder="ex. paypal.me/votrenom"></label>
+            <label>Titulaire du compte <input type="text" id="s-holder" maxlength="80"></label>
+            <label>IBAN <input type="text" id="s-iban" maxlength="42" autocomplete="off" spellcheck="false"></label>
+            <label>BIC <span class="lbl-note">(facultatif)</span><input type="text" id="s-bic" maxlength="15" autocomplete="off" spellcheck="false"></label>
+            <label>Adresse exacte de retrait <span class="lbl-note">(envoyée seulement dans les confirmations)</span><input type="text" id="s-addr" maxlength="160"></label>
+            <label>Acompte (%) <input type="number" id="s-dep" min="0" max="100" step="5" value="40"></label>
+            <button class="btn btn-main" type="submit" style="width:fit-content">Enregistrer</button>
+          </form>
         </div>
         <div id="tab-visites" hidden>
           <div class="stats" id="v-stats"></div>
@@ -1335,6 +1409,27 @@ footer.site small{display:block;margin-top:6px}
   </div>
 </div>
 
+<!-- Message de confirmation (gestion) -->
+<div class="modal" id="cf" hidden role="dialog" aria-modal="true" aria-labelledby="cf-title">
+  <form class="sheet" id="cf-form" novalidate>
+    <h3 id="cf-title">Confirmer la commande</h3>
+    <div class="two">
+      <label>Prix total (€) <input type="number" id="cf-price" min="0" step="0.5" inputmode="decimal"></label>
+      <label class="consent" style="align-self:end;color:var(--choco);font-size:.9rem"><input type="checkbox" id="cf-disc"> Remise fidélité -15 %</label>
+    </div>
+    <div class="cf-sum" id="cf-sum"></div>
+    <label>Message au client <span class="lbl-note">(modifiable)</span><textarea id="cf-msg" rows="12"></textarea></label>
+    <p class="hint" id="cf-hint"></p>
+    <div class="cf-acts">
+      <a class="btn btn-main" id="cf-mail" href="#">Envoyer par e-mail</a>
+      <a class="btn btn-wa" id="cf-wa" href="#" target="_blank" rel="noopener">Envoyer sur WhatsApp</a>
+      <button class="btn btn-line" type="button" id="cf-copy">Copier le message</button>
+    </div>
+    <p class="done" id="cf-done" hidden></p>
+    <div class="acts"><span></span><button type="button" class="btn btn-line" id="cf-close">Fermer</button></div>
+  </form>
+</div>
+
 <!-- Fiche commande (gestion) -->
 <div class="modal" id="ed" hidden role="dialog" aria-modal="true" aria-labelledby="ed-title">
   <form class="sheet" id="ed-form" novalidate>
@@ -1346,6 +1441,10 @@ footer.site small{display:block;margin-top:6px}
     <div class="two">
       <label>Client <input type="text" id="e-name" maxlength="60" required></label>
       <label>Contact <input type="text" id="e-contact" maxlength="80" placeholder="Tél., Instagram…"></label>
+    </div>
+    <div class="two">
+      <label>E-mail du client <span class="lbl-note">(carte de fidélité)</span><input type="email" id="e-email" maxlength="120"></label>
+      <span></span>
     </div>
     <label>Produit <input type="text" id="e-product" maxlength="120" list="prod-list" placeholder="ex. Layer cake 15 parts Kinder"></label>
     <datalist id="prod-list"><option>Layer cake 10 parts</option><option>Layer cake 15 parts</option><option>Layer cake 20 parts</option><option>Layer cake 25 parts</option><option>Boîte découverte</option><option>Boîte de 6 cupcakes</option><option>Boîte de 12 cupcakes</option><option>Boîte de 18 cupcakes</option><option>Boîte de 24 cupcakes</option><option>Création Inspired</option><option>Calendrier de l'Avent</option></datalist>
@@ -1369,6 +1468,7 @@ footer.site small{display:block;margin-top:6px}
 
 <script>
 const $=id=>document.getElementById(id);
+const EMAIL_RE=/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]{2,}$/;
 const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const WA="33641010123";
@@ -1419,7 +1519,7 @@ drawer.addEventListener('click',e=>{if(e.target.closest('a'))closeDrawer(false)}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&drawer.classList.contains('open'))closeDrawer(true)});
 
 /* ── Pages ── */
-const VIEWS=["accueil","noel","realisations","carte","livraison","histoire","faq","commander","gestion"];
+const VIEWS=["accueil","noel","realisations","carte","livraison","histoire","fidelite","faq","commander","gestion"];
 let current="";
 function route(){
   let h=decodeURIComponent(location.hash.slice(1)),anchor=null;
@@ -1427,7 +1527,7 @@ function route(){
   if(h==="avent"){h="noel"}
   if(h==="contact"){h=current||"accueil";anchor="contact-bloc"}
   if(!VIEWS.includes(h))h="accueil";
-  const changed=h!==current;current=h;
+  const changed=h!==current;current=h;$('app').dataset.current=h;
   document.querySelectorAll('.view').forEach(v=>v.hidden=v.dataset.view!==h);
   document.querySelectorAll('#dnav a').forEach(a=>{if(a.getAttribute('href')==="#"+h)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
   closeDrawer(false);
@@ -1592,7 +1692,6 @@ function Delivery(host,onChange){
       const fee=z[1],known=fee!=null;
       return{mode:"livraison",fee:known?fee:0,feeKnown:known,zoneLabel:z[0]+(st.km?` (≈ ${st.km} km)`:""),address:addr,
         line:known?`Livraison${addr?` : ${addr}`:''} (${st.km?`≈ ${st.km} km, `:''}${fee} €).`:`Livraison au-delà de 15 km${addr?` (${addr})`:''} : point de rendez-vous à convenir.`}}}}
-const EMAIL_RE=/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]{2,}$/;
 async function sendByMail(fields){
   const body=new URLSearchParams({"form-name":"commande","bot-field":"",...fields}).toString();
   const r=await fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body});
@@ -1624,7 +1723,7 @@ fillFlav($('i-flav'),{"Choisir un parfum":[...LAYER_FLAV["Saveurs fruitées"],..
 $('l-model').innerHTML='<option value="">Aucun modèle</option>'+WORKS.map((w,i)=>w.c==="Cupcakes"?"":`<option value="${i}">${esc(w.t)}</option>`).join('');
 $('c-size').innerHTML=CUP_SIZES.map((s,i)=>`<option value="${i}">${s[0]}</option>`).join('');
 const today=new Date();const ymd=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-$('date').min=ymd(today);
+const minD=new Date(today);minD.setDate(minD.getDate()+2);$('date').min=ymd(minD);
 const HINTS={layer:"Layer cake de 10 à 25 parts, avec la saveur de votre choix.",cup:"Cupcakes en boîte ou à l'unité, topping mascarpone chantilly.",inspired:"Inspired : une création imaginée pour vous, du parfum au décor."};
 function setProduct(p){prod=p;document.querySelectorAll('#seg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p===p));
   $('fs-layer').hidden=p!=="layer";$('fs-cup').hidden=p!=="cup";$('fs-insp').hidden=p!=="inspired";$('prod-hint').textContent=HINTS[p];update()}
@@ -1674,8 +1773,9 @@ function compose(){
   if(notes)lines.push(`Détails : ${notes}`);
   const total=price!=null&&feeKnown?price+(fee||0):null;
   if(total!=null)lines.push(`Estimation du site : ${euro(total)}${D.mode==="livraison"?" livraison comprise":""}.`);
+  const em=$('m-email').value.trim();if(EMAIL_RE.test(em))lines.push(`E-mail (carte de fidélité) : ${em}`);
   lines.push(name?`Merci ! ${name}`:"Merci !");
-  return{txt:lines.join("\n"),price,fee,feeKnown,total,label,date,name,notes,D}}
+  return{txt:lines.join("\n"),price,fee,feeKnown,total,label,date,name,notes,D,email:EMAIL_RE.test(em)?em:""}}
 function update(){const c=compose();$('msg').textContent=c.txt;$('send-wa').href=`https://wa.me/${WA}?text=${encodeURIComponent(c.txt)}`;
   let v,note="hors décoration particulière";
   if(prod==="inspired")v="Sur devis";
@@ -1684,7 +1784,7 @@ function update(){const c=compose();$('msg').textContent=c.txt;$('send-wa').href
   else{v=euro(c.total);if(c.D.mode==="livraison")note=`dont ${c.fee} € de livraison`}
   $('est-val').textContent=v;$('est-note').textContent=note;$('send-err').hidden=true;
   $('send-wa').classList.toggle('busy',PHOTO.state==="uploading")}
-['l-size','l-flav','l-other','l-model','c-size','c-qty','i-parts','i-flav','i-other','date','name','notes'].forEach(id=>$(id).addEventListener('input',update));
+['l-size','l-flav','l-other','l-model','c-size','c-qty','i-parts','i-flav','i-other','date','name','notes','m-email'].forEach(id=>$(id).addEventListener('input',update));
 $('builder').addEventListener('submit',e=>e.preventDefault());
 let lastSent="";
 $('send-wa').addEventListener('click',e=>{const c=compose(),err=$('send-err');
@@ -1694,12 +1794,12 @@ $('send-wa').addEventListener('click',e=>{const c=compose(),err=$('send-err');
   if(c.name.length<2)return stop("Indiquez votre prénom.",$('name'));
   $('send-wa').href=`https://wa.me/${WA}?text=${encodeURIComponent(c.txt)}`;
   if(c.txt!==lastSent){lastSent=c.txt;
-    sendRecord({product:prod,label:c.label,date:c.date,name:c.name,mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:PHOTO.url||"",message:c.txt,site:""})}});
+    sendRecord({product:prod,label:c.label,date:c.date,name:c.name,email:c.email,channel:"whatsapp",mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:PHOTO.url||"",message:c.txt,site:""})}});
 $('send-ig').addEventListener('click',()=>copyForIg(compose().txt,$('msg'),$('done')));
 wireSiteSend("m",()=>{const c=compose();return{...c,kind:"Commande",dateLabel:c.date?frDate(c.date):"",photo:PHOTO.url}},
   c=>PHOTO.state==="uploading"?["Patientez quelques secondes, la photo s'envoie…"]:!c.date?["Choisissez la date souhaitée.",$('date')]:c.name.length<2?["Indiquez votre prénom.",$('name')]:null,
   $('send-err'),$('done'),
-  (c,email)=>sendRecord({product:prod,label:c.label,date:c.date,name:c.name,email,mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:PHOTO.url||"",message:c.txt,site:""}));
+  (c,email)=>sendRecord({product:prod,label:c.label,date:c.date,name:c.name,email,channel:"site",mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:PHOTO.url||"",message:c.txt,site:""}));
 $('soon-order').addEventListener('click',()=>setProduct("inspired"));
 document.querySelectorAll('[data-preset="decouverte"]').forEach(a=>a.addEventListener('click',()=>{setProduct("cup");setCupSize(0)}));
 renderCupFlavs();setProduct("layer");
@@ -1736,14 +1836,15 @@ function xCompose(){const name=$('x-name').value.trim(),notes=$('x-notes').value
   if(notes)lines.push(`Détails : ${notes}`);
   const total=D.feeKnown?price+D.fee:null;
   lines.push(total!=null?`Estimation du site : ${euro(total)}${D.mode==="livraison"?" livraison comprise":""}.`:`Estimation du site : ${euro(price)} + livraison sur devis.`);
+  const em=$('x-email').value.trim();if(EMAIL_RE.test(em))lines.push(`E-mail (carte de fidélité) : ${em}`);
   lines.push(name?`Merci ! ${name}`:"Merci !");
-  return{txt:lines.join("\n"),price,total,label,name,notes,D}}
+  return{txt:lines.join("\n"),price,total,label,name,notes,D,email:EMAIL_RE.test(em)?em:""}}
 function xUpdate(){const c=xCompose();$('x-msg').textContent=c.txt;$('x-wa').href=`https://wa.me/${WA}?text=${encodeURIComponent(c.txt)}`;
   $('x-est-val').textContent=euro(c.total!=null?c.total:c.price);
   $('x-est-note').textContent=c.D.mode==="livraison"?(c.D.feeKnown?`dont ${c.D.fee} € de livraison`:"+ livraison sur devis"):"Retrait le 24 décembre";
   $('x-err').hidden=true;$('x-wa').classList.toggle('busy',xClosed)}
 $('x-seg').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setX(b.dataset.x)});
-['x-size','x-flav','x-lot','x-name','x-notes'].forEach(id=>$(id).addEventListener('input',()=>{if(id==='x-lot')xRenderCup();xUpdate()}));
+['x-size','x-flav','x-lot','x-name','x-notes','x-email'].forEach(id=>$(id).addEventListener('input',()=>{if(id==='x-lot')xRenderCup();xUpdate()}));
 $('x-cup-flavs').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b||b.disabled)return;const f=b.dataset.f;xSel=xSel.includes(f)?xSel.filter(x=>x!==f):[...xSel,f];xRenderCup();xUpdate()});
 document.querySelectorAll('.xcard [data-x]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();setX(a.dataset.x);$('x-form-bloc').scrollIntoView({behavior:reduceMotion?'auto':'smooth'})}));
 $('xform').addEventListener('submit',e=>e.preventDefault());
@@ -1753,12 +1854,12 @@ $('x-wa').addEventListener('click',e=>{const c=xCompose(),err=$('x-err');const s
   if(xprod==="cup"&&!xSel.length)return stop("Choisissez au moins un parfum.");
   if(c.name.length<2)return stop("Indiquez votre prénom.",$('x-name'));
   $('x-wa').href=`https://wa.me/${WA}?text=${encodeURIComponent(c.txt)}`;
-  if(c.txt!==xLast){xLast=c.txt;sendRecord({product:"noel-"+xprod,label:c.label,date:NOEL.day,name:c.name,mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:"",message:c.txt,site:""})}});
+  if(c.txt!==xLast){xLast=c.txt;sendRecord({product:"noel-"+xprod,label:c.label,date:NOEL.day,name:c.name,email:c.email,channel:"whatsapp",mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:"",message:c.txt,site:""})}});
 $('x-ig').addEventListener('click',()=>copyForIg(xCompose().txt,$('x-msg'),$('x-done')));
 wireSiteSend("x",()=>({...xCompose(),kind:"Noël",dateLabel:NOEL.dayLabel,photo:""}),
   c=>xClosed?["Les réservations de Noël sont closes."]:(xprod==="cup"&&!xSel.length)?["Choisissez au moins un parfum."]:c.name.length<2?["Indiquez votre prénom.",$('x-name')]:null,
   $('x-err'),$('x-done'),
-  (c,email)=>sendRecord({product:"noel-"+xprod,label:c.label,date:NOEL.day,name:c.name,email,mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:"",message:c.txt,site:""}));
+  (c,email)=>sendRecord({product:"noel-"+xprod,label:c.label,date:NOEL.day,name:c.name,email,channel:"site",mode:c.D.mode,zone:c.D.zoneLabel,address:c.D.address,price:c.total,notes:c.notes,photo:"",message:c.txt,site:""}));
 xRenderCup();setX("buche");
 
 /* ── Visites : compteur simple, sans cookie ── */
@@ -1779,16 +1880,16 @@ async function login(k,silent){const err=$('adm-err');ADM.key=k;
   catch(e){ADM.key="";if(silent){ls.del('ic-admin');return}err.hidden=false;err.textContent=e.status===403?"Clé incorrecte.":"Impossible de joindre le serveur. Cet espace fonctionne uniquement sur le site en ligne."}}
 $('adm-form').addEventListener('submit',e=>{e.preventDefault();const k=$('adm-key').value.trim();if(k)login(k,false)});
 $('adm-out').addEventListener('click',()=>{ls.del('ic-admin');ADM.key="";ADM.orders=[];$('adm-app').hidden=true;$('adm-login').hidden=false;$('adm-key').value=""});
-document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{ADM.tab=b.dataset.tab;document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));$('tab-cal').hidden=ADM.tab!=="cal";$('tab-avis').hidden=ADM.tab!=="avis";$('tab-abonnes').hidden=ADM.tab!=="abonnes";$('tab-visites').hidden=ADM.tab!=="visites";if(ADM.tab==="avis")renderRv();if(ADM.tab==="abonnes")loadSubs();if(ADM.tab==="visites")loadVisits()}));
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{ADM.tab=b.dataset.tab;document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));$('tab-cal').hidden=ADM.tab!=="cal";$('tab-avis').hidden=ADM.tab!=="avis";$('tab-abonnes').hidden=ADM.tab!=="abonnes";$('tab-visites').hidden=ADM.tab!=="visites";$('tab-reglages').hidden=ADM.tab!=="reglages";if(ADM.tab==="reglages")fillSettings();if(ADM.tab==="avis")renderRv();if(ADM.tab==="abonnes")loadSubs();if(ADM.tab==="visites")loadVisits()}));
 const shortDate=s=>new Date(s+"T12:00").toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});
 const longDate=s=>{const t=new Date(s+"T12:00").toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});return t.charAt(0).toUpperCase()+t.slice(1)};
 const byDate=(a,b)=>(a.date+(a.time||"")).localeCompare(b.date+(b.time||""));
 function ocard(o,showDate){return `<article class="ocard" data-id="${esc(o.id)}">
   <div class="otop"><span class="spill s-${o.status}">${ST[o.status]||o.status}</span><span class="odate">${showDate?shortDate(o.date):''}${o.time?`${showDate?' · ':''}${esc(o.time)}`:''}${o.source==="site"?' · via le site':''}</span></div>
-  <b>${esc(o.name)}</b><p>${esc(o.product||'')}</p>
+  <b>${esc(o.name)}</b>${loyaltyBadge(o)}<p>${esc(o.product||'')}</p>
   <p class="ometa">${o.price!=null&&o.price!==""?euro(+o.price):'Prix à définir'} · ${o.mode==="livraison"?`Livraison${o.zone?` (${esc(o.zone)})`:''}${o.address?` · ${esc(o.address)}`:''}`:'Retrait'}${o.contact?` · ${esc(o.contact)}`:''}</p>
   ${o.photo?`<a href="${esc(o.photo)}" target="_blank" rel="noopener"><img class="othumb" src="${esc(o.photo)}" alt="Photo d'inspiration" loading="lazy"></a>`:''}
-  <div class="oact">${o.status==="demande"?'<button type="button" class="go" data-act="confirmee">Confirmer</button><button type="button" data-act="annulee">Refuser</button>':''}${o.status==="confirmee"?'<button type="button" data-act="terminee">Marquer terminée</button>':''}<button type="button" data-act="edit">Ouvrir</button></div></article>`}
+  <div class="oact">${o.status==="demande"?'<button type="button" class="go" data-act="confirm">Confirmer</button><button type="button" data-act="annulee">Refuser</button>':''}${o.status==="confirmee"?`<button type="button" data-act="paid">${o.paid?'Acompte reçu ✓':'Acompte reçu ?'}</button><button type="button" data-act="confirm">Message de confirmation</button><button type="button" data-act="terminee">Marquer terminée</button>`:''}<button type="button" data-act="edit">Ouvrir</button></div></article>`}
 function renderAdmin(){
   const O=ADM.orders,tStr=ymd(today),mm=`${ADM.y}-${String(ADM.m+1).padStart(2,'0')}`;
   const inMonth=O.filter(o=>o.date&&o.date.startsWith(mm)&&o.status!=="annulee");
@@ -1818,12 +1919,14 @@ function admMsg(t){const m=$('adm-msg');m.textContent=t;m.hidden=!t;if(t)setTime
 async function saveOrder(o){const d=await adm('PUT','/api/orders',o);const i=ADM.orders.findIndex(x=>x.id===d.order.id);if(i>=0)ADM.orders[i]=d.order;else ADM.orders.push(d.order);renderAdmin();return d.order}
 $('tab-cal').addEventListener('click',async e=>{const b=e.target.closest('[data-act]');if(!b)return;const id=b.closest('.ocard').dataset.id;const o=ADM.orders.find(x=>x.id===id);if(!o)return;
   if(b.dataset.act==="edit")return openEditor(o);
+  if(b.dataset.act==="confirm")return openConfirm(o);
+  if(b.dataset.act==="paid"){b.disabled=true;try{await saveOrder({...o,paid:!o.paid});admMsg(o.paid?"Acompte marqué non reçu.":`Acompte de ${o.name} reçu.`)}catch(err){b.disabled=false;admMsg(err.message)}return}
   b.disabled=true;try{await saveOrder({...o,status:b.dataset.act});admMsg(`Commande de ${o.name} : ${ST[b.dataset.act].toLowerCase()}.`)}catch(err){b.disabled=false;admMsg(err.message)}});
 /* Fiche commande */
 let editing=null;
 function openEditor(o){editing=o||null;const v=o||{date:ADM.sel,status:"confirmee",mode:"retrait"};
   $('ed-title').textContent=o?`Commande de ${o.name}`:"Nouvelle commande";
-  $('e-date').value=v.date||"";$('e-time').value=v.time||"";$('e-name').value=v.name||"";$('e-contact').value=v.contact||"";$('e-product').value=v.product||"";$('e-details').value=v.details||"";
+  $('e-date').value=v.date||"";$('e-time').value=v.time||"";$('e-name').value=v.name||"";$('e-contact').value=v.contact||"";$('e-email').value=v.email||"";$('e-product').value=v.product||"";$('e-details').value=v.details||"";
   $('e-price').value=v.price??"";$('e-status').value=v.status||"confirmee";$('e-mode').value=v.mode||"retrait";$('e-addr').value=[v.zone,v.address].filter(Boolean).join(" · ");
   $('e-photo').innerHTML=v.photo?`<a href="${esc(v.photo)}" target="_blank" rel="noopener"><img class="othumb" src="${esc(v.photo)}" alt="Photo d'inspiration"> Voir la photo d'inspiration</a>`:'';
   $('e-del').hidden=!o;$('e-del').dataset.armed="";$('e-del').textContent="Supprimer";$('e-err').hidden=true;$('ed').hidden=false;document.body.classList.add('lock');$('e-name').focus()}
@@ -1832,7 +1935,7 @@ $('add-order').onclick=()=>openEditor(null);
 $('e-cancel').onclick=closeEditor;$('ed').addEventListener('click',e=>{if(e.target===$('ed'))closeEditor()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('ed').hidden)closeEditor()});
 $('ed-form').addEventListener('submit',async e=>{e.preventDefault();const err=$('e-err');
-  const o={...(editing||{}),date:$('e-date').value,time:$('e-time').value,name:$('e-name').value.trim(),contact:$('e-contact').value.trim(),product:$('e-product').value.trim(),details:$('e-details').value.trim(),
+  const o={...(editing||{}),date:$('e-date').value,time:$('e-time').value,name:$('e-name').value.trim(),contact:$('e-contact').value.trim(),email:$('e-email').value.trim(),product:$('e-product').value.trim(),details:$('e-details').value.trim(),
     price:$('e-price').value===""?null:+$('e-price').value,status:$('e-status').value,mode:$('e-mode').value,address:$('e-addr').value.trim(),zone:""};
   if(!o.date){err.textContent="Choisissez une date.";err.hidden=false;return}
   if(!o.name){err.textContent="Indiquez le nom du client.";err.hidden=false;return}
@@ -1898,7 +2001,7 @@ $('sub-list').addEventListener('click',async e=>{const b=e.target.closest('butto
   window.rvRestart=()=>{upd();schedule()};upd();schedule()})();
 
 /* Visites (gestion) */
-const VNAMES={accueil:"Accueil",noel:"Douceurs de Noël",realisations:"Réalisations",carte:"La carte",livraison:"Livraison",histoire:"Mon histoire",faq:"Questions fréquentes",commander:"Commander"};
+const VNAMES={accueil:"Accueil",noel:"Douceurs de Noël",realisations:"Réalisations",carte:"La carte",livraison:"Livraison",histoire:"Mon histoire",fidelite:"Carte de fidélité",faq:"Questions fréquentes",commander:"Commander"};
 async function loadVisits(){let days=[];try{const d=await adm('GET','/api/visit');days=d.days||[]}catch(e){admMsg(e.message)}
   const map=Object.fromEntries(days.map(d=>[d.date,d]));const list=[];for(let i=29;i>=0;i--){const d=new Date(today);d.setDate(d.getDate()-i);const k=ymd(d);list.push({k,d,n:(map[k]&&map[k].n)||0,pages:(map[k]&&map[k].pages)||{}})}
   const sum=a=>a.reduce((x,y)=>x+y.n,0);const t=list[29].n,w=sum(list.slice(-7)),m=sum(list);
@@ -1909,6 +2012,66 @@ async function loadVisits(){let days=[];try{const d=await adm('GET','/api/visit'
   $('v-axis').innerHTML=list.map((x,i)=>`<span>${i%5===4||i===29?x.d.getDate():''}</span>`).join('');
   const pg={};list.forEach(x=>Object.entries(x.pages).forEach(([k,v])=>{pg[k]=(pg[k]||0)+v}));const ent=Object.entries(pg).sort((a,b)=>b[1]-a[1]);const pm=Math.max(1,...ent.map(e=>e[1]));
   $('v-pages').innerHTML=ent.length?ent.map(([k,v])=>`<div><span style="--w:${v/pm*100}%">${esc(VNAMES[k]||k)}</span><b>${v}</b></div>`).join(''):'<p class="empty">Pas encore de visites enregistrées.</p>'}
+
+/* ── Fidélité ── */
+const FID_N=7;
+const stampSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h16M6 20v-6h12v6M8 14v-3h8v3M12 11V7"/><path d="M12 7c-1-1.2-1-2.6 0-4 1 1.4 1 2.8 0 4z" fill="currentColor"/></svg>';
+function renderStamps(n){const filled=n%(FID_N+1);$('stamps').innerHTML=Array.from({length:FID_N},(_,i)=>`<span class="stamp${i<filled?' on':''}" style="animation-delay:${i*70}ms">${i<filled?stampSvg:i+1}</span>`).join('')+`<span class="stamp gift${filled>=FID_N?' on':''}">-15 %</span>`;
+  const left=FID_N-filled;$('fid-msg').innerHTML=filled>=FID_N?"Bravo ! <b>Votre prochaine commande bénéficie de -15 %.</b>":`${filled} tampon${filled>1?'s':''} sur ${FID_N}. Plus que <b>${left} commande${left>1?'s':''}</b> avant -15 %.`}
+renderStamps(0);$('fid-msg').textContent="Entrez votre e-mail pour voir vos tampons.";
+$('fid-form').addEventListener('submit',async e=>{e.preventDefault();const em=$('fid-email').value.trim(),err=$('fid-err');err.hidden=true;
+  if(!EMAIL_RE.test(em)){err.textContent="Vérifiez votre adresse e-mail.";err.hidden=false;return}
+  $('fid-go').disabled=true;try{const r=await fetch(`/api/fidelite?email=${encodeURIComponent(em)}`);const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||"");renderStamps(d.stamps||0);if(!d.stamps)$('fid-msg').innerHTML="Aucun tampon pour l'instant avec cette adresse. Indiquez-la lors de votre prochaine commande !"}
+  catch(x){err.textContent=x.message||"La carte n'a pas pu être chargée. Réessayez dans un instant.";err.hidden=false}finally{$('fid-go').disabled=false}});
+/* Fidélité côté gestion : tampons = commandes confirmées ou terminées avec le même e-mail */
+const VALID=["confirmee","terminee"];
+const mailOf=o=>{const m=String(o.email||o.contact||"").toLowerCase().match(/[^\s@<>"()]+@[^\s@<>"()]+\.[a-z]{2,}/);return m?m[0]:""};
+const orderKey=o=>(o.date||"")+(o.time||"")+(o.createdAt||0)+o.id;
+function priorValid(o){const em=mailOf(o);if(!em)return null;return ADM.orders.filter(x=>x.id!==o.id&&VALID.includes(x.status)&&mailOf(x)===em&&orderKey(x)<orderKey(o)).length}
+function loyaltyBadge(o){const n=priorValid(o);if(n===null)return '';const pos=n%(FID_N+1);return pos===FID_N?'<span class="lbadge reward">-15 % fidélité</span>':`<span class="lbadge">Fidélité ${pos}/${FID_N}</span>`}
+/* Réglages de paiement (privés) */
+let SET=null;
+async function loadSettings(){if(SET)return SET;try{const d=await adm('GET','/api/reglages');SET=d.settings||{}}catch(e){SET={}}return SET}
+async function fillSettings(){const v=await loadSettings();$('s-paypal').value=v.paypal||"";$('s-holder').value=v.holder||"";$('s-iban').value=v.iban||"";$('s-bic').value=v.bic||"";$('s-addr').value=v.address||"";$('s-dep').value=v.deposit??40}
+$('set-form').addEventListener('submit',async e=>{e.preventDefault();const v={paypal:$('s-paypal').value.trim(),holder:$('s-holder').value.trim(),iban:$('s-iban').value.replace(/\s+/g,' ').trim().toUpperCase(),bic:$('s-bic').value.trim().toUpperCase(),address:$('s-addr').value.trim(),deposit:Math.min(100,Math.max(0,+$('s-dep').value||0))};
+  try{const d=await adm('PUT','/api/reglages',v);SET=d.settings;admMsg("Coordonnées enregistrées.")}catch(x){admMsg(x.message)}});
+/* Message de confirmation */
+let cfOrder=null;
+const money=n=>euro(Math.round(n*100)/100);
+function cfText(){const o=cfOrder,v=SET||{},dep=v.deposit??40;let price=$('cf-price').value===""?null:+$('cf-price').value;const disc=$('cf-disc').checked;
+  const final=price!=null?(disc?price*0.85:price):null;const acompte=final!=null?final*dep/100:null;
+  const after=(()=>{const n=priorValid(o);if(n===null)return null;return (n%(FID_N+1))+1})();
+  $('cf-sum').innerHTML=final!=null?`<span>Prix${disc?' (après -15 %)':''} <b>${money(final)}</b></span><span>Acompte ${dep} % <b>${money(acompte)}</b></span><span>Solde <b>${money(final-acompte)}</b></span>`:'<span>Indiquez le prix total pour calculer l\'acompte.</span>';
+  const L=[`Bonjour ${o.name} !`,"",`Votre commande Inspired Cake est confirmée :`,`• ${o.product||"Votre commande"}`,`• Le ${longDate(o.date).toLowerCase()}${o.time?` à ${o.time}`:''}`];
+  if(o.mode==="livraison")L.push(`• Livraison${o.address?` : ${o.address}`:''}${o.zone?` (${o.zone})`:''}`);
+  else L.push(v.address?`• Retrait à l'adresse : ${v.address}`:"• Retrait à domicile à Chanteloup-les-Vignes");
+  if(final!=null)L.push(`• Prix : ${money(final)}${disc?" (remise fidélité -15 % incluse)":""}`);
+  L.push("");
+  if(acompte!=null&&dep>0)L.push(`Pour valider définitivement la commande, merci de régler l'acompte de ${dep} %, soit ${money(acompte)} :`);else L.push("Moyens de paiement :");
+  if(v.paypal)L.push(`• PayPal : ${v.paypal}`);
+  if(v.iban)L.push(`• Virement : ${v.holder?v.holder+" · ":""}IBAN ${v.iban}${v.bic?` · BIC ${v.bic}`:''}`);
+  if(final!=null&&acompte!=null&&dep>0&&dep<100)L.push(`Le solde (${money(final-acompte)}) est à régler au retrait.`);
+  L.push("Le paiement en espèces est possible si vous me le signalez à l'avance.");
+  if(after!==null){L.push("");L.push(disc||after>FID_N?"Votre carte de fidélité repart à zéro : merci pour votre fidélité !":after>=FID_N?`Carte de fidélité : ${FID_N}/${FID_N} tampons. Votre prochaine commande bénéficiera de -15 % !`:`Carte de fidélité : ${after}/${FID_N} tampons.`)}
+  L.push("","Merci pour votre confiance !","Inspired Cake");
+  return{txt:L.join("\n"),final}}
+function cfRefresh(){const {txt}=cfText();$('cf-msg').value=txt;cfLinks()}
+function cfLinks(){const txt=$('cf-msg').value,em=mailOf(cfOrder);
+  $('cf-mail').href=em?`mailto:${em}?subject=${encodeURIComponent("Confirmation de votre commande Inspired Cake")}&body=${encodeURIComponent(txt)}`:'#';
+  $('cf-mail').classList.toggle('busy',!em);$('cf-wa').href=`https://wa.me/?text=${encodeURIComponent(txt)}`;
+  const v=SET||{};$('cf-hint').textContent=(!v.paypal&&!v.iban?"Ajoutez vos coordonnées PayPal et RIB dans l'onglet Paiement. ":"")+(em?`Envoi par e-mail à ${em}.`:"Pas d'e-mail pour ce client : envoyez le message sur WhatsApp ou copiez-le.")}
+async function openConfirm(o){cfOrder=o;await loadSettings();$('cf-title').textContent=`Confirmer · ${o.name}`;$('cf-price').value=o.price??"";
+  const n=priorValid(o);$('cf-disc').checked=o.discount!=null?!!o.discount:(n!==null&&n%(FID_N+1)===FID_N);$('cf-done').hidden=true;cfRefresh();$('cf').hidden=false;document.body.classList.add('lock')}
+function closeConfirm(){$('cf').hidden=true;document.body.classList.remove('lock')}
+$('cf-price').addEventListener('input',cfRefresh);$('cf-disc').addEventListener('change',cfRefresh);$('cf-msg').addEventListener('input',cfLinks);
+$('cf-close').onclick=closeConfirm;$('cf').addEventListener('click',e=>{if(e.target===$('cf'))closeConfirm()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('cf').hidden)closeConfirm()});
+async function cfMarkConfirmed(){const {final}=cfText();const o=cfOrder;if(o.status==="confirmee"&&o.price===final)return;
+  try{const s=await saveOrder({...o,status:o.status==="terminee"?"terminee":"confirmee",price:final,discount:$('cf-disc').checked});cfOrder=s;const d=$('cf-done');d.textContent="Commande enregistrée comme confirmée.";d.className="done ok";d.hidden=false}catch(x){admMsg(x.message)}}
+$('cf-mail').addEventListener('click',e=>{if(!mailOf(cfOrder)){e.preventDefault();return}cfMarkConfirmed()});
+$('cf-wa').addEventListener('click',()=>cfMarkConfirmed());
+$('cf-copy').addEventListener('click',()=>{const t=$('cf-msg').value;const ok=()=>{const d=$('cf-done');d.textContent="Message copié. Collez-le dans la conversation avec le client.";d.className="done ok";d.hidden=false};
+  try{navigator.clipboard.writeText(t).then(ok,()=>{$('cf-msg').select();ok()})}catch(x){$('cf-msg').select();ok()}cfMarkConfirmed()});
 
 addEventListener('hashchange',route);route();
 </script>
