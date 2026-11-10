@@ -140,12 +140,7 @@ main .view{animation:viewin .45s ease both}
 .hero .wrap{display:grid;padding-block:36px 64px}
 @media (max-width:860px){.hero .wrap{padding-block:16px 48px}}
 .hero-copy{max-width:760px}
-.nav-left{justify-self:start;display:flex;align-items:center;gap:10px;min-width:0}
-.logo-bubble{flex:none;width:52px;height:52px;border-radius:50%;box-shadow:0 8px 18px -10px rgba(74,42,34,.55);transition:transform .3s}
-.logo-bubble img{width:100%;height:100%;display:block}
-.logo-bubble:hover{transform:rotate(-6deg) scale(1.05)}
-body[data-view="noel"] .logo-bubble,body[data-view="gestion"] .logo-bubble{display:none}
-@media (max-width:520px){.logo-bubble{width:42px;height:42px}.nav-left{gap:6px}nav.top .wrap{grid-template-columns:auto minmax(0,1fr) auto;gap:8px}nav.top .logo{justify-self:start;font-size:clamp(1.25rem,6vw,1.5rem)}}
+.nav-left{justify-self:start;display:flex;align-items:center;min-width:0}
 .hero{overflow:hidden}
 .hero-copy{display:grid;gap:22px;min-width:0}
 .hero h1{font-size:clamp(2.5rem,7vw,4.8rem);letter-spacing:-.015em}
@@ -570,6 +565,11 @@ footer.site{background:var(--choco);color:rgba(251,241,240,.8)}
 .vpages b{font-variant-numeric:tabular-nums}
 footer.site .wrap{padding-block:44px calc(32px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:end}
 footer.site .logo{color:var(--blush);font-size:2rem}
+.foot-brand{display:flex;align-items:center;gap:22px}
+.logo-bubble{flex:none;width:96px;height:96px;border-radius:50%;box-shadow:0 12px 26px -12px rgba(0,0,0,.6);transition:transform .3s}
+.logo-bubble img{width:100%;height:100%;display:block}
+.logo-bubble:hover{transform:rotate(-6deg) scale(1.05)}
+@media (max-width:640px){.foot-brand{width:100%;justify-content:space-between;gap:14px}.logo-bubble{width:84px;height:84px}}
 .foot-links{display:grid;gap:4px}
 footer.site small{display:block;margin-top:6px}
 
@@ -772,7 +772,6 @@ footer.site small{display:block;margin-top:6px}
   <div class="wrap">
     <div class="nav-left">
       <button class="menu-btn" id="menu-btn" type="button" aria-controls="drawer" aria-expanded="false"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span><span class="lbl">Menu</span></button>
-      <a class="logo-bubble" href="#accueil" aria-label="Inspired Cake, accueil"><img src="img/logo-bulle.webp" alt="" width="52" height="52"></a>
     </div>
     <a class="logo" href="#accueil">Inspired <span>Cake</span></a>
     <a class="btn btn-main" href="#commander">Commander</a>
@@ -1380,7 +1379,7 @@ footer.site small{display:block;margin-top:6px}
 
 <footer class="site">
   <div class="wrap">
-    <div><a class="logo" href="#accueil">Inspired <span>Cake</span></a><small>Plus qu'une pâtisserie, un message qui prend vie</small></div>
+    <div class="foot-brand"><div><a class="logo" href="#accueil">Inspired <span>Cake</span></a><small>Plus qu'une pâtisserie, un message qui prend vie</small></div><a class="logo-bubble" href="#accueil" aria-label="Inspired Cake, accueil"><img src="img/logo-bulle.webp" alt="" width="96" height="96" loading="lazy"></a></div>
     <div class="foot-links"><a href="https://wa.me/33641010123" target="_blank" rel="noopener">WhatsApp · Nous écrire</a><a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">Instagram · @inspiredcake</a><small>© 2026 Inspired Cake</small></div>
   </div>
 </footer>
