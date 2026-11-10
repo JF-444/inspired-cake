@@ -525,11 +525,11 @@ footer.site{background:var(--choco);color:rgba(251,241,240,.8)}
 .xinfo span{border:1px solid rgba(230,197,135,.55);border-radius:999px;padding:7px 14px;font-size:.88rem;color:#f6ead2;background:rgba(0,0,0,.12)}
 .xinfo span b{color:#e6c587;font-weight:600}
 .xprod{padding-block:36px 8px}
-.xgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:20px}
+.xgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;max-width:820px;margin-inline:auto}
 .xcard{background:var(--cream);border:1px solid var(--line);border-radius:26px;padding:16px 16px 20px;display:grid;gap:10px;justify-items:center;text-align:center;align-content:start}
 .xcard img{width:min(100%,240px);height:auto;filter:drop-shadow(0 14px 18px rgba(74,42,34,.25))}
 .xcard h3{font-size:1.5rem;color:var(--berry)}
-.xcard p{margin:0;color:var(--cocoa);font-size:.95rem;max-width:26ch}
+.xcard p{margin:0;color:var(--cocoa);font-size:.95rem;max-width:34ch}
 .xprice{display:grid;gap:2px;background:var(--blush);border-radius:14px;padding:10px 16px;width:100%;font-variant-numeric:tabular-nums}
 .xprice span{display:flex;justify-content:space-between;gap:10px}
 .xprice b{font-family:var(--display);font-weight:500;font-size:1.15rem}
@@ -537,8 +537,19 @@ footer.site{background:var(--choco);color:rgba(251,241,240,.8)}
 .xflav{padding-block:28px 8px}
 .xflav-box{background:var(--cream);border:1px solid var(--line);border-radius:26px;padding:20px;display:grid;gap:14px}
 .xflav-box h3{font-size:1.5rem;text-align:center;color:var(--berry)}
-.xflav-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;text-align:center}
-@media (max-width:560px){.xflav-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.xflav-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;text-align:center}
+@media (max-width:560px){.xflav-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.xflav .wrap{display:grid;gap:20px}
+.xsig{background:radial-gradient(120% 120% at 90% 0%,#2c5a40 0,var(--pine) 50%,var(--pine-2) 100%);color:#f6ead2;border-radius:26px;padding:26px 20px;display:grid;gap:8px;text-align:center;border:1px solid rgba(230,197,135,.45)}
+.xsig .eyebrow{color:#e6cf9c}
+.xsig h3{color:#fff;font-size:clamp(1.6rem,4.5vw,2.2rem)}
+.xsig h3 em{color:#e6c587}
+.xsig-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:12px}
+@media (max-width:640px){.xsig-row{grid-template-columns:1fr;gap:10px}.xsig-row article{grid-template-columns:64px 1fr;justify-items:start;text-align:left;column-gap:14px;padding:12px 14px}.xsig-row img{grid-row:span 2;width:60px;height:60px}.xsig-row h4{margin:0;align-self:end;justify-self:start;text-align:left}.xsig-row p{align-self:start;justify-self:start;text-align:left}}
+.xsig-row article{border:1px solid rgba(230,197,135,.5);border-radius:20px;padding:16px 12px 18px;background:rgba(0,0,0,.14);display:grid;justify-items:center;gap:4px}
+.xsig-row img{width:76px;height:76px;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(0,0,0,.35))}
+.xsig-row h4{margin:6px 0 0;font:500 1.45rem var(--display);color:#e6c587}
+.xsig-row p{margin:0;font-size:.92rem;letter-spacing:.03em;color:rgba(246,234,210,.9)}
 .xflav-row figure{margin:0;display:grid;gap:6px;justify-items:center;font-size:.86rem;font-weight:600;line-height:1.25}
 .xflav-row img{width:72px;height:72px;object-fit:contain}
 .xflav-row small{display:block;color:var(--gold);font-weight:600}
@@ -785,7 +796,7 @@ footer.site small{display:block;margin-top:6px}
     <div class="dhead"><a class="logo" href="#accueil">Inspired <span>Cake</span></a><button class="dclose" id="dclose" type="button" aria-label="Fermer le menu">✕</button></div>
     <nav class="dnav" id="dnav">
       <a href="#accueil"><b>Accueil</b><small>Nouveautés et avis</small></a>
-      <a href="#noel" class="xmas-only"><b>Douceurs de Noël <span class="pill xmas">Noël</span></b><small>Bûches, Cake de l'Avent, cupcakes de Noël</small></a>
+      <a href="#noel" class="xmas-only"><b>Douceurs de Noël <span class="pill xmas">Noël</span></b><small>Bûches roulées et cupcakes de Noël</small></a>
       <a href="#realisations"><b>Les réalisations</b><small>Layer cakes, cupcakes, créations inspirées</small></a>
       <a href="#carte"><b>La carte</b><small>Tarifs et saveurs</small></a>
       <a href="#livraison"><b>Livraison</b><small>Retrait à Chanteloup-les-Vignes ou livraison</small></a>
@@ -819,7 +830,7 @@ footer.site small{display:block;margin-top:6px}
         </div>
         <a class="xmas-cta xmas-only" href="#noel">
           <span class="xi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#e6c587"><path d="M12 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 15l-5.4 3 1.2-6-4.5-4.2 6.1-.7z"/></svg></span>
-          <span><b>Douceurs de Noël</b><small>Bûches, Cake de l'Avent, cupcakes · à réserver avant le 21 décembre</small></span>
+          <span><b>Douceurs de Noël</b><small>Bûches roulées, cupcakes · à réserver avant le 21 décembre</small></span>
           <span class="go" aria-hidden="true">→</span>
         </a>
         <div class="prices">
@@ -840,7 +851,7 @@ footer.site small{display:block;margin-top:6px}
       </a>
       <a class="ann reveal xmas-only" href="#noel">
         <img src="img/noel-buche.webp" alt="" style="object-fit:contain;background:var(--pine)">
-        <div><span><span class="pill xmas">Noël</span></span><h3>Les douceurs de Noël</h3><p>Bûche, Cake de l'Avent et cupcakes de Noël. Remise le 24 décembre.</p><span class="go">Réserver →</span></div>
+        <div><span><span class="pill xmas">Noël</span></span><h3>Les douceurs de Noël</h3><p>Trois bûches roulées et des cupcakes de fête. Remise le 24 décembre.</p><span class="go">Réserver →</span></div>
       </a>
     </div>
   </section>
@@ -935,11 +946,11 @@ footer.site small{display:block;margin-top:6px}
           <p class="fine">Topping mascarpone chantilly uniquement.</p>
         </article>
         <article class="soon-card xmas-only" id="avent">
-          <span class="art" aria-hidden="true" style="background:var(--pine)"><img src="img/noel-cake-avent.webp" alt="" style="width:86%;height:auto"></span>
+          <span class="art" aria-hidden="true" style="background:var(--pine)"><img src="img/noel-buche.webp" alt="" style="width:86%;height:auto"></span>
           <div>
             <span><span class="pill xmas">Noël 2026</span></span>
             <h3>Les douceurs <em>de Noël</em></h3>
-            <p>Bûche de Noël, Cake de l'Avent et cupcakes de Noël, à réserver avant le 21 décembre pour une remise le 24.</p>
+            <p>Trois bûches roulées (L'Évasion, La Délicate, La Signature) et des cupcakes de fête, à réserver avant le 21 décembre pour une remise le 24.</p>
             <a class="btn btn-main" href="#noel">Voir les douceurs de Noël</a>
           </div>
         </article>
@@ -1029,32 +1040,25 @@ footer.site small{display:block;margin-top:6px}
 <div class="view" data-view="noel" hidden>
   <section class="xhead">
     <div class="wrap">
-      <span class="eyebrow">Noël 2026</span>
-      <h2>Nos gâteaux <em>pour Noël</em></h2>
-      <p>Des saveurs gourmandes pour des fêtes magiques.</p>
+      <span class="eyebrow">Inspired Cake · Noël 2026</span>
+      <h2>La Collection <em>de Noël</em></h2>
+      <p>Trois bûches roulées et des cupcakes de fête, pensés pour un Noël tout en douceur.</p>
       <div class="xinfo"><span>Réservation avant le <b>21 décembre</b></span><span>Remise le <b>jeudi 24 décembre</b></span></div>
     </div>
   </section>
   <section class="xprod">
     <div class="wrap xgrid">
       <article class="xcard">
-        <img src="img/noel-buche.webp" alt="Bûche de Noël au chocolat" loading="lazy">
-        <h3>Bûche de Noël</h3>
-        <p>Parce que Noël est encore plus beau lorsqu'il se partage.</p>
+        <img src="img/noel-buche.webp" alt="Bûche roulée de Noël" loading="lazy">
+        <h3>Bûches roulées</h3>
+        <p>Des bûches roulées artisanales alliant biscuits moelleux, crèmes onctueuses et associations de saveurs, pour offrir un moment de douceur.</p>
         <div class="xprice"><span>4-5 parts <b>20 €</b></span><span>8-9 parts <b>38 €</b></span></div>
         <a class="btn btn-main" href="#noel" data-x="buche">Réserver une bûche</a>
       </article>
       <article class="xcard">
-        <img src="img/noel-cake-avent.webp" alt="Cake de l'Avent en forme de cadeau" loading="lazy">
-        <h3>Cake de l'Avent</h3>
-        <p>Une création unique, imaginée pour illuminer votre temps d'attente.</p>
-        <div class="xprice"><span>5 parts <b>30 €</b></span><span>10 parts <b>55 €</b></span></div>
-        <a class="btn btn-main" href="#noel" data-x="cake">Réserver un Cake de l'Avent</a>
-      </article>
-      <article class="xcard">
         <img src="img/noel-cupcakes.webp" alt="Cupcakes de Noël" loading="lazy">
-        <h3>Cupcakes de Noël</h3>
-        <p>Parce que les petites attentions font de grandes joies.</p>
+        <h3>Cupcakes</h3>
+        <p>Des cupcakes légers et savoureux pour un Noël tout en douceur.</p>
         <div class="xprice"><span>La pièce <b>3 €</b></span><span>Par lot de 6 <b>2 saveurs</b></span></div>
         <a class="btn btn-main" href="#noel" data-x="cup">Réserver des cupcakes</a>
       </article>
@@ -1062,16 +1066,24 @@ footer.site small{display:block;margin-top:6px}
   </section>
   <section class="xflav">
     <div class="wrap">
+      <div class="xsig">
+        <span class="eyebrow">Les bûches</span>
+        <h3>Trois créations <em>signées</em></h3>
+        <div class="xsig-row">
+          <article><img src="img/p-mangue.webp" alt="" loading="lazy"><h4>L'Évasion</h4><p>Mangue · passion · coco</p></article>
+          <article><img src="img/p-pistache.webp" alt="" loading="lazy"><h4>La Délicate</h4><p>Pistache · framboise</p></article>
+          <article><img src="img/p-chocolat.webp" alt="" loading="lazy"><h4>La Signature</h4><p>Chocolat · praliné · noisette</p></article>
+        </div>
+      </div>
       <div class="xflav-box">
-        <h3>Parfums disponibles</h3>
+        <h3>Parfums des cupcakes</h3>
         <div class="xflav-row">
           <figure><img src="img/p-chocolat.webp" alt="" loading="lazy">Chocolat</figure>
           <figure><img src="img/p-caramel.webp" alt="" loading="lazy">Caramel beurre salé</figure>
           <figure><img src="img/p-fruits-rouges.webp" alt="" loading="lazy">Fruits rouges</figure>
-          <figure><img src="img/p-mangue.webp" alt="" loading="lazy">Mangue passion<small>+3 €</small></figure>
-          <figure><img src="img/p-pistache.webp" alt="" loading="lazy">Pistache framboise<small>+5 €</small></figure>
+          <figure><img src="img/p-mangue.webp" alt="" loading="lazy">Mangue</figure>
         </div>
-        <p class="xnote">Suppléments pour la bûche et le Cake de l'Avent. Cupcakes de Noël : chocolat, caramel beurre salé, mangue ou fruits rouges, sans supplément.</p>
+        <p class="xnote">2 saveurs au choix par lot de 6.</p>
       </div>
     </div>
   </section>
@@ -1082,12 +1094,11 @@ footer.site small{display:block;margin-top:6px}
         <p class="xclosed" id="x-closed" hidden>Les réservations de Noël sont closes. Merci à toutes et à tous, et joyeuses fêtes !</p>
         <div class="seg" role="group" aria-label="Douceur de Noël" id="x-seg">
           <button type="button" data-x="buche" aria-pressed="true">Bûche</button>
-          <button type="button" data-x="cake" aria-pressed="false">Cake de l'Avent</button>
           <button type="button" data-x="cup" aria-pressed="false">Cupcakes</button>
         </div>
         <div class="two" id="x-fs-gateau">
           <label>Taille <select id="x-size"></select></label>
-          <label>Saveur <select id="x-flav"></select></label>
+          <label>Création <select id="x-flav"></select></label>
         </div>
         <div class="fs" id="x-fs-cup" hidden>
           <label>Format <select id="x-lot"></select></label>
@@ -1158,7 +1169,7 @@ footer.site small{display:block;margin-top:6px}
         <details><summary>Quelles saveurs proposez-vous&nbsp;?</summary><div><p>Pour les layer cakes : mangue – passion, fraise / fruits rouges, citron, Kinder, Oréo, spéculoos, chocolat, praliné, caramel, Nutella, caramel beurre salé… Pistache – framboise et red velvet sont à +5 €. Vous avez une autre idée&nbsp;? Choisissez « Autre » dans le formulaire et décrivez-la.</p></div></details>
         <details><summary>Puis-je personnaliser mon gâteau&nbsp;?</summary><div><p>Oui. Indiquez le texte à écrire, les couleurs ou le thème dans « Vos envies ». Pour un layer cake, vous pouvez aussi choisir un modèle de la galerie ou ajouter une photo d'inspiration. Pour une pièce entièrement sur mesure, choisissez « Inspired ».</p></div></details>
         <details><summary>J'ai une allergie ou une intolérance, que faire&nbsp;?</summary><div><p>Précisez-la dans « Vos envies » au moment de la commande, et n'hésitez pas à poser la question avant de commander.</p></div></details>
-        <details><summary>Jusqu'à quand réserver pour Noël&nbsp;?</summary><div><p>Les <a href="#noel">douceurs de Noël</a> (bûche, Cake de l'Avent, cupcakes de Noël) se réservent avant le 21 décembre, pour une remise le jeudi 24 décembre.</p></div></details>
+        <details><summary>Jusqu'à quand réserver pour Noël&nbsp;?</summary><div><p>Les <a href="#noel">douceurs de Noël</a> (bûches roulées et cupcakes) se réservent avant le 21 décembre, pour une remise le jeudi 24 décembre.</p></div></details>
         <details><summary>Comment fonctionne la carte de fidélité&nbsp;?</summary><div><p>Chaque commande validée vous rapporte un tampon, enregistré avec votre adresse e-mail. Au bout de 7 commandes, vous bénéficiez de -15 % sur la suivante. Pensez à indiquer la même adresse e-mail à chaque commande, et <a href="#fidelite">consultez votre carte ici</a>.</p></div></details>
         <details><summary>Comment suivre les nouveautés&nbsp;?</summary><div><p>Suivez <a href="https://www.instagram.com/inspiredcake" target="_blank" rel="noopener">@inspiredcake</a> sur Instagram, ou <a href="#contact">inscrivez-vous aux nouveautés par e-mail</a>.</p></div></details>
       </div>
@@ -1802,16 +1813,16 @@ renderCupFlavs();setProduct("layer");
 
 /* ── Douceurs de Noël ── */
 const NOEL={day:"2026-12-24",deadline:"2026-12-21",dayLabel:"jeudi 24 décembre"};
-const X_SIZES={buche:[["4-5 parts",20],["8-9 parts",38]],cake:[["5 parts",30],["10 parts",55]]};
-const X_FLAV=[["Chocolat",0],["Caramel beurre salé",0],["Fruits rouges",0],["Mangue – passion",3],["Pistache – framboise",5]];
-const X_CUP_FLAV=["Chocolat","Caramel beurre salé","Mangue","Fruits rouges"];
+const X_SIZES={buche:[["4-5 parts",20],["8-9 parts",38]]};
+const X_FLAV=[["L'Évasion","mangue, passion, coco"],["La Délicate","pistache, framboise"],["La Signature","chocolat, praliné, noisette"]];
+const X_CUP_FLAV=["Chocolat","Caramel beurre salé","Fruits rouges","Mangue"];
 const X_LOTS=[6,12,18,24,30];
-const X_NAME={buche:"Bûche de Noël",cake:"Cake de l'Avent",cup:"Cupcakes de Noël"};
+const X_NAME={buche:"Bûche roulée",cup:"Cupcakes de Noël"};
 let xprod="buche",xSel=[];
 const todayStr=ymd(today);
 if(todayStr>NOEL.day)document.querySelectorAll('.xmas-only').forEach(el=>el.hidden=true);
 const xClosed=todayStr>NOEL.deadline;$('x-closed').hidden=!xClosed;
-$('x-flav').innerHTML=X_FLAV.map((f,i)=>`<option value="${i}">${f[0]}${f[1]?` (+${f[1]} €)`:''}</option>`).join('');
+$('x-flav').innerHTML=X_FLAV.map((f,i)=>`<option value="${i}">${f[0]} · ${f[1]}</option>`).join('');
 $('x-lot').innerHTML=X_LOTS.map((n,i)=>`<option value="${i}">Lot de ${n} · ${n*3} €</option>`).join('');
 const xMax=()=>Math.min(X_LOTS[+$('x-lot').value]/6*2,X_CUP_FLAV.length);
 function xRenderCup(){const max=xMax();xSel=xSel.slice(0,max);
@@ -1825,8 +1836,8 @@ function setX(p){xprod=p;document.querySelectorAll('#x-seg button').forEach(b=>b
 function xCompose(){const name=$('x-name').value.trim(),notes=$('x-notes').value.trim();let price,label,lines=["Bonjour Inspired Cake !"];
   if(xprod==="cup"){const n=X_LOTS[+$('x-lot').value],max=xMax();price=n*3;const fl=xSel.length?xSel.map(lower).join(", "):"à préciser";
     lines.push(`Je souhaiterais réserver des cupcakes de Noël : lot de ${n} (${max} parfums). Parfums : ${fl}${xSel.length&&xSel.length<max?` (+ ${max-xSel.length} à préciser)`:''}.`);label=`Noël · Cupcakes lot de ${n} · ${fl}`}
-  else{const sz=X_SIZES[xprod][+$('x-size').value],f=X_FLAV[+$('x-flav').value];price=sz[1]+f[1];
-    lines.push(`Je souhaiterais réserver ${xprod==="buche"?"une bûche de Noël":"un Cake de l'Avent"} de ${sz[0]}, saveur ${lower(f[0])}.`);label=`Noël · ${X_NAME[xprod]} ${sz[0]} · ${f[0]}`}
+  else{const sz=X_SIZES[xprod][+$('x-size').value],f=X_FLAV[+$('x-flav').value];price=sz[1];
+    lines.push(`Je souhaiterais réserver une bûche roulée ${f[0]} (${f[1]}) de ${sz[0]}.`);label=`Noël · Bûche ${f[0]} ${sz[0]}`}
   lines.push(`Pour le ${NOEL.dayLabel}.`);
   const D=dlNoel.state();lines.push(D.line);
   if(notes)lines.push(`Détails : ${notes}`);
